@@ -1,0 +1,5 @@
+﻿  HOJA1-1.cpp
+  Secuencia.cpp
+C:\Universidad\TPV1-xoxonas\HOJA1-1\Secuencia.cpp(20,13): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
+  Generando código...
+  HOJA1-1.vcxproj -> C:\Universidad\TPV1-xoxonas\HOJA1-1\x64\Debug\HOJA1-1.exe
