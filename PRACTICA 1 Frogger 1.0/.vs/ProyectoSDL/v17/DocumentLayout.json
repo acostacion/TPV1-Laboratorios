@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vector2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\Vector2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -15,10 +23,6 @@
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\texture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\Vehicle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -27,12 +31,8 @@
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\Vehicle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vector2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\Vector2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,107 +42,108 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "game.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.h",
               "RelativeDocumentMoniker": "src\\game.h",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.h",
               "RelativeToolTip": "src\\game.h",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAkAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-07T16:03:46.702Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "game.cpp",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp",
               "RelativeDocumentMoniker": "src\\game.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp",
               "RelativeToolTip": "src\\game.cpp",
-              "ViewState": "AgIAACYAAAAAAAAAAAAswB8AAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAQwD8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-07T15:55:29.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Vehicle.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.h",
               "RelativeDocumentMoniker": "src\\Vehicle.h",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.h",
               "RelativeToolTip": "src\\Vehicle.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-07T15:46:27.441Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Vehicle.cpp",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.cpp",
               "RelativeDocumentMoniker": "src\\Vehicle.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.cpp",
               "RelativeToolTip": "src\\Vehicle.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-07T15:46:29.529Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 1,
               "Title": "Vector2D.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vector2D.h",
               "RelativeDocumentMoniker": "src\\Vector2D.h",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vector2D.h",
               "RelativeToolTip": "src\\Vector2D.h",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAAAF4AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAAAF4AAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-07T15:41:09.459Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "texture.cpp",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp",
               "RelativeDocumentMoniker": "src\\texture.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp",
               "RelativeToolTip": "src\\texture.cpp",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-07T15:27:01.185Z"
+              "WhenOpened": "2025-10-07T15:27:01.185Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "texture.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.h",
               "RelativeDocumentMoniker": "src\\texture.h",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.h",
               "RelativeToolTip": "src\\texture.h",
-              "ViewState": "AgIAADoAAAAAAAAAAAAWwEUAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-07T15:27:00.513Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp",
               "RelativeDocumentMoniker": "src\\main.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp",
               "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADcAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-07T13:23:26.569Z",
               "EditorCaption": ""

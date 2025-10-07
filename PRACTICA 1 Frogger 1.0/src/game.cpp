@@ -27,6 +27,16 @@ constexpr const char* imgBase = "../assets/images/";
 constexpr array<TextureSpec, Game::NUM_TEXTURES> textureList{
 	TextureSpec{"frog.png", 1, 2},
 	{"background.png"},
+	{"car1.png"},
+	{"car2.png"},
+	{"car3.png"},
+	{"car4.png"},
+	{"car5.png"},
+	{"goal.png"},
+	{"log1.png"},
+	{"log2.png"},
+	{"turtle.png", 1, 7},
+	{"wasp.png"}
 };
 
 Game::Game()
@@ -54,8 +64,11 @@ Game::Game()
 		textures[i] = new Texture(renderer, (string(imgBase) + name).c_str(), nrows, ncols);
 	}
 
+
 	// Configura que se pueden utilizar capas translúcidas
 	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	
+	_auxVehicle = new Vehicle({0,0}, {1.0f, 0.0f}, textures[CAR1], this);
 }
 
 Game::~Game()
@@ -69,6 +82,7 @@ Game::render() const
 	SDL_RenderClear(renderer);
 
 	// TODO
+	_auxVehicle->render();
 
 
 	SDL_RenderPresent(renderer);
@@ -78,6 +92,7 @@ void
 Game::update()
 {
 	// TODO
+	_auxVehicle->update();
 }
 
 void
@@ -85,6 +100,10 @@ Game::run()
 {
 	while (!exit) {
 		// TODO
+		update();
+
+		render();
+		handleEvents();
 	}
 }
 
@@ -99,6 +118,7 @@ Game::handleEvents()
 			exit = true;
 
 		// TODO
+		//_auxVehicle->checkCollision();
 	}
 }
 

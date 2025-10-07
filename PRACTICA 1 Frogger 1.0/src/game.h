@@ -28,6 +28,16 @@ public:
 	{
 		FROG = 0,
 		BACKGROUND,
+		CAR1,
+		CAR2, 
+		CAR3,
+		CAR4,
+		CAR5,
+		GOAL,
+		LOG1, 
+		LOG2,
+		TURTLE,
+		WASP,
 		NUM_TEXTURES
 	};
 
@@ -52,6 +62,7 @@ public:
 	// Obtiene una textura por su nombre
 	Texture* getTexture(TextureName name) const;
 
+
 	// Ejecuta el bucle principal del juego
 	void run();
 
@@ -64,5 +75,7 @@ Game::getTexture(TextureName name) const
 {
 	return textures[name];
 }
+
+
 
 #endif // GAME_H

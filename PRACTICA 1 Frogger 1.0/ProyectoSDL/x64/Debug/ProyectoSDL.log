@@ -1,8 +1,15 @@
 ﻿  game.cpp
+  main.cpp
 C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(70,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
   (compilando archivo de origen "src/game.cpp")
   
 C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(76,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
   (compilando archivo de origen "src/game.cpp")
+  
+C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(70,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
+  (compilando archivo de origen "src/main.cpp")
+  
+C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(76,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
+  (compilando archivo de origen "src/main.cpp")
   
   ProyectoSDL.vcxproj -> C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\bin\ProyectoSDLDebug.exe
