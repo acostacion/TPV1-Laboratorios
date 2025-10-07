@@ -1,9 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Usuario\\Music\\TPV1-xoxonas\\PRACTICA1\\",
+  "WorkspaceRootPath": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\Usuario\\Music\\TPV1-xoxonas\\PRACTICA1\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\texture.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|ProyectoSDL.vcxproj|solutionrelative:src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -19,15 +27,39 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\Usuario\\Music\\TPV1-xoxonas\\PRACTICA1\\src\\main.cpp",
-              "RelativeDocumentMoniker": "src\\main.cpp",
-              "ToolTip": "C:\\Users\\Usuario\\Music\\TPV1-xoxonas\\PRACTICA1\\src\\main.cpp",
-              "RelativeToolTip": "src\\main.cpp",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "texture.cpp",
+              "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp",
+              "RelativeDocumentMoniker": "src\\texture.cpp",
+              "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.cpp",
+              "RelativeToolTip": "src\\texture.cpp",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-10-07T13:23:26.569Z",
+              "WhenOpened": "2025-10-07T15:27:01.185Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "texture.h",
+              "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.h",
+              "RelativeDocumentMoniker": "src\\texture.h",
+              "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\texture.h",
+              "RelativeToolTip": "src\\texture.h",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-10-07T15:27:00.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp",
+              "RelativeDocumentMoniker": "src\\main.cpp",
+              "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\main.cpp",
+              "RelativeToolTip": "src\\main.cpp",
+              "ViewState": "AgIAABIAAAAAAAAAAAAUwBQAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-10-07T13:23:26.569Z"
             }
           ]
         }
