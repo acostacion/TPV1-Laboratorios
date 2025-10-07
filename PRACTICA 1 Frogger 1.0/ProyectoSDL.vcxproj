@@ -98,11 +98,13 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\Vector2D.cpp" />
+    <ClCompile Include="src\Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\texture.h" />
     <ClInclude Include="src\Vector2D.h" />
+    <ClInclude Include="src\Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

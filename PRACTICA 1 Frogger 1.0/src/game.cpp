@@ -5,6 +5,7 @@
 #include <SDL3_image/SDL_image.h>
 
 #include "texture.h"
+#include "Vehicle.h"
 
 using namespace std;
 
@@ -68,6 +69,7 @@ Game::render() const
 	SDL_RenderClear(renderer);
 
 	// TODO
+
 
 	SDL_RenderPresent(renderer);
 }

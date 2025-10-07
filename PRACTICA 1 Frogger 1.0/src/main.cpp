@@ -9,6 +9,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
+#include "game.h"
 
 using namespace std;
 
@@ -35,6 +36,9 @@ void firstTest()
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
 		SDL_RenderPresent(renderer);
+
+
+
 		// Espera 5 segundos
 		SDL_Delay(5000);
 	}
@@ -47,6 +51,8 @@ void firstTest()
 
 int main(int argc, char* argv[])
 {
-	firstTest();
+	//firstTest();
+	Game g = Game();
+	g.run();
 	return 0;
 }

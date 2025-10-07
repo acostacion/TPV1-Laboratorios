@@ -5,6 +5,7 @@
 #include <array>
 #include <istream>
 #include <vector>
+#include "Vehicle.h"
 
 // Declaraciones anticipadas
 class Texture;
@@ -42,7 +43,7 @@ private:
 	bool exit;
 
 	// Elemento del juego
-	// TODO: añadir atributos para los objetos del juego
+	Vehicle* _auxVehicle;
 
 public:
 	Game();
