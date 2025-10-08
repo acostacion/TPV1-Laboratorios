@@ -1,18 +1,19 @@
-#pragma once
+#ifndef VECTOR2D_H
+#define VECTOR2D_H
+
 #include <iostream>
-#include <vector>
-#include "Vector2D.h"
 
+/**
+ * Vector bidimensional genérico.
+ */
+template<typename T = float>
+class Vector2D
+{
+	T x, y;
 
-template <class T>
-class Vector2D {
 public:
-	T x;
-	T y;
-
-	Vector2D() : x(0), y(0) {}
-	Vector2D(T x, T y) : x(x), y(y) {}
-	Vector2D(const Vector2D<T>& v) : x(v.x), y(v.y) {}
+	Vector2D(T x, T y) : x(x), y(y) { }
+	Vector2D() : Vector2D(0, 0) { }
 
 	Vector2D<T> operator+(const Vector2D<T>& v) const {
 		return Vector2D<T>(x + v.x, y + v.y);
@@ -60,6 +61,7 @@ public:
 
 	bool operator!=(const Vector2D<T>& v) const {
 		return x != v.x || y != v.y;
+
 	}
 
 	bool operator<(const Vector2D<T>& v) const {
@@ -83,6 +85,11 @@ public:
 
 	}
 
+	// Operadores de entrada/salida
+	friend std::ostream& operator<<(std::ostream& out, const Vector2D& v) {
+		return out << '{' << v.x << ", " << v.y << '}';
+	}
+
 	//getters
 	T getX() const { return x; }
 	T getY() const { return y; }
@@ -90,6 +97,6 @@ public:
 	//setters
 	void setX(T x) { this->x = x; }
 	void setY(T y) { this->y = y; }
-
 };
-using Point2D = Vector2D<int>;
+
+#endif // VECTOR2D_H

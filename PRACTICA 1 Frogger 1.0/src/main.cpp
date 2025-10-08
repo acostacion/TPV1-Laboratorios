@@ -4,14 +4,11 @@
 //
 // Plantilla de proyecto con SDL
 //
-
 #include <iostream>
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 #include "game.h"
-
-using namespace std;
 
 using uint = unsigned int; // alias para el tipo unsigned int
 
@@ -28,14 +25,15 @@ void firstTest()
 
 	// Crea la ventana y el renderizador
 	if (!SDL_CreateWindowAndRenderer("First test with SDL",
-	                                 WIN_WIDTH, WIN_HEIGHT, 0,
-	                                 &window, &renderer))
-		cout << "Error cargando SDL: " << SDL_GetError() << endl;
+		WIN_WIDTH, WIN_HEIGHT, 0,
+		&window, &renderer))
+		std::cout << "Error cargando SDL: " << SDL_GetError() << std::endl;
 	else {
 		// Rellena la pantalla de negro
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 		SDL_RenderClear(renderer);
 		SDL_RenderPresent(renderer);
+
 
 
 
@@ -52,7 +50,9 @@ void firstTest()
 int main(int argc, char* argv[])
 {
 	//firstTest();
-	Game g = Game();
-	g.run();
+	Game().run();
+
+	// TODO: manejar excepciones
+
 	return 0;
 }
