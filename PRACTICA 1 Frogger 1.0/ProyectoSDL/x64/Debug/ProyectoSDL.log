@@ -1,15 +1,59 @@
 ﻿  game.cpp
   main.cpp
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(70,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
+  texture.cpp
+  Vector2D.cpp
+  Vehicle.cpp
+/src/Vector2D.cpp(1,1): error C1083: No se puede abrir el archivo origen: 'src\Vector2D.cpp': No such file or directory
+  (compilando archivo de origen "/src/Vector2D.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
+  (compilando archivo de origen "src/Vehicle.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
+  (compilando archivo de origen "src/Vehicle.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+  (compilando archivo de origen "src/Vehicle.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
   (compilando archivo de origen "src/game.cpp")
   
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(76,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
   (compilando archivo de origen "src/game.cpp")
   
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(70,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+  (compilando archivo de origen "src/game.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(3,10): error C7550: "Vehicle::{ctor}": el nombre completo en este contexto denomina un constructor, no un tipo.
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(3,18): error C2065: 'Point2D': identificador no declarado
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(3,26): error C2146: error de sintaxis: falta ')' delante del identificador 'pos'
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,10): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,7): error C2065: 'pos': identificador no declarado
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,21): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,18): error C2065: 'vel': identificador no declarado
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,32): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,29): error C2065: 'tex': identificador no declarado
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,42): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,41): error C2065: 'g': identificador no declarado
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,44): error C2059: error de sintaxis: '{'
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,44): error C2143: error de sintaxis: falta ';' delante de '{'
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(4,44): error C2447: '{': falta el encabezado de función (¿lista formal de estilo anterior?)
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(11,30): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(12,31): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
   (compilando archivo de origen "src/main.cpp")
   
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\texture.h(76,9): warning C4244: 'return': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
   (compilando archivo de origen "src/main.cpp")
   
-  ProyectoSDL.vcxproj -> C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\bin\ProyectoSDLDebug.exe
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+  (compilando archivo de origen "src/main.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\game.cpp(70,27): error C2661: 'Vehicle::Vehicle': ninguna función sobrecargada acepta 4 argumentos
+  C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\game.cpp(70,27):
+  al hacer coincidir la lista de argumentos '(initializer list, initializer list, _Ty, Game *)'
+          with
+          [
+              _Ty=Texture *
+          ]
+  

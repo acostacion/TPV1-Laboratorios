@@ -22,7 +22,7 @@ struct TextureSpec
 	int ncols = 1;
 };
 
-constexpr const char* imgBase = "../assets/images/";
+constexpr const char* const imgBase = "../assets/images/";
 
 constexpr array<TextureSpec, Game::NUM_TEXTURES> textureList{
 	TextureSpec{"frog.png", 1, 2},
@@ -64,16 +64,16 @@ Game::Game()
 		textures[i] = new Texture(renderer, (string(imgBase) + name).c_str(), nrows, ncols);
 	}
 
-
 	// Configura que se pueden utilizar capas translúcidas
 	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-	
-	_auxVehicle = new Vehicle({0,0}, {1.0f, 0.0f}, textures[CAR1], this);
+
+	_auxVehicle = new Vehicle({ 0,0 }, { 1.0f, 0.0f }, textures[CAR1], this);
 }
 
 Game::~Game()
 {
 	// TODO: liberar memoria reservada por la clase
+	delete _auxVehicle;
 }
 
 void
@@ -83,7 +83,6 @@ Game::render() const
 
 	// TODO
 	_auxVehicle->render();
-
 
 	SDL_RenderPresent(renderer);
 }
@@ -99,7 +98,7 @@ void
 Game::run()
 {
 	while (!exit) {
-		// TODO
+		// TODO: implementar bucle del juego
 		update();
 
 		render();
@@ -125,6 +124,6 @@ Game::handleEvents()
 bool
 Game::checkCollision(const SDL_FRect& rect) const
 {
-	// TODO:
+	// TODO: cambiar el tipo de retorno a Collision e implementar
 	return false;
 }
