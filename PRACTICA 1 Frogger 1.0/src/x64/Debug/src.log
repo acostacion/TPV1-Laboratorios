@@ -1,0 +1,29 @@
+﻿  game.cpp
+  main.cpp
+  texture.cpp
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
+  (compilando archivo de origen "game.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
+  (compilando archivo de origen "game.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+  (compilando archivo de origen "game.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
+  (compilando archivo de origen "main.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
+  (compilando archivo de origen "main.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
+  (compilando archivo de origen "main.cpp")
+  
+C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\game.cpp(70,27): error C2661: 'Vehicle::Vehicle': ninguna función sobrecargada acepta 4 argumentos
+  C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\game.cpp(70,27):
+  al hacer coincidir la lista de argumentos '(initializer list, initializer list, _Ty, Game *)'
+          with
+          [
+              _Ty=Texture *
+          ]
+  
