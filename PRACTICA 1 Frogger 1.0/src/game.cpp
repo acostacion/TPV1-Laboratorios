@@ -71,7 +71,8 @@ Game::Game()
 	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
 	_bg = textures[BACKGROUND];
-	_bg->render();
+	/*vehicles[0] = new Vehicle(Point2D(50, 372), Vector2D<float>(-48.0f, 0.0f), textures[CAR1], this);
+	logs[0] = new Log(Point2D(-100, 60), Vector2D<float>(72.6f, 0.0f), textures[LOG2], this);*/
 
 	ifstream file("../assets/maps/default.txt");
 
@@ -106,8 +107,7 @@ Game::Game()
 					break;
 				default: break;
 			}
-			vehicles[i] = new Vehicle(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this);
-			i++;
+			vehicles.push_back(new Vehicle(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this));
 
 			break;
 		case 'L':
@@ -119,8 +119,7 @@ Game::Game()
 					break;
 				default:break;
 			}
-			logs[j] == new Log(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this);
-			j++;
+			logs.push_back(new Log(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this));
 			break;
 
 		default: break;
@@ -146,17 +145,20 @@ Game::render() const
 
 	// TODO
 	_bg->render();
+	/*vehicles[0]->render();*/
 	for (Vehicle* v : vehicles) v->render();
 	for (Log* l : logs) l->render();
 
 	SDL_RenderPresent(renderer);
-	SDL_Delay(10);
+	SDL_Delay(300);
 }
 
 void
 Game::update()
 {
 	// TODO
+	//vehicles[0]->update();
+
 	for (Vehicle* v : vehicles) v->update();
 	for (Log* l : logs) l->update();
 }
@@ -167,8 +169,8 @@ Game::run()
 	while (!exit) {
 		// TODO: implementar bucle del juego
 		update();
-
 		render();
+
 		handleEvents();
 	}
 }

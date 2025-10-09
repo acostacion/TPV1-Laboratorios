@@ -54,8 +54,8 @@ private:
 	bool exit;
 
 	// Elemento del juego
-	Vehicle* vehicles[20];
-	Log* logs[20];
+	vector<Vehicle*> vehicles;
+	vector<Log*> logs;
 
 	Texture* _bg;
 
