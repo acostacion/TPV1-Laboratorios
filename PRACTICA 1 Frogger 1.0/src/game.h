@@ -54,7 +54,6 @@ private:
 	bool exit;
 
 	// Elemento del juego
-	//Vehicle* _auxVehicle;
 	Vehicle* vehicles[20];
 	Log* logs[20];
 

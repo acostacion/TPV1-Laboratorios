@@ -77,47 +77,66 @@ Game::Game()
 
 	string line;
 
+	int posx, posy, velx, ntex;
+
 	int i = 0;
 	int j = 0;
 	while (getline(file, line))
 	{
-
-		// Crea una entidad de juego
-		// si la primera letra de la linea es 'M', crea al player
-		// si la primera letra de la linea es 'B', crea un bloque
-		// si la primera letra de la linea es 'G', crea un goomba
-		// si la primera letra de la linea es 'K', crea un koopa
-
 		// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
-		istringstream is(line.substr(1));
+		//istringstream is(line.substr(1));
 
-		if (line[0] == 'V') {
-			vehicles[i] = new Vehicle(file, this);
-		}
-		else if (line[0] == 'L') {
-			bloques[j] = new bloque(is, this);
-			j++;
-		}
-		else if (line[0] == 'G') {
+		file >> posx >> posy >> velx >> ntex;
 
-			goombaa[i] = new goomba(is, this);
+		TextureName t;
+
+		// TODO creo que hay maneras de optimizar y simplificar esto, cuando haya que limpiar codigo le damos una vuelta.
+		switch (line[0]){
+		case 'V':
+			switch (ntex){
+				case 1: t = CAR1;
+					break;
+				case 2:	t = CAR2;
+					break;
+				case 3: t = CAR3;
+					break;
+				case 4: t = CAR4;
+					break;
+				case 5: t = CAR5;
+					break;
+				default: break;
+			}
+			vehicles[i] = new Vehicle(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this);
 			i++;
-		}
-		else if (line[0] == 'K') {
 
+			break;
+		case 'L':
+			switch (ntex){
+				case 0: t = LOG1;	
+					break;
+				case 1: t = LOG2;
+
+					break;
+				default:break;
+			}
+			logs[j] == new Log(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this);
+			j++;
+			break;
+
+		default: break;
 		}
 
 		//entities.push_back(new Entity(this, line));
 	}
-
-	_auxVehicle = new Vehicle({ 0,350 }, { 1.0f, 0.0f }, textures[CAR1], this);
 	
 }
 
 Game::~Game()
 {
 	// TODO: liberar memoria reservada por la clase
-	delete _auxVehicle;
+
+	for (Vehicle* v : vehicles) delete v;
+	for (Log* l : logs) delete l;
 }
 
 void
@@ -127,7 +146,8 @@ Game::render() const
 
 	// TODO
 	_bg->render();
-	_auxVehicle->render();
+	for (Vehicle* v : vehicles) v->render();
+	for (Log* l : logs) l->render();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(10);
@@ -137,7 +157,8 @@ void
 Game::update()
 {
 	// TODO
-	_auxVehicle->update();
+	for (Vehicle* v : vehicles) v->update();
+	for (Log* l : logs) l->update();
 }
 
 void

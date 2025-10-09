@@ -1,7 +1,6 @@
 #pragma once
 #include "vector2D.h"
 #include "texture.h"
-#include <fstream>
 using namespace std;
 
 class Game;
@@ -9,7 +8,7 @@ class Game;
 class Vehicle
 {
 public:
-	Vehicle(ifstream file, Game* g);
+	Vehicle(Point2D pos, Vector2D<float> vel, Texture* tex, Game* g);
 	//Vehicle(Point2D pos, Vector2D<float> vel, Texture* tex, Game* g) textura base
 	// TODO hacer otro con posicion base y velocidad.
 
