@@ -98,5 +98,5 @@ public:
 	void setX(T x) { this->x = x; }
 	void setY(T y) { this->y = y; }
 };
-
+using Point2D = Vector2D<int>;	
 #endif // VECTOR2D_H

@@ -1,29 +1,24 @@
-﻿  game.cpp
-  main.cpp
-  texture.cpp
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
-  (compilando archivo de origen "game.cpp")
-  
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
-  (compilando archivo de origen "game.cpp")
-  
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-  (compilando archivo de origen "game.cpp")
-  
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(10,10): error C2061: error de sintaxis: identificador 'Point2D'
-  (compilando archivo de origen "main.cpp")
-  
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,10): error C3646: '_pos': especificador de invalidación desconocido
-  (compilando archivo de origen "main.cpp")
-  
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\Vehicle.h(21,14): error C4430: falta el especificador de tipo; se presupone int. Nota: C++ no admite default-int
-  (compilando archivo de origen "main.cpp")
-  
-C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\game.cpp(70,27): error C2661: 'Vehicle::Vehicle': ninguna función sobrecargada acepta 4 argumentos
-  C:\Users\Usuario\Music\TPV1-xoxonas\PRACTICA 1 Frogger 1.0\src\game.cpp(70,27):
-  al hacer coincidir la lista de argumentos '(initializer list, initializer list, _Ty, Game *)'
-          with
-          [
-              _Ty=Texture *
-          ]
-  
+﻿  Vehicle.cpp
+  game.cpp
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(9,20): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(9,20): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(9,20): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(9,20): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(9,20): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(10,20): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(10,20): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(10,20): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(10,20): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(10,20): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(11,30): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(12,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:             T=float
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:         and
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(33,24): warning C4244:         ]
+  src.vcxproj -> C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\bin\srcDebug.exe

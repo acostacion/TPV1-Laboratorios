@@ -6,6 +6,9 @@
 
 #include "texture.h"
 #include "Vehicle.h"
+#include <fstream>
+#include <sstream>
+
 
 using namespace std;
 
@@ -67,7 +70,48 @@ Game::Game()
 	// Configura que se pueden utilizar capas translúcidas
 	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-	_auxVehicle = new Vehicle({ 0,0 }, { 1.0f, 0.0f }, textures[CAR1], this);
+	_bg = textures[BACKGROUND];
+	_bg->render();
+
+	ifstream file("../assets/maps/default.txt");
+
+	string line;
+
+	int i = 0;
+	int j = 0;
+	while (getline(file, line))
+	{
+
+		// Crea una entidad de juego
+		// si la primera letra de la linea es 'M', crea al player
+		// si la primera letra de la linea es 'B', crea un bloque
+		// si la primera letra de la linea es 'G', crea un goomba
+		// si la primera letra de la linea es 'K', crea un koopa
+
+		// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
+		istringstream is(line.substr(1));
+
+		if (line[0] == 'V') {
+			vehicles[i] = new Vehicle(file, this);
+		}
+		else if (line[0] == 'L') {
+			bloques[j] = new bloque(is, this);
+			j++;
+		}
+		else if (line[0] == 'G') {
+
+			goombaa[i] = new goomba(is, this);
+			i++;
+		}
+		else if (line[0] == 'K') {
+
+		}
+
+		//entities.push_back(new Entity(this, line));
+	}
+
+	_auxVehicle = new Vehicle({ 0,350 }, { 1.0f, 0.0f }, textures[CAR1], this);
+	
 }
 
 Game::~Game()
@@ -82,9 +126,11 @@ Game::render() const
 	SDL_RenderClear(renderer);
 
 	// TODO
+	_bg->render();
 	_auxVehicle->render();
 
 	SDL_RenderPresent(renderer);
+	SDL_Delay(10);
 }
 
 void

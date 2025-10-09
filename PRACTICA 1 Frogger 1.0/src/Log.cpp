@@ -1,0 +1,38 @@
+#include "Log.h"
+
+Log::Log(Point2D pos, Vector2D<float> vel, Texture* tex, Game* g) :
+	_pos(pos), _vel(vel), _tex(tex), _game(g) {
+}
+
+void Log::render() const
+{
+	SDL_FRect rect;
+	rect.x = _pos.getX();
+	rect.y = _pos.getY();
+	rect.w = _tex->getFrameWidth();
+	rect.h = _tex->getFrameHeight();
+
+	if (_vel.getX() > 0) {
+		_tex->render(rect, 0, nullptr, SDL_FLIP_HORIZONTAL);
+	}
+	else {
+		_tex->render(rect);
+	}
+}
+
+void Log::update()
+{
+	if (_pos.getX() < -150 && _vel.getX() < 0) {
+		_pos.setX(448 + 150);// TODO coger window width +150
+
+	}
+	else if (_pos.getX() > 448 + 150 && _vel.getX() > 0) {
+		_pos.setX(-150);
+	}
+	_pos.setX(_pos.getX() + _vel.getX());// TODO igual necesita tiempo
+}
+
+bool Log::checkCollision(const SDL_FRect&)
+{
+	return false;
+}

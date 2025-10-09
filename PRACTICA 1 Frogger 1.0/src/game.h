@@ -6,6 +6,7 @@
 #include <istream>
 #include <vector>
 #include "Vehicle.h"
+#include "Log.h"
 
 // Declaraciones anticipadas
 class Texture;
@@ -53,7 +54,11 @@ private:
 	bool exit;
 
 	// Elemento del juego
-	Vehicle* _auxVehicle;
+	//Vehicle* _auxVehicle;
+	Vehicle* vehicles[20];
+	Log* logs[20];
+
+	Texture* _bg;
 
 public:
 	Game();
