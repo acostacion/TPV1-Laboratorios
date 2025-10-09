@@ -1,7 +1,25 @@
 #include "Log.h"
+#include "game.h"
 
-Log::Log(Point2D pos, Vector2D<float> vel, Texture* tex, Game* g) :
-	_pos(pos), _vel(vel), _tex(tex), _game(g) {
+Log::Log(ifstream& file, Game* g) :
+	 _game(g) {
+	int posx, posy, velx, ntex;
+
+	file >> posx >> posy >> velx >> ntex;
+
+	_pos.setX(posx);
+	_pos.setY(posy);
+	_vel.setX(velx);
+	_vel.setY(0.0f);
+
+	switch (ntex) {
+	case 0: _tex = _game->getTexture(Game::TextureName::LOG1);
+		break;
+	case 1: _tex = _game->getTexture(Game::TextureName::LOG2);
+
+		break;
+	default: break;
+	}
 }
 
 void Log::render() const

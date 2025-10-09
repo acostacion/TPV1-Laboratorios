@@ -78,48 +78,26 @@ Game::Game()
 
 	string line;
 
-	int posx, posy, velx, ntex;
 
 	int i = 0;
 	int j = 0;
 	while (getline(file, line))
 	{
 		// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
-		//istringstream is(line.substr(1));
-
-		file >> posx >> posy >> velx >> ntex;
+		istringstream is(line.substr(1));
 
 		TextureName t;
 
 		// TODO creo que hay maneras de optimizar y simplificar esto, cuando haya que limpiar codigo le damos una vuelta.
 		switch (line[0]){
 		case 'V':
-			switch (ntex){
-				case 1: t = CAR1;
-					break;
-				case 2:	t = CAR2;
-					break;
-				case 3: t = CAR3;
-					break;
-				case 4: t = CAR4;
-					break;
-				case 5: t = CAR5;
-					break;
-				default: break;
-			}
-			vehicles.push_back(new Vehicle(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this));
+	
+			vehicles.push_back(new Vehicle(file, this));
 
 			break;
 		case 'L':
-			switch (ntex){
-				case 0: t = LOG1;	
-					break;
-				case 1: t = LOG2;
-
-					break;
-				default:break;
-			}
-			logs.push_back(new Log(Point2D(posx, posy), Vector2D<float>(velx, 0.0f), textures[t], this));
+			
+			logs.push_back(new Log(file, this));
 			break;
 
 		default: break;

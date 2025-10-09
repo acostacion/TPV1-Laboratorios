@@ -1,7 +1,31 @@
 #include "Vehicle.h"
+#include "game.h"
 
-Vehicle::Vehicle(Point2D pos, Vector2D<float> vel, Texture* tex, Game* g) :
-	_pos(pos), _vel(vel), _tex(tex), _game(g) {
+Vehicle::Vehicle(ifstream& file, Game* g) :
+	_game(g) {
+	int posx, posy, velx, ntex;
+
+	file >> posx >> posy >> velx >> ntex;
+
+	_pos.setX(posx);
+	_pos.setY(posy);
+	_vel.setX(velx);
+	_vel.setY(0.0f);
+
+	switch (ntex) {
+	case 1: _tex = _game->getTexture(Game::TextureName::CAR1);
+		break;
+	case 2:	_tex = _game->getTexture(Game::TextureName::CAR2);
+		break;
+	case 3: _tex = _game->getTexture(Game::TextureName::CAR3);
+		break;
+	case 4: _tex = _game->getTexture(Game::TextureName::CAR4);
+		break;
+	case 5: _tex = _game->getTexture(Game::TextureName::CAR5);
+		break;
+	default: break;
+	}
+
 }
 
 void Vehicle::render() const {

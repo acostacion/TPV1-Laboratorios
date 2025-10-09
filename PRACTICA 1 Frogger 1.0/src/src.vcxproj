@@ -94,6 +94,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Frog.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
@@ -101,6 +102,7 @@
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Frog.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="texture.h" />

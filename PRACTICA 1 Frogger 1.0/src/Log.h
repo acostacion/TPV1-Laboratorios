@@ -1,12 +1,14 @@
 #pragma once
 #include "vector2D.h"
 #include "texture.h"
+#include <fstream>
+using namespace std;
 
 class Game;
 class Log
 {
 public:
-	Log(Point2D pos, Vector2D<float> vel, Texture* tex, Game* g);
+	Log(ifstream& file, Game* g);
 
 	void render() const;
 	void update();
