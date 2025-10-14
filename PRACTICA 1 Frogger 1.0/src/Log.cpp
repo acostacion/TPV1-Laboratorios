@@ -15,14 +15,16 @@ Log::Log(istream& file, Game* g) :
 	_vel.setX(velx);
 	_vel.setY(0.0f);
 
+	Game::TextureName texName;
 	switch (ntex) {
-	case 0: _tex = _game->getTexture(Game::TextureName::LOG1);
+	case 1: texName = _game->LOG1;
 		break;
-	case 1: _tex = _game->getTexture(Game::TextureName::LOG2);
-
+	case 2:	texName = _game->LOG2;
 		break;
 	default: break;
 	}
+
+	_tex = _game->getTexture(texName);
 }
 
 void Log::render() const

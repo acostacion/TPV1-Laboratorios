@@ -12,6 +12,7 @@ class Vehicle
 {  
 public:  
    Vehicle(istream& file, Game* g);
+
    void render() const;  
    void update();  
    bool checkCollision(const SDL_FRect&);  

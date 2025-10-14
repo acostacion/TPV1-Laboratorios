@@ -5,7 +5,6 @@
 #include <SDL3_image/SDL_image.h>
 
 #include "texture.h"
-#include "Vehicle.h"
 #include <fstream>
 #include <sstream>
 
