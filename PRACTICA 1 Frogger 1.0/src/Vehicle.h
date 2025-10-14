@@ -1,7 +1,9 @@
 #pragma once  
 #include "vector2D.h"  
 #include "texture.h"  
-#include <fstream>  
+#include <fstream> 
+#include <istream>
+
 using namespace std;  
 
 class Game;  
@@ -9,7 +11,7 @@ class Game;
 class Vehicle  
 {  
 public:  
-   Vehicle(ifstream& file, Game* g);
+   Vehicle(istream& file, Game* g);
    void render() const;  
    void update();  
    bool checkCollision(const SDL_FRect&);  

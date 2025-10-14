@@ -76,20 +76,18 @@ Game::Game()
 
 	ifstream file("../assets/maps/default.txt");
 
-	string line;
-
-
-	int i = 0;
-	int j = 0;
-	while (getline(file, line))
+	while (file.is_open())
 	{
 		// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
-		istringstream is(line.substr(1));
+		//istringstream is(line.substr(1));
 
-		TextureName t;
+		char tipo;
+		file >> tipo;
+
+		std::string s;
 
 		// TODO creo que hay maneras de optimizar y simplificar esto, cuando haya que limpiar codigo le damos una vuelta.
-		switch (line[0]){
+		switch (tipo){
 		case 'V':
 	
 			vehicles.push_back(new Vehicle(file, this));
@@ -99,8 +97,15 @@ Game::Game()
 			
 			logs.push_back(new Log(file, this));
 			break;
+		case '#': 
+			getline(file, s);
+			file.ignore(0);
+			break;
 
-		default: break;
+		default: 
+			getline(file, s);
+			file.ignore(0);
+			break;
 		}
 
 		//entities.push_back(new Entity(this, line));

@@ -1,7 +1,10 @@
 #include "Vehicle.h"
 #include "game.h"
+#include <iostream> 
+#include <sstream>
 
-Vehicle::Vehicle(ifstream& file, Game* g) :
+
+Vehicle::Vehicle(istream& file, Game* g) :
 	_game(g) {
 	int posx, posy, velx, ntex;
 
@@ -12,19 +15,22 @@ Vehicle::Vehicle(ifstream& file, Game* g) :
 	_vel.setX(velx);
 	_vel.setY(0.0f);
 
+	Game::TextureName texName;
 	switch (ntex) {
-	case 1: _tex = _game->getTexture(Game::TextureName::CAR1);
+	case 1: texName = _game->CAR1;
 		break;
-	case 2:	_tex = _game->getTexture(Game::TextureName::CAR2);
+	case 2:	texName = _game->CAR2;
 		break;
-	case 3: _tex = _game->getTexture(Game::TextureName::CAR3);
+	case 3: texName = _game->CAR3;
 		break;
-	case 4: _tex = _game->getTexture(Game::TextureName::CAR4);
+	case 4: texName = _game->CAR4;
 		break;
-	case 5: _tex = _game->getTexture(Game::TextureName::CAR5);
+	case 5: texName = _game->CAR5;
 		break;
 	default: break;
 	}
+
+	_tex = _game->getTexture(texName);
 
 }
 

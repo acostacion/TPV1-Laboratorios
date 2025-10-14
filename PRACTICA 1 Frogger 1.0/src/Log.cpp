@@ -1,7 +1,10 @@
 #include "Log.h"
 #include "game.h"
+#include <iostream>
+#include <sstream>
 
-Log::Log(ifstream& file, Game* g) :
+
+Log::Log(istream& file, Game* g) :
 	 _game(g) {
 	int posx, posy, velx, ntex;
 

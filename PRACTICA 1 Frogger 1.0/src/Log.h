@@ -2,13 +2,16 @@
 #include "vector2D.h"
 #include "texture.h"
 #include <fstream>
+#include <istream>
+
 using namespace std;
 
 class Game;
+
 class Log
 {
 public:
-	Log(ifstream& file, Game* g);
+	Log(istream& file, Game* g);
 
 	void render() const;
 	void update();
