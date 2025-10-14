@@ -6,7 +6,8 @@
 
 Log::Log(istream& file, Game* g) :
 	 _game(g) {
-	int posx, posy, velx, ntex;
+	int posx, posy,  ntex;
+	float velx;
 
 	file >> posx >> posy >> velx >> ntex;
 

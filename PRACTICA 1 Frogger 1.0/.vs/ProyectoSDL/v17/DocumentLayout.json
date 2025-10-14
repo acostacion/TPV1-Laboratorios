@@ -3,6 +3,7 @@
   "WorkspaceRootPath": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\",
   "Documents": [
     {
+<<<<<<< Updated upstream
       "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -28,6 +29,33 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Frog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+=======
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\Log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\Vehicle.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Log.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\Log.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\game.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\Vehicle.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\piter\\OneDrive\\Escritorio\\class\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Frog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+>>>>>>> Stashed changes
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\Frog.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
@@ -82,7 +110,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 2,
+=======
+              "DocumentIndex": 5,
+>>>>>>> Stashed changes
               "Title": "Vehicle.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.h",
               "RelativeDocumentMoniker": "src\\Vehicle.h",
@@ -101,14 +133,22 @@
               "RelativeDocumentMoniker": "src\\Log.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Log.cpp",
               "RelativeToolTip": "src\\Log.cpp",
+<<<<<<< Updated upstream
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAjAAAA",
+=======
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAARAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-09T08:53:20.154Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 5,
+=======
+              "DocumentIndex": 3,
+>>>>>>> Stashed changes
               "Title": "Log.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Log.h",
               "RelativeDocumentMoniker": "src\\Log.h",
@@ -121,39 +161,59 @@
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 1,
+=======
+              "DocumentIndex": 2,
+>>>>>>> Stashed changes
               "Title": "Vehicle.cpp",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.cpp",
               "RelativeDocumentMoniker": "src\\Vehicle.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\Vehicle.cpp",
               "RelativeToolTip": "src\\Vehicle.cpp",
+<<<<<<< Updated upstream
               "ViewState": "AQIAAAMAAAAAAAAAAAAAACAAAAAjAAAA",
+=======
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABUAAAAfAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-09T09:26:11.011Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "game.cpp",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp",
               "RelativeDocumentMoniker": "src\\game.cpp",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.cpp",
               "RelativeToolTip": "src\\game.cpp",
+<<<<<<< Updated upstream
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAUAAAA",
+=======
+              "ViewState": "AgIAAFUAAAAAAAAAAAAcwGAAAAAAAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-10-08T18:13:42.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< Updated upstream
               "DocumentIndex": 3,
+=======
+              "DocumentIndex": 4,
+>>>>>>> Stashed changes
               "Title": "game.h",
               "DocumentMoniker": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.h",
               "RelativeDocumentMoniker": "src\\game.h",
               "ToolTip": "C:\\Users\\usuario_local\\Music\\TPV1-Laboratorios\\PRACTICA 1 Frogger 1.0\\src\\game.h",
               "RelativeToolTip": "src\\game.h",
+<<<<<<< Updated upstream
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+=======
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAQAAAAAAAAAA==",
+>>>>>>> Stashed changes
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-10-09T08:09:22.447Z",
               "EditorCaption": ""

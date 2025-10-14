@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿  Frog.cpp
   game.cpp
   Log.cpp
@@ -78,3 +79,28 @@ C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicl
 C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(63,24): warning C4244:             T=int
 C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Vehicle.cpp(63,24): warning C4244:         ]
 LINK : fatal error LNK1104: no se puede abrir el archivo 'SDL3.lib'
+=======
+﻿  Log.cpp
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(32,20): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(32,20): warning C4244:         with
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(32,20): warning C4244:         [
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(32,20): warning C4244:             T=int
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(32,20): warning C4244:         ]
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(33,20): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(33,20): warning C4244:         with
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(33,20): warning C4244:         [
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(33,20): warning C4244:             T=int
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(33,20): warning C4244:         ]
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(34,30): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(35,31): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:         with
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:         [
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:             T=float
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:         ]
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:         and
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:         [
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:             T=int
+C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Log.cpp(54,24): warning C4244:         ]
+  src.vcxproj -> C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\bin\srcDebug.exe
+>>>>>>> Stashed changes
