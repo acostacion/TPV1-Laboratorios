@@ -7,6 +7,7 @@
 #include <vector>
 #include "Vehicle.h"
 #include "Log.h"
+#include "Frog.h"
 
 // Declaraciones anticipadas
 class Texture;
@@ -56,6 +57,7 @@ private:
 	// Elemento del juego
 	vector<Vehicle*> vehicles;
 	vector<Log*> logs;
+	Frog* frog;
 
 	Texture* _bg;
 
