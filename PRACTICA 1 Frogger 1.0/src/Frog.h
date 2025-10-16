@@ -14,8 +14,7 @@ public:
 	Frog(istream& file, Game* g);
 	void render() const;
 	void update();
-	bool checkCollision(const SDL_FRect&);
-	void HandleEvents(SDL_Event event);
+	void handleEvents(SDL_Event event);
 	void setLives(int l) { _lives = l; }
 
 private:
@@ -32,6 +31,8 @@ private:
 
 	// covert Point2D -> Vector2D<float>
 	Vector2D<float> toFloat(Point2D p);
+
+	void updateRect();
 
 	
 };

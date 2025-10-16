@@ -1,7 +1,8 @@
 #include "Vehicle.h"
-#include "game.h"
 #include <iostream> 
 #include <sstream>
+
+#include "game.h"
 
 
 Vehicle::Vehicle(istream& file, Game* g) :
@@ -32,20 +33,16 @@ Vehicle::Vehicle(istream& file, Game* g) :
 
 	_tex = _game->getTexture(texName);
 
+	updateRect();
 }
 
 void Vehicle::render() const {
-	SDL_FRect rect;
-	rect.x = _pos.getX();
-	rect.y = _pos.getY();
-	rect.w = _tex->getFrameWidth();
-	rect.h = _tex->getFrameHeight();
 
 	if (_vel.getX() > 0) {
-		_tex->render(rect, 0, nullptr, SDL_FLIP_HORIZONTAL);
+		_tex->render(_rect, 0, nullptr, SDL_FLIP_HORIZONTAL);
 	}
 	else {
-		_tex->render(rect);
+		_tex->render(_rect);
 	}
 	
 }
@@ -61,8 +58,18 @@ void Vehicle::update() {
 		_pos.setX(-150);
 	}
 	_pos.setX(_pos.getX() + (_vel.getX()/ _game->FRAME_RATE));// TODO igual necesita tiempo
+
+	updateRect();
 }
 
-bool Vehicle::checkCollision(const SDL_FRect&) {
-	return true;
+Collision Vehicle::checkCollision(const SDL_FRect& r) {
+	if (SDL_HasRectIntersectionFloat(&_rect, &r))
+		return Collision{ Vector2D<float>(0.0f, 0.0f), ENEMY};
+}
+
+void Vehicle::updateRect(){
+	_rect.x = _pos.getX();
+	_rect.y = _pos.getY();
+	_rect.w = _tex->getFrameWidth();
+	_rect.h = _tex->getFrameHeight();
 }

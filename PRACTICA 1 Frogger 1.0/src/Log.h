@@ -4,6 +4,8 @@
 #include <fstream>
 #include <istream>
 
+#include "Collision.h"
+
 using namespace std;
 
 class Game;
@@ -15,13 +17,15 @@ public:
 
 	void render() const;
 	void update();
-	bool checkCollision(const SDL_FRect&);
+	Collision checkCollision(const SDL_FRect& r);
 
 private:
 	Game* _game;
 	Texture* _tex;
 	Point2D _pos;
 	Vector2D<float> _vel;
+	SDL_FRect _rect;
 
+	void updateRect();
 };
 

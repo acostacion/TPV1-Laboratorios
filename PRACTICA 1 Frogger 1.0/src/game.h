@@ -11,12 +11,13 @@
 
 // Declaraciones anticipadas
 class Texture;
-
 /**
  * Clase principal del juego.
  */
 class Game
 {
+
+
 public:
 	// Se actualiza el juego cada tantos milisegundos
 	static constexpr int FRAME_RATE = 30;

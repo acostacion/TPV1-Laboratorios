@@ -24,12 +24,6 @@ struct TextureSpec
 	int ncols = 1;
 };
 
-struct Collision
-{
-	enum type { NONE, ENEMY, PLATFORM};
-	Vector2D <float> vel;
-};
-
 constexpr const char* const imgBase = "../assets/images/";
 
 constexpr array<TextureSpec, Game::NUM_TEXTURES> textureList{
@@ -76,36 +70,24 @@ Game::Game()
 	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
 	_bg = textures[BACKGROUND];
-	/*vehicles[0] = new Vehicle(Point2D(50, 372), Vector2D<float>(-48.0f, 0.0f), textures[CAR1], this);
-	logs[0] = new Log(Point2D(-100, 60), Vector2D<float>(72.6f, 0.0f), textures[LOG2], this);*/
 
 	ifstream file("../assets/maps/default.txt");
 
 	if (!file) { 
 		throw "No se ha encontrado fichero de mapa "s + MAP_FILE;
 	}
-		
-
 	else if (!file.is_open()){
 		throw "No se ha podido abrir el fichero de mapa "s + MAP_FILE; 
 	}
-		
 	else {
-
 		char tipo;
 
-		while (file >> tipo)
-		{
+		while (file >> tipo){
 			std::string s;
-			// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
-			//istringstream is(line.substr(1));
-
-			// TODO creo que hay maneras de optimizar y simplificar esto, cuando haya que limpiar codigo le damos una vuelta.
+			
 			switch (tipo) {
 			case 'V':
-
 				vehicles.push_back(new Vehicle(file, this));
-
 				break;
 			case 'L':
 
@@ -114,19 +96,11 @@ Game::Game()
 			case 'F':
 				frog = new Frog(file, this);
 				break;
-				/*
-			case '#':
-				getline(file, s);
-				//file.ignore(0);
-				break;
-				*/
+				
 			default:
 				getline(file, s);
-				//file.ignore(0);
 				break;
 			}
-
-			//entities.push_back(new Entity(this, line));
 		}
 	}
 	file.close();
@@ -134,10 +108,12 @@ Game::Game()
 
 Game::~Game()
 {
-	// TODO: liberar memoria reservada por la clase
+	// TODO: hacer en orden que aparece en el txt.
 
 	for (Vehicle* v : vehicles) delete v;
 	for (Log* l : logs) delete l;
+
+	delete frog;
 }
 
 void
@@ -190,7 +166,7 @@ Game::handleEvents()
 			exit = true;
 
 
-		frog->HandleEvents(event);
+		frog->handleEvents(event);
 
 		// TODO
 		//_auxVehicle->checkCollision();
