@@ -75,41 +75,55 @@ Game::Game()
 
 	ifstream file("../assets/maps/default.txt");
 
-	while (file.is_open())
-	{
-		// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
-		//istringstream is(line.substr(1));
+	if (!file) { 
+		throw "No se ha encontrado fichero de mapa "s + MAP_FILE;
+	}
+		
+
+	else if (!file.is_open()){
+		throw "No se ha podido abrir el fichero de mapa "s + MAP_FILE; 
+	}
+		
+	else {
 
 		char tipo;
-		file >> tipo;
 
-		std::string s;
+		while (file >> tipo)
+		{
+			std::string s;
+			// crear un istream a partir de la linea, incluyendo todo el contenido de la linea menos el primer caracter
+			//istringstream is(line.substr(1));
 
-		// TODO creo que hay maneras de optimizar y simplificar esto, cuando haya que limpiar codigo le damos una vuelta.
-		switch (tipo){
-		case 'V':
-	
-			vehicles.push_back(new Vehicle(file, this));
+			// TODO creo que hay maneras de optimizar y simplificar esto, cuando haya que limpiar codigo le damos una vuelta.
+			switch (tipo) {
+			case 'V':
 
-			break;
-		case 'L':
-			
-			logs.push_back(new Log(file, this));
-			break;
-		case '#': 
-			getline(file, s);
-			file.ignore(0);
-			break;
+				vehicles.push_back(new Vehicle(file, this));
 
-		default: 
-			getline(file, s);
-			file.ignore(0);
-			break;
+				break;
+			case 'L':
+
+				logs.push_back(new Log(file, this));
+				break;
+			case 'F':
+				frog = new Frog(file, this);
+				break;
+				/*
+			case '#':
+				getline(file, s);
+				//file.ignore(0);
+				break;
+				*/
+			default:
+				getline(file, s);
+				//file.ignore(0);
+				break;
+			}
+
+			//entities.push_back(new Entity(this, line));
 		}
-
-		//entities.push_back(new Entity(this, line));
 	}
-	
+	file.close();
 }
 
 Game::~Game()
@@ -130,9 +144,10 @@ Game::render() const
 	/*vehicles[0]->render();*/
 	for (Vehicle* v : vehicles) v->render();
 	for (Log* l : logs) l->render();
+	frog->render();
 
 	SDL_RenderPresent(renderer);
-	SDL_Delay(300);
+	SDL_Delay(50);
 }
 
 void
@@ -143,6 +158,7 @@ Game::update()
 
 	for (Vehicle* v : vehicles) v->update();
 	for (Log* l : logs) l->update();
+	frog->update();
 }
 
 void

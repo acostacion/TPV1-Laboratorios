@@ -1,7 +1,9 @@
 #include "Frog.h"
 #include "game.h"
+#include <iostream>
+#include <sstream>
 
-Frog::Frog(ifstream& file, Game* g): _game(g)
+Frog::Frog(istream& file, Game* g) : _game(g), _lives(3)
 {
 	int posx, posy;
 
@@ -13,7 +15,7 @@ Frog::Frog(ifstream& file, Game* g): _game(g)
 	_vel.setX(44.8f);// TODO poner constante el desplazamiento de la rana
 	_vel.setY(44.8f);
 
-	_game->getTexture(Game::FROG);
+	_tex = _game->getTexture(Game::FROG);
 }
 
 void Frog::render() const
@@ -24,7 +26,7 @@ void Frog::render() const
 	rect.w = _tex->getFrameWidth();
 	rect.h = _tex->getFrameHeight();
 
-	_tex->render(rect);
+	_tex->renderFrame(rect, 0, 0); // TODO animar para que cambie de frame
 }
 
 void Frog::update()
@@ -46,7 +48,7 @@ void Frog::HandleEvents(SDL_Event event)
 		{
 
 		case SDLK_W :
-
+			
 			break;
 		case SDLK_A:
 			

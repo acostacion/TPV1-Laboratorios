@@ -60,7 +60,7 @@ void Vehicle::update() {
 	else if (_pos.getX() > 448 + 150 && _vel.getX() > 0) {
 		_pos.setX(-150);
 	}
-	_pos.setX(_pos.getX() + _vel.getX());// TODO igual necesita tiempo
+	_pos.setX(_pos.getX() + (_vel.getX()/ _game->FRAME_RATE));// TODO igual necesita tiempo
 }
 
 bool Vehicle::checkCollision(const SDL_FRect&) {
