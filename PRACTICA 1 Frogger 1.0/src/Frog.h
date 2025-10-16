@@ -26,6 +26,12 @@ private:
 	int _lives;
 	Vector2D<float> _vel;
 
+	void move();
+	bool canMove();
+
+	// covert Point2D -> Vector2D<float>
+	Vector2D<float> toFloat(Point2D p);
+
 	
 };
 

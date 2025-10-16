@@ -25,6 +25,9 @@ public:
 	static constexpr int WINDOW_HEIGHT = 484;
 	// Extremo inferior del río
 	static constexpr int RIVER_LOW = 210;
+	// Tamanio de cada cuadradito.
+	static constexpr float TILE_SIZE = 484 / 15;
+
 
 	enum TextureName
 	{

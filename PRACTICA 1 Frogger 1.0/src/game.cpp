@@ -183,6 +183,9 @@ Game::handleEvents()
 		if (event.type == SDL_EVENT_QUIT)
 			exit = true;
 
+
+		frog->HandleEvents(event);
+
 		// TODO
 		//_auxVehicle->checkCollision();
 	}

@@ -27,6 +27,10 @@ public:
 		return Vector2D<T>(x * n, y * n);
 	}
 
+	Vector2D<T> operator*(const Vector2D<T>& v) const {
+		return Vector2D<T>(x * v.getX(), y * v.getY());
+	}
+
 	Vector2D<T> operator/(T n) const {
 		return Vector2D<T>(x / n, y / n);
 	}
@@ -97,6 +101,8 @@ public:
 	//setters
 	void setX(T x) { this->x = x; }
 	void setY(T y) { this->y = y; }
+	void set(T t) { setX(t); setY(t); }
+	void set(T x, T y) { setX(x); setY(y); }
 };
 using Point2D = Vector2D<int>;	
 #endif // VECTOR2D_H
