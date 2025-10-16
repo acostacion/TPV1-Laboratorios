@@ -25,6 +25,7 @@ private:
 	Point2D _dir;
 	int _lives;
 	Vector2D<float> _vel;
+	SDL_FRect _rect;
 
 	void move();
 	bool canMove();

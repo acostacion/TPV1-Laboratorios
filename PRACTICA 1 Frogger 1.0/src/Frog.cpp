@@ -14,33 +14,52 @@ Frog::Frog(istream& file, Game* g) : _game(g), _lives(3)
 	_tex = _game->getTexture(Game::FROG);
 
 	_vel.set(_game->TILE_SIZE);
+
+	_rect.x = _pos.getX();
+	_rect.y = _pos.getY();
+	_rect.w = _tex->getFrameWidth();
+	_rect.h = _tex->getFrameHeight();
 }
 
 void Frog::render() const
 {
+	/*
 	SDL_FRect rect;
 	rect.x = _pos.getX();
 	rect.y = _pos.getY();
 	rect.w = _tex->getFrameWidth();
 	rect.h = _tex->getFrameHeight();
+	*/
+	SDL_SetRenderDrawColor(_game->getRenderer(), 255, 0, 0, SDL_ALPHA_OPAQUE);
 
-	_tex->renderFrame(rect, 0, 0); // TODO animar para que cambie de frame
+	_tex->renderFrame(_rect, 0, 0); // TODO animar para que cambie de frame
+
+	SDL_RenderFillRect(_game->getRenderer(), &_rect);
+
 }
 
 void Frog::move(){
 	if (canMove()){
 		Vector2D<float> floatPos = toFloat(_pos) + _vel * toFloat(_dir);
 		_pos = Point2D(floatPos.getX(), floatPos.getY());
-	}
 
+		_rect.x = _pos.getX();
+		_rect.y = _pos.getY();
+		_rect.w = _tex->getFrameWidth();
+		_rect.h = _tex->getFrameHeight();
+	}
 }
 
+// mira si la siguiente posicion esta dentro del mapa, en cuyo caso deja mover, o si se sale.
 bool Frog::canMove()
 {
-	return (_pos.getY() + _tex->getFrameHeight() + _vel.getY() > _game->WINDOW_HEIGHT) // ABAJO
-		|| (_pos.getY() - _vel.getY() < 0)											   // ARRIBA			
-		|| (_pos.getX() - _vel.getX() < 0)											   // IZQUIERDA
-		|| (_pos.getX() + _tex->getFrameWidth() + _vel.getX() > _game->WINDOW_WIDTH);  // DERECHA	
+
+	Vector2D<float> floatPos = toFloat(_pos) + _vel * toFloat(_dir);
+
+	return (floatPos.getY() < _game->WINDOW_HEIGHT-_game->TILE_SIZE ) // ABAJO
+		&& (floatPos.getY() > 0)		                              // ARRIBA
+		&& (floatPos.getX() > 0)			        // IZQUIERDA
+		&& (floatPos.getX() < _game->WINDOW_WIDTH- _game->TILE_SIZE); // DERECHA
 }
 
 Vector2D<float> Frog::toFloat(Point2D p){
@@ -51,6 +70,9 @@ void Frog::update(){
 	if (_dir != Point2D(0,0)){
 		move();
 	}
+
+	_game->checkCollision(_rect);
+
 }
 
 bool Frog::checkCollision(const SDL_FRect&)

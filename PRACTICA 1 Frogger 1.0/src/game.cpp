@@ -24,6 +24,12 @@ struct TextureSpec
 	int ncols = 1;
 };
 
+struct Collision
+{
+	enum type { NONE, ENEMY, PLATFORM};
+	Vector2D <float> vel;
+};
+
 constexpr const char* const imgBase = "../assets/images/";
 
 constexpr array<TextureSpec, Game::NUM_TEXTURES> textureList{
@@ -195,5 +201,8 @@ bool
 Game::checkCollision(const SDL_FRect& rect) const
 {
 	// TODO: cambiar el tipo de retorno a Collision e implementar
+	for (Vehicle* v : vehicles) v->checkCollision(rect);
+	for (Log* l : logs) l->checkCollision(rect);
+
 	return false;
 }
