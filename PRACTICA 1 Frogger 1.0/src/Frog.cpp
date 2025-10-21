@@ -11,6 +11,8 @@ Frog::Frog(istream& file, Game* g) : _game(g), _lives(3)
 
 	_pos.set(posx, posy);
 
+	_initialPos = _pos;
+
 	_tex = _game->getTexture(Game::FROG);
 
 	_vel.set(_game->TILE_SIZE);
@@ -23,7 +25,7 @@ void Frog::render() const{
 
 	_tex->renderFrame(_rect, 0, 0); // TODO animar para que cambie de frame
 
-	SDL_RenderFillRect(_game->getRenderer(), &_rect);
+	//SDL_RenderFillRect(_game->getRenderer(), &_rect);
 
 }
 
@@ -60,16 +62,36 @@ void Frog::updateRect(){
 }
 
 void Frog::update(){
-	if (_dir != Point2D(0,0)){
-		move();
+	Collision col = _game->checkCollision(_rect);
+	bool hasCollision = false;
+	if (col.t == ENEMY) {
+		if (_lives == 0) {
+			// la mata.
+		}
+
+		// coches, homedfrogs, wasps, posicion no-nido (al lado de los nidos), rio, 
+		releaseLives();
+		//frogReset = resetFrogPos();
+	}
+	else if (col.t == PLATFORM) {
+		hasCollision = true;
+
+		Vector2D<float> floatPos = toFloat(_pos) + col.vel / _game->FRAME_RATE;
+		_pos = Point2D(floatPos.getX(), floatPos.getY());
+		std::cout << col.vel << std::endl;
+	}
+	else if (col.t == NONE) {
+		// si es none y le pilla donde el rio es que se ha caido al rio y le hace danio.
 	}
 
-	_game->checkCollision(_rect);
-
+	if (_dir != Point2D(0,0) || hasCollision){
+		move();
+	}
 }
 
-void Frog::handleEvents(SDL_Event event)
+void Frog::handleEvent(SDL_Event event)
 {
+	// TODO booleano para el movimiento q solo lo haga cuando true.
 	switch (event.type)
 	{
 	case SDL_EVENT_KEY_DOWN:

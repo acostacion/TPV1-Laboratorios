@@ -8,6 +8,7 @@
 #include "Vehicle.h"
 #include "Log.h"
 #include "Frog.h"
+#include "Collision.h"
 
 // Declaraciones anticipadas
 class Texture;
@@ -77,7 +78,7 @@ public:
 	void run();
 
 	// Comprueba si hay algún objeto colocado en ese rectángulo
-	bool checkCollision(const SDL_FRect& rect) const;
+	Collision checkCollision(const SDL_FRect& rect) const;
 
 	SDL_Renderer* getRenderer() { return renderer; }
 };

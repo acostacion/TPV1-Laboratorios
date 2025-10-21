@@ -166,19 +166,38 @@ Game::handleEvents()
 			exit = true;
 
 
-		frog->handleEvents(event);
+		frog->handleEvent(event); // TODO llamarlo en singular.
 
 		// TODO
 		//_auxVehicle->checkCollision();
 	}
 }
 
-bool
+Collision
 Game::checkCollision(const SDL_FRect& rect) const
 {
-	// TODO: cambiar el tipo de retorno a Collision e implementar
-	for (Vehicle* v : vehicles) v->checkCollision(rect);
-	for (Log* l : logs) l->checkCollision(rect);
+	Collision returnCol;
+	
+	// no puede detectar mas de una colision cada vez
+	bool col = false; 
 
-	return false;
+	int i = 0;
+	while (i < vehicles.size() && !col) {
+		if (vehicles[i]->checkCollision(rect).t != NONE) {
+			col = true;
+			returnCol = vehicles[i]->checkCollision(rect);
+		}
+		i++;
+	}
+
+	i = 0;
+	while (i < logs.size() && !col) {
+		if (logs[i]->checkCollision(rect).t != NONE) {
+			col = true;
+			returnCol = logs[i]->checkCollision(rect);
+		}
+		i++;
+	}
+
+	return returnCol;
 }

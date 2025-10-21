@@ -65,13 +65,13 @@ void Vehicle::update() {
 Collision Vehicle::checkCollision(const SDL_FRect& r) {
 	if (SDL_HasRectIntersectionFloat(&_rect, &r))
 	{
-		return Collision{ Vector2D<float>(0.0f, 0.0f), ENEMY };
 		cout << "COLISION VEHICULO" << endl;
+		return Collision{ Vector2D<float>(0.0f, 0.0f), ENEMY };
 
 	}
 	else {
+		//cout << "NO HAY COLISION VEHICULO" << endl;
 		return Collision{ Vector2D<float>(0.0f, 0.0f), NONE };
-		cout << "NO HAY COLISION VEHICULO" << endl;
 	}
 }
 

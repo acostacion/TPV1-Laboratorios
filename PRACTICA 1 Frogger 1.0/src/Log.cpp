@@ -60,8 +60,8 @@ void Log::update()
 Collision Log::checkCollision(const SDL_FRect& r){
 	if (SDL_HasRectIntersectionFloat(&_rect, &r))
 	{
-		return Collision{ _vel, PLATFORM };
 		cout << "COLISION LOG" << endl;
+		return Collision{ _vel, PLATFORM };
 	}
 	else {
 		return Collision{ Vector2D<float>(0.0f, 0.0f), NONE };

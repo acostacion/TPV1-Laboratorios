@@ -4,6 +4,7 @@
 #include <fstream>
 #include <istream>
 #include <SDL3/SDL.h>
+#include "Collision.h"
 using namespace std;
 
 class Game;
@@ -14,8 +15,7 @@ public:
 	Frog(istream& file, Game* g);
 	void render() const;
 	void update();
-	void handleEvents(SDL_Event event);
-	void setLives(int l) { _lives = l; }
+	void handleEvent(SDL_Event event);
 
 private:
 	Game* _game;
@@ -26,6 +26,8 @@ private:
 	Vector2D<float> _vel;
 	SDL_FRect _rect;
 
+	Point2D _initialPos; // donde spawnea la rana.
+
 	void move();
 	bool canMove();
 
@@ -33,6 +35,17 @@ private:
 	Vector2D<float> toFloat(Point2D p);
 
 	void updateRect();
+
+	// baja una vida (no mas de 0)
+	inline void releaseLives() { 
+		_lives--; 
+		if (_lives <= 0) _lives = 0;
+	}
+
+	inline bool resetFrogPos() { 
+		_pos = _initialPos; 
+		return true;
+	}
 
 	
 };
