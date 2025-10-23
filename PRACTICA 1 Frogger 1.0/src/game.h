@@ -10,6 +10,7 @@
 #include "Frog.h"
 #include "Wasp.h"
 #include "Collision.h"
+#include "HomedFrog.h"
 #include <random>
 
 using namespace std;
@@ -71,6 +72,7 @@ private:
 	vector<Vehicle*> vehicles;
 	vector<Log*> logs;
 	vector<Wasp*> wasps;
+	vector<HomedFrog*> homedFrogs;
 	Frog* frog;
 
 	Texture* _bg;

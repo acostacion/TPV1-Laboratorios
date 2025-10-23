@@ -33,16 +33,8 @@ Log::Log(istream& file, Game* g) :
 
 void Log::render() const
 {
-	if (_vel.getX() > 0) {
-		_tex->render(_rect, 0, nullptr, SDL_FLIP_HORIZONTAL);
-		SDL_RenderFillRect(_game->getRenderer(), &_rect);
-
-	}
-	else {
-		_tex->render(_rect);
-		SDL_RenderFillRect(_game->getRenderer(), &_rect);
-
-	}
+	_tex->render(_rect);
+	SDL_RenderFillRect(_game->getRenderer(), &_rect);
 }
 
 void Log::update()
@@ -62,9 +54,7 @@ void Log::update()
 }
 
 Collision Log::checkCollision(const SDL_FRect& r){
-	if (SDL_HasRectIntersectionFloat(&_rect, &r))
-	{
-		cout << "COLISION LOG" << endl;
+	if (SDL_HasRectIntersectionFloat(&_rect, &r)){
 		return Collision{ _vel, PLATFORM };
 	}
 	else {

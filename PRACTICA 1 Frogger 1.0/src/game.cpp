@@ -107,7 +107,18 @@ Game::Game()
 
 	nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
 
-	goalPositions = { Point2D(32, 38), Point2D(130, 38), Point2D(228, 38), Point2D(326, 38), Point2D(424, 38)};
+	goalPositions = {
+		Point2D(32, 38),
+		Point2D(130, 38),
+		Point2D(228, 38),
+		Point2D(326, 38),
+		Point2D(424, 38)
+	};
+
+	for (int i = 0; i < goalPositions.size(); i++){
+		homedFrogs.push_back(new HomedFrog(this, goalPositions[i]));
+		std::cout << homedFrogs[i]->_pos << std::endl;
+	}
 }
 
 Game::~Game()
@@ -116,6 +127,8 @@ Game::~Game()
 
 	for (Vehicle* v : vehicles) delete v;
 	for (Log* l : logs) delete l;
+	for (Wasp* w : wasps) delete w;
+	for (HomedFrog* hf : homedFrogs) delete hf;
 
 	delete frog;
 }
@@ -130,6 +143,8 @@ Game::render() const
 	/*vehicles[0]->render();*/
 	for (Vehicle* v : vehicles) v->render();
 	for (Log* l : logs) l->render();
+	for (Wasp* w : wasps) if (w != nullptr) w->render();
+	for (HomedFrog* hf : homedFrogs) hf->render();
 	frog->render();
 
 	SDL_RenderPresent(renderer);
@@ -148,25 +163,27 @@ Game::update()
 
 	if (SDL_GetTicks() >= nextWaspTime) {
 
-		// TODO crear Wasp
-
 		int pos = getRandomRange(0, 4); // elige entre las dos posiciones de spawn
 
 		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos])); // vida de 5 segundos
 
 		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
 	}
-	
+	for (auto i = 0; i < wasps.size(); i++){
+		if (wasps[i] != nullptr && wasps[i]->isAlive()) wasps[i]->update();
+		else {
+			wasps[i] = nullptr;
+			delete wasps[i];
+		}
+	}
 }
 
 void
 Game::run()
 {
 	while (!exit) {
-		// TODO: implementar bucle del juego
 		update();
 		render();
-
 		handleEvents();
 	}
 }
@@ -181,11 +198,7 @@ Game::handleEvents()
 		if (event.type == SDL_EVENT_QUIT)
 			exit = true;
 
-
-		frog->handleEvent(event); // TODO llamarlo en singular.
-
-		// TODO
-		//_auxVehicle->checkCollision();
+		frog->handleEvent(event);
 	}
 }
 
@@ -211,6 +224,15 @@ Game::checkCollision(const SDL_FRect& rect) const
 		if (logs[i]->checkCollision(rect).t != NONE) {
 			col = true;
 			returnCol = logs[i]->checkCollision(rect);
+		}
+		i++;
+	}
+
+	i = 0;
+	while (i < wasps.size() && !col){
+		if (wasps[i] != nullptr && wasps[i]->checkCollision(rect).t != NONE){
+			col = true;
+			returnCol = wasps[i]->checkCollision(rect);
 		}
 		i++;
 	}

@@ -18,6 +18,7 @@ public:
 	void render() const;
 	void update();
 	Collision checkCollision(const SDL_FRect& r);
+	bool isAlive() const;
 
 private:
 	Game* _game;
@@ -29,6 +30,5 @@ private:
 	int tiempoCreacion; // en milisegundos
 
 	void updateRect();
-	bool isAlive() const;
 };
 
