@@ -104,6 +104,10 @@ Game::Game()
 		}
 	}
 	file.close();
+
+	nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
+
+	goalPositions = { Point2D(32, 38), Point2D(130, 38), Point2D(228, 38), Point2D(326, 38), Point2D(424, 38)};
 }
 
 Game::~Game()
@@ -141,6 +145,18 @@ Game::update()
 	for (Vehicle* v : vehicles) v->update();
 	for (Log* l : logs) l->update();
 	frog->update();
+
+	if (SDL_GetTicks() >= nextWaspTime) {
+
+		// TODO crear Wasp
+
+		int pos = getRandomRange(0, 4); // elige entre las dos posiciones de spawn
+
+		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos])); // vida de 5 segundos
+
+		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
+	}
+	
 }
 
 void
@@ -200,4 +216,9 @@ Game::checkCollision(const SDL_FRect& rect) const
 	}
 
 	return returnCol;
+}
+
+
+int Game::getRandomRange(int min, int max) {
+	return uniform_int_distribution<int>(min, max)(randomGenerator);
 }

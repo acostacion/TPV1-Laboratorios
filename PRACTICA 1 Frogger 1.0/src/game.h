@@ -8,7 +8,11 @@
 #include "Vehicle.h"
 #include "Log.h"
 #include "Frog.h"
+#include "Wasp.h"
 #include "Collision.h"
+#include <random>
+
+using namespace std;
 
 // Declaraciones anticipadas
 class Texture;
@@ -48,10 +52,14 @@ public:
 		NUM_TEXTURES
 	};
 
+	vector<Point2D> goalPositions; // posiciones de los nidos
+
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::array<Texture*, NUM_TEXTURES> textures;
+	std::mt19937 randomGenerator;
+	
 
 	void render() const;
 	void update();
@@ -62,9 +70,12 @@ private:
 	// Elemento del juego
 	vector<Vehicle*> vehicles;
 	vector<Log*> logs;
+	vector<Wasp*> wasps;
 	Frog* frog;
 
 	Texture* _bg;
+
+	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
 public:
 	Game();
@@ -81,6 +92,10 @@ public:
 	Collision checkCollision(const SDL_FRect& rect) const;
 
 	SDL_Renderer* getRenderer() { return renderer; }
+
+	int getRandomRange(int min, int max);
+
+
 };
 
 inline Texture*

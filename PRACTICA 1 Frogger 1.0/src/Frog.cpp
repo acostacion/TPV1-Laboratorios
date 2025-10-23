@@ -17,6 +17,8 @@ Frog::Frog(istream& file, Game* g) : _game(g), _lives(3)
 
 	_vel.set(_game->TILE_SIZE);
 
+	moving = false;
+
 	updateRect();
 }
 
@@ -25,7 +27,7 @@ void Frog::render() const{
 
 	_tex->renderFrame(_rect, 0, 0); // TODO animar para que cambie de frame
 
-	//SDL_RenderFillRect(_game->getRenderer(), &_rect);
+	SDL_RenderFillRect(_game->getRenderer(), &_rect);
 
 }
 
@@ -33,6 +35,8 @@ void Frog::move(){
 	if (canMove()){
 		Vector2D<float> floatPos = toFloat(_pos) + _vel * toFloat(_dir);
 		_pos = Point2D(floatPos.getX(), floatPos.getY());
+
+		moving = false;
 
 		updateRect();
 	}
@@ -55,10 +59,10 @@ Vector2D<float> Frog::toFloat(Point2D p){
 }
 
 void Frog::updateRect(){
-	_rect.x = _pos.getX();
-	_rect.y = _pos.getY();
-	_rect.w = _tex->getFrameWidth();
-	_rect.h = _tex->getFrameHeight();
+	_rect.x = _pos.getX()+5;
+	_rect.y = _pos.getY()+5;
+	_rect.w = _tex->getFrameWidth()-10;
+	_rect.h = _tex->getFrameHeight()-10;
 }
 
 void Frog::update(){
@@ -84,7 +88,7 @@ void Frog::update(){
 		// si es none y le pilla donde el rio es que se ha caido al rio y le hace danio.
 	}
 
-	if (_dir != Point2D(0,0) || hasCollision){
+	if ((_dir != Point2D(0,0) && moving)  || hasCollision){
 		move();
 	}
 }
@@ -99,15 +103,19 @@ void Frog::handleEvent(SDL_Event event)
 		{
 			case SDLK_W:
 				_dir = Point2D(0, -1);
+				moving = true;
 				break;
 			case SDLK_A:
 				_dir = Point2D(-1, 0);
+				moving = true;
 				break;
 			case SDLK_S:
 				_dir = Point2D(0, 1);
+				moving = true;
 				break;
 			case SDLK_D:
 				_dir = Point2D(1, 0);
+				moving = true;
 				break;
 			default:
 				break;

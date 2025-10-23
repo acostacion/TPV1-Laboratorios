@@ -35,9 +35,13 @@ void Log::render() const
 {
 	if (_vel.getX() > 0) {
 		_tex->render(_rect, 0, nullptr, SDL_FLIP_HORIZONTAL);
+		SDL_RenderFillRect(_game->getRenderer(), &_rect);
+
 	}
 	else {
 		_tex->render(_rect);
+		SDL_RenderFillRect(_game->getRenderer(), &_rect);
+
 	}
 }
 

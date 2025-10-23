@@ -1,68 +1,15 @@
-﻿  Frog.cpp
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:             T=float
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:         and
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,48): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:             T=float
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:         and
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(35,31): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:         and
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:             T=float
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,41): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:         and
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:             T=float
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(54,31): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(58,21): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(58,21): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(58,21): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(58,21): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(58,21): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(59,21): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(59,21): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(59,21): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(59,21): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(59,21): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(60,31): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(61,32): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:             T=float
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:         and
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,48): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:         with
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:             T=float
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:         ]
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:         and
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:         [
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:             T=int
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Frog.cpp(80,31): warning C4244:         ]
-  src.vcxproj -> C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\bin\srcDebug.exe
+﻿  Wasp.cpp
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(9,31): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(13,21): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(13,21): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(13,21): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(13,21): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(13,21): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(14,21): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(14,21): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(14,21): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(14,21): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(14,21): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(15,31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\src\Wasp.cpp(16,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  src.vcxproj -> C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 1 Frogger 1.0\bin\srcDebug.exe

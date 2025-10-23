@@ -25,6 +25,7 @@ private:
 	int _lives;
 	Vector2D<float> _vel;
 	SDL_FRect _rect;
+	bool moving;
 
 	Point2D _initialPos; // donde spawnea la rana.
 
