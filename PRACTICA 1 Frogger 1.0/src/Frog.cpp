@@ -73,9 +73,10 @@ void Frog::update(){
 			// la mata.
 		}
 
+		hasCollision = true;
 		// coches, homedfrogs, wasps, posicion no-nido (al lado de los nidos), rio, 
 		releaseLives();
-		//frogReset = resetFrogPos();
+		resetFrogPos();
 	}
 	else if (col.t == PLATFORM) {
 		hasCollision = true;
@@ -86,6 +87,11 @@ void Frog::update(){
 	}
 	else if (col.t == NONE) {
 		// si es none y le pilla donde el rio es que se ha caido al rio y le hace danio.
+		if (_pos.getY() <= _game->RIVER_LOW ) {
+			hasCollision = true;
+			releaseLives();
+			resetFrogPos();
+		}
 	}
 
 	if ((_dir != Point2D(0,0) && moving)  || hasCollision){

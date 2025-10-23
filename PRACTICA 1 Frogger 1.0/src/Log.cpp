@@ -34,7 +34,6 @@ Log::Log(istream& file, Game* g) :
 void Log::render() const
 {
 	_tex->render(_rect);
-	SDL_RenderFillRect(_game->getRenderer(), &_rect);
 }
 
 void Log::update()

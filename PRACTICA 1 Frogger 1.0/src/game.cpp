@@ -107,17 +107,14 @@ Game::Game()
 
 	nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
 
-	goalPositions = {
-		Point2D(32, 38),
-		Point2D(130, 38),
-		Point2D(228, 38),
-		Point2D(326, 38),
-		Point2D(424, 38)
-	};
+	for (int i = 0; i < 5; i++) {
+		goalPositions.push_back(Point2D(32 + 96 * i, 38));
+	}
+
 
 	for (int i = 0; i < goalPositions.size(); i++){
 		homedFrogs.push_back(new HomedFrog(this, goalPositions[i]));
-		std::cout << homedFrogs[i]->_pos << std::endl;
+		//std::cout << homedFrogs[i]->_pos << std::endl;
 	}
 }
 
@@ -159,6 +156,7 @@ Game::update()
 
 	for (Vehicle* v : vehicles) v->update();
 	for (Log* l : logs) l->update();
+	for (HomedFrog* hf : homedFrogs) hf->update();
 	frog->update();
 
 	if (SDL_GetTicks() >= nextWaspTime) {
@@ -233,6 +231,14 @@ Game::checkCollision(const SDL_FRect& rect) const
 		if (wasps[i] != nullptr && wasps[i]->checkCollision(rect).t != NONE){
 			col = true;
 			returnCol = wasps[i]->checkCollision(rect);
+		}
+		i++;
+	}
+	i = 0;
+	while (i < homedFrogs.size() && !col) {
+		if (homedFrogs[i]->checkCollision(rect).t != NONE) {
+			col = true;
+			returnCol = homedFrogs[i]->checkCollision(rect);
 		}
 		i++;
 	}
