@@ -112,6 +112,7 @@ Game::Game()
 }
 
 Game::~Game(){
+	for (Texture* t : textures) delete t;
 	for (Vehicle* v : vehicles) delete v;
 	for (Log* l : logs) delete l;
 	for (Wasp* w : wasps) delete w;

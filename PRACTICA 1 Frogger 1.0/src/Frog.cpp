@@ -69,33 +69,33 @@ void Frog::update(){
 	Collision col = _game->checkCollision(_rect);
 	bool hasCollision = false;
 	if (col.t == ENEMY) {
-		if (_lives == 0) {
-			// la mata.
-		}
-
 		hasCollision = true;
 		// coches, homedfrogs, wasps, posicion no-nido (al lado de los nidos), rio, 
-		releaseLives();
 		resetFrogPos();
+		releaseLives();
 	}
 	else if (col.t == PLATFORM) {
 		hasCollision = true;
-
 		Vector2D<float> floatPos = toFloat(_pos) + col.vel / _game->FRAME_RATE;
 		_pos = Point2D(floatPos.getX(), floatPos.getY());
 	}
-	else if (col.t == NONE) {
+	else if (col.t == HOME) {
+		hasCollision = true;
+		resetFrogPos();
+	}
+	else if (col.t != PLATFORM) {
 		// si es none y le pilla donde el rio es que se ha caido al rio y le hace danio.
-		if (_pos.getY() <= _game->RIVER_LOW ) {
+		if (_pos.getY() <= _game->RIVER_LOW - 10 ) {
 			hasCollision = true;
-			releaseLives();
 			resetFrogPos();
+			releaseLives();
 		}
 	}
 
 	if ((_dir != Point2D(0,0) && moving)  || hasCollision){
 		move();
 	}
+	cout << "Lives: " << _lives << endl;
 }
 
 void Frog::handleEvent(SDL_Event event)
