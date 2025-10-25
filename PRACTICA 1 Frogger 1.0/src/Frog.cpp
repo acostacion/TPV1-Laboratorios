@@ -25,10 +25,10 @@ Frog::Frog(istream& file, Game* g) : _game(g), _lives(3)
 void Frog::render() const{
 	SDL_SetRenderDrawColor(_game->getRenderer(), 255, 0, 0, SDL_ALPHA_OPAQUE);
 
-	_tex->renderFrame(_rect, 0, 0); // TODO animar para que cambie de frame
+	if (moving) { _tex->renderFrame(_rect, 1, 0); }
+	else { _tex->renderFrame(_rect, 0, 0); }
 
-	SDL_RenderFillRect(_game->getRenderer(), &_rect);
-
+	//SDL_RenderFillRect(_game->getRenderer(), &_rect);
 }
 
 void Frog::move(){
@@ -78,6 +78,12 @@ void Frog::update(){
 		hasCollision = true;
 		Vector2D<float> floatPos = toFloat(_pos) + col.vel / _game->FRAME_RATE;
 		_pos = Point2D(floatPos.getX(), floatPos.getY());
+
+		if (!canMove()) {
+			hasCollision = true;
+			resetFrogPos();
+			releaseLives();
+		}
 	}
 	else if (col.t == HOME) {
 		hasCollision = true;
@@ -95,7 +101,7 @@ void Frog::update(){
 	if ((_dir != Point2D(0,0) && moving)  || hasCollision){
 		move();
 	}
-	cout << "Lives: " << _lives << endl;
+	cout << "Moving: " << moving << endl;
 }
 
 void Frog::handleEvent(SDL_Event event)

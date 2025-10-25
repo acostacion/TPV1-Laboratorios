@@ -45,7 +45,15 @@ Game::Game()
   : exit(false)
 {
 	// Carga SDL y sus bibliotecas auxiliares
-	SDL_Init(SDL_INIT_VIDEO);
+	try
+	{
+		SDL_Init(SDL_INIT_VIDEO);
+
+	}
+	catch (...)
+	{
+		throw "No se ha cargado SDL correctamente";
+	}
 
 	window = SDL_CreateWindow(WINDOW_TITLE,
 	                          WINDOW_WIDTH,
@@ -62,8 +70,14 @@ Game::Game()
 
 	// Carga las texturas al inicio
 	for (size_t i = 0; i < textures.size(); i++) {
-		auto [name, nrows, ncols] = textureList[i];
-		textures[i] = new Texture(renderer, (string(imgBase) + name).c_str(), nrows, ncols);
+		try{
+			auto [name, nrows, ncols] = textureList[i];
+			textures[i] = new Texture(renderer, (string(imgBase) + name).c_str(), nrows, ncols);
+		}
+		catch (...)
+		{
+			throw "Error cargando textura "s + textureList[i].name;
+		}
 	}
 
 	// Configura que se pueden utilizar capas translúcidas
@@ -76,23 +90,28 @@ Game::Game()
 	if (!file) { 
 		throw "No se ha encontrado fichero de mapa "s + MAP_FILE;
 	}
-	else if (!file.is_open()){
-		throw "No se ha podido abrir el fichero de mapa "s + MAP_FILE; 
-	}
 	else {
 		char tipo;
 
+
 		while (file >> tipo){
-			std::string s;
-			
-			switch (tipo) {
-			case 'V': vehicles.push_back(new Vehicle(file, this)); break;
 
-			case 'L': logs.push_back(new Log(file, this)); break;
+			try
+			{
+				std::string s;
+				switch (tipo) {
+				case 'V': vehicles.push_back(new Vehicle(file, this)); break;
 
-			case 'F': frog = new Frog(file, this); break;
-				
-			default: getline(file, s); break; // salta linea.
+				case 'L': logs.push_back(new Log(file, this)); break;
+
+				case 'F': frog = new Frog(file, this); break;
+
+				default: getline(file, s); break; // salta linea.
+				}
+			}
+			catch (...)
+			{
+				throw "Error en el formato del fichero de mapa "s + MAP_FILE;
 			}
 		}
 	}

@@ -19,7 +19,7 @@ void HomedFrog::render() const {
 
 
 	if (_isVisible){
-		_tex->renderFrame(_rect, 0, 0);
+		_tex->renderFrame(_rect, 0, 0, SDL_FLIP_VERTICAL);
 	}
 	//SDL_RenderFillRect(_game->getRenderer(), &_rect);
 }

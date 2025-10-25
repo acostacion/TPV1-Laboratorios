@@ -17,7 +17,7 @@ void Wasp::updateRect() {
 }
 
 void Wasp::render() const {
-	_tex->render(_rect);
+	_tex->render(_rect, 0, nullptr, SDL_FLIP_VERTICAL);
 	//SDL_RenderFillRect(_game->getRenderer(), &_rect);
 }
 
