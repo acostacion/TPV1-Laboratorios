@@ -17,6 +17,8 @@ public:
 	void update();
 	void handleEvent(SDL_Event event);
 
+	int getLives() { return _lives; }
+
 private:
 	Game* _game;
 	Texture* _tex;

@@ -31,8 +31,7 @@ Log::Log(istream& file, Game* g) :
 	updateRect();
 }
 
-void Log::render() const
-{
+void Log::render() const{
 	_tex->render(_rect);
 }
 

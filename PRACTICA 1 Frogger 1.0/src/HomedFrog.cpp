@@ -39,7 +39,6 @@ Collision HomedFrog::checkCollision(const SDL_FRect& r) {
 		}
 		else {
 			cout << "Homed Frog captured!" << endl;
-			_isVisible = true;
 			return Collision{ Vector2D<float>(0.0f, 0.0f), HOME };
 		}
 	}

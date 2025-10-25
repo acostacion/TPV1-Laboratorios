@@ -79,6 +79,12 @@ private:
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
+	// auxiliares
+	Point2D findHomedFrogPosition(HomedFrog* hf);
+	void generateWasps();
+	void manageWasps();
+
+
 public:
 	Game();
 	~Game();
@@ -91,7 +97,7 @@ public:
 	void run();
 
 	// Comprueba si hay algún objeto colocado en ese rectángulo
-	Collision checkCollision(const SDL_FRect& rect) const;
+	Collision checkCollision(const SDL_FRect& rect);
 
 	SDL_Renderer* getRenderer() { return renderer; }
 

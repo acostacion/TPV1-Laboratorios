@@ -86,20 +86,13 @@ Game::Game()
 			std::string s;
 			
 			switch (tipo) {
-			case 'V':
-				vehicles.push_back(new Vehicle(file, this));
-				break;
-			case 'L':
+			case 'V': vehicles.push_back(new Vehicle(file, this)); break;
 
-				logs.push_back(new Log(file, this));
-				break;
-			case 'F':
-				frog = new Frog(file, this);
-				break;
+			case 'L': logs.push_back(new Log(file, this)); break;
+
+			case 'F': frog = new Frog(file, this); break;
 				
-			default:
-				getline(file, s);
-				break;
+			default: getline(file, s); break; // salta linea.
 			}
 		}
 	}
@@ -114,30 +107,23 @@ Game::Game()
 
 	for (int i = 0; i < goalPositions.size(); i++){
 		homedFrogs.push_back(new HomedFrog(this, goalPositions[i]));
-		//std::cout << homedFrogs[i]->_pos << std::endl;
+		std::cout << homedFrogs[i]->getPos() << std::endl;
 	}
 }
 
-Game::~Game()
-{
-	// TODO: hacer en orden que aparece en el txt.
-
+Game::~Game(){
 	for (Vehicle* v : vehicles) delete v;
 	for (Log* l : logs) delete l;
 	for (Wasp* w : wasps) delete w;
 	for (HomedFrog* hf : homedFrogs) delete hf;
-
 	delete frog;
 }
 
 void
-Game::render() const
-{
+Game::render() const{
 	SDL_RenderClear(renderer);
 
-	// TODO
 	_bg->render();
-	/*vehicles[0]->render();*/
 	for (Vehicle* v : vehicles) v->render();
 	for (Log* l : logs) l->render();
 	for (Wasp* w : wasps) if (w != nullptr) w->render();
@@ -148,32 +134,42 @@ Game::render() const
 	SDL_Delay(50);
 }
 
-void
-Game::update()
-{
-	// TODO
-	//vehicles[0]->update();
-
-	for (Vehicle* v : vehicles) v->update();
-	for (Log* l : logs) l->update();
-	for (HomedFrog* hf : homedFrogs) hf->update();
-	frog->update();
-
+void Game::generateWasps(){
 	if (SDL_GetTicks() >= nextWaspTime) {
+		// elige entre las posiciones de spawn
+		int pos = getRandomRange(0, goalPositions.size() - 1);
 
-		int pos = getRandomRange(0, 4); // elige entre las dos posiciones de spawn
+		// genera avispa con lifetime y pos.
+		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]));
 
-		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos])); // vida de 5 segundos
-
+		// calcula la proxima vez que spawnee la avispa.
 		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
 	}
-	for (auto i = 0; i < wasps.size(); i++){
+}
+
+void Game::manageWasps()
+{
+	for (int i = 0; i < wasps.size(); i++) {
 		if (wasps[i] != nullptr && wasps[i]->isAlive()) wasps[i]->update();
 		else {
 			wasps[i] = nullptr;
 			delete wasps[i];
 		}
 	}
+}
+
+void
+Game::update()
+{
+	// victoria y derrota.
+	if (goalPositions.size() == 0 || frog->getLives() == 0) exit = true;
+
+	for (Vehicle* v : vehicles) v->update();
+	for (Log* l : logs) l->update();
+	generateWasps(); // genera wasps por tiempo.
+	manageWasps(); // updatea las wasps vivas, y mata las muertas.
+	for (HomedFrog* hf : homedFrogs) hf->update();
+	frog->update();
 }
 
 void
@@ -200,14 +196,32 @@ Game::handleEvents()
 	}
 }
 
+Point2D Game::findHomedFrogPosition(HomedFrog* hf){
+	Point2D returnPos;
+
+	int i = 0;
+	bool foundPos = false;
+	while (i < goalPositions.size() && !foundPos) {
+		// con la getX nos valdria.
+		if (goalPositions[i].getX() == (hf->getPos().getX() + hf->getTexture()->getFrameWidth() / 2)) {
+			foundPos = true;
+			returnPos = goalPositions[i];
+		}
+		i++;
+	}
+
+	return returnPos;
+}
+
 Collision
-Game::checkCollision(const SDL_FRect& rect) const
+Game::checkCollision(const SDL_FRect& rect)
 {
 	Collision returnCol;
 	
 	// no puede detectar mas de una colision cada vez
 	bool col = false; 
 
+	// VEHICLES
 	int i = 0;
 	while (i < vehicles.size() && !col) {
 		if (vehicles[i]->checkCollision(rect).t != NONE) {
@@ -217,6 +231,7 @@ Game::checkCollision(const SDL_FRect& rect) const
 		i++;
 	}
 
+	// LOGS
 	i = 0;
 	while (i < logs.size() && !col) {
 		if (logs[i]->checkCollision(rect).t != NONE) {
@@ -226,6 +241,7 @@ Game::checkCollision(const SDL_FRect& rect) const
 		i++;
 	}
 
+	// WASPS
 	i = 0;
 	while (i < wasps.size() && !col){
 		if (wasps[i] != nullptr && wasps[i]->checkCollision(rect).t != NONE){
@@ -234,11 +250,23 @@ Game::checkCollision(const SDL_FRect& rect) const
 		}
 		i++;
 	}
+
+	// HOMEDFROGS
 	i = 0;
 	while (i < homedFrogs.size() && !col) {
-		if (homedFrogs[i]->checkCollision(rect).t != NONE) {
+		HomedFrog* hf = homedFrogs[i];
+		if (hf->checkCollision(rect).t != NONE) {
 			col = true;
-			returnCol = homedFrogs[i]->checkCollision(rect);
+
+			// mira entre las homedfrogs invisibles para ver la posicion donde choca el player antes de ser activadas.
+			if (!hf->isVisible()) {
+				Point2D hfPos = findHomedFrogPosition(hf);
+				// elimina del vector para que no aparezcan mas avispas en esa pos.
+				goalPositions.erase(std::find(goalPositions.begin(), goalPositions.end(), hfPos));
+			}
+			
+			returnCol = hf->checkCollision(rect);
+			hf->setVisibility(true); // lo hacemos despues para que no afecte al findHomedFrogPos...
 		}
 		i++;
 	}

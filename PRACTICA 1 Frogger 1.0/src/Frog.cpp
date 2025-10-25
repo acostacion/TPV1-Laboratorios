@@ -83,7 +83,6 @@ void Frog::update(){
 
 		Vector2D<float> floatPos = toFloat(_pos) + col.vel / _game->FRAME_RATE;
 		_pos = Point2D(floatPos.getX(), floatPos.getY());
-		std::cout << col.vel << std::endl;
 	}
 	else if (col.t == NONE) {
 		// si es none y le pilla donde el rio es que se ha caido al rio y le hace danio.
