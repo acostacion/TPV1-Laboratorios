@@ -1,9 +1,6 @@
 #pragma once  
 #include "vector2D.h"  
-#include "texture.h"  
-#include <fstream> 
-#include <istream>
-
+#include "texture.h"   
 #include "Collision.h"
 
 using namespace std;

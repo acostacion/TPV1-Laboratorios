@@ -8,7 +8,6 @@
 #include <fstream>
 #include <sstream>
 
-
 using namespace std;
 
 // Constantes
@@ -41,60 +40,58 @@ constexpr array<TextureSpec, Game::NUM_TEXTURES> textureList{
 	{"wasp.png"}
 };
 
-Game::Game()
-  : exit(false)
-{
+void Game::initGame(){
 	// Carga SDL y sus bibliotecas auxiliares
-	try
-	{
+	try {
 		SDL_Init(SDL_INIT_VIDEO);
-
 	}
-	catch (...)
-	{
+	catch (...) {
 		throw "No se ha cargado SDL correctamente";
 	}
 
 	window = SDL_CreateWindow(WINDOW_TITLE,
-	                          WINDOW_WIDTH,
-	                          WINDOW_HEIGHT,
-	                          0);
+		WINDOW_WIDTH,
+		WINDOW_HEIGHT,
+		0);
 
-	if (window == nullptr)
+	if (window == nullptr) {
 		throw "window: "s + SDL_GetError();
+	}
 
 	renderer = SDL_CreateRenderer(window, nullptr);
 
-	if (renderer == nullptr)
+	if (renderer == nullptr) {
 		throw "renderer: "s + SDL_GetError();
+	}
 
 	// Carga las texturas al inicio
 	for (size_t i = 0; i < textures.size(); i++) {
-		try{
+		try {
 			auto [name, nrows, ncols] = textureList[i];
 			textures[i] = new Texture(renderer, (string(imgBase) + name).c_str(), nrows, ncols);
 		}
-		catch (...)
-		{
+		catch (...) {
 			throw "Error cargando textura "s + textureList[i].name;
 		}
 	}
 
 	// Configura que se pueden utilizar capas translúcidas
 	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+}
 
+void Game::initMap(){
 	_bg = textures[BACKGROUND];
 
 	ifstream file("../assets/maps/default.txt");
 
-	if (!file) { 
+	if (!file) {
 		throw "No se ha encontrado fichero de mapa "s + MAP_FILE;
 	}
 	else {
 		char tipo;
 
 
-		while (file >> tipo){
+		while (file >> tipo) {
 
 			try
 			{
@@ -119,15 +116,16 @@ Game::Game()
 
 	nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
 
+	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < 5; i++) {
-		goalPositions.push_back(Point2D(32 + 96 * i, 38));
+		_goalPositions.push_back(Point2D(32 + 96 * i, 38));
+		homedFrogs.push_back(new HomedFrog(this, _goalPositions[i]));
 	}
+}
 
-
-	for (int i = 0; i < goalPositions.size(); i++){
-		homedFrogs.push_back(new HomedFrog(this, goalPositions[i]));
-		std::cout << homedFrogs[i]->getPos() << std::endl;
-	}
+Game::Game() : exit(false) {
+	initGame();
+	initMap();
 }
 
 Game::~Game(){
@@ -139,8 +137,7 @@ Game::~Game(){
 	delete frog;
 }
 
-void
-Game::render() const{
+void Game::render() const{
 	SDL_RenderClear(renderer);
 
 	_bg->render();
@@ -155,34 +152,32 @@ Game::render() const{
 }
 
 void Game::generateWasps(){
+	// si llega el momento de crear otra avispa...
 	if (SDL_GetTicks() >= nextWaspTime) {
 		// elige entre las posiciones de spawn
-		int pos = getRandomRange(0, goalPositions.size() - 1);
+		int pos = getRandomRange(0, _goalPositions.size() - 1);
 
 		// genera avispa con lifetime y pos.
-		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]));
+		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), _goalPositions[pos]));
 
 		// calcula la proxima vez que spawnee la avispa.
 		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
 	}
 }
 
-void Game::manageWasps()
-{
+void Game::manageWasps(){
 	for (int i = 0; i < wasps.size(); i++) {
 		if (wasps[i] != nullptr && wasps[i]->isAlive()) wasps[i]->update();
 		else {
-			wasps[i] = nullptr;
 			delete wasps[i];
+			wasps[i] = nullptr;
 		}
 	}
 }
 
-void
-Game::update()
-{
+void Game::update(){
 	// victoria y derrota.
-	if (goalPositions.size() == 0 || frog->getLives() == 0) exit = true;
+	if (_goalPositions.size() == 0 || frog->getLives() == 0) exit = true;
 
 	for (Vehicle* v : vehicles) v->update();
 	for (Log* l : logs) l->update();
@@ -192,9 +187,7 @@ Game::update()
 	frog->update();
 }
 
-void
-Game::run()
-{
+void Game::run() {
 	while (!exit) {
 		update();
 		render();
@@ -202,9 +195,7 @@ Game::run()
 	}
 }
 
-void
-Game::handleEvents()
-{
+void Game::handleEvents() {
 	SDL_Event event;
 
 	// Only quit is handled directly, everything else is delegated
@@ -221,11 +212,11 @@ Point2D Game::findHomedFrogPosition(HomedFrog* hf){
 
 	int i = 0;
 	bool foundPos = false;
-	while (i < goalPositions.size() && !foundPos) {
+	while (i < _goalPositions.size() && !foundPos) {
 		// con la getX nos valdria.
-		if (goalPositions[i].getX() == (hf->getPos().getX() + hf->getTexture()->getFrameWidth() / 2)) {
+		if (_goalPositions[i].getX() == (hf->getPos().getX() + hf->getTexture()->getFrameWidth() / 2)) {
 			foundPos = true;
-			returnPos = goalPositions[i];
+			returnPos = _goalPositions[i];
 		}
 		i++;
 	}
@@ -233,9 +224,7 @@ Point2D Game::findHomedFrogPosition(HomedFrog* hf){
 	return returnPos;
 }
 
-Collision
-Game::checkCollision(const SDL_FRect& rect)
-{
+Collision Game::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;
 	
 	// no puede detectar mas de una colision cada vez
@@ -282,7 +271,7 @@ Game::checkCollision(const SDL_FRect& rect)
 			if (!hf->isVisible()) {
 				Point2D hfPos = findHomedFrogPosition(hf);
 				// elimina del vector para que no aparezcan mas avispas en esa pos.
-				goalPositions.erase(std::find(goalPositions.begin(), goalPositions.end(), hfPos));
+				_goalPositions.erase(std::find(_goalPositions.begin(), _goalPositions.end(), hfPos));
 			}
 			
 			returnCol = hf->checkCollision(rect);
@@ -294,7 +283,3 @@ Game::checkCollision(const SDL_FRect& rect)
 	return returnCol;
 }
 
-
-int Game::getRandomRange(int min, int max) {
-	return uniform_int_distribution<int>(min, max)(randomGenerator);
-}

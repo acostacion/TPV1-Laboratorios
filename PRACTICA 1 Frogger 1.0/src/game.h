@@ -20,21 +20,23 @@ class Texture;
 /**
  * Clase principal del juego.
  */
-class Game
-{
-
-
+class Game{
 public:
 	// Se actualiza el juego cada tantos milisegundos
 	static constexpr int FRAME_RATE = 30;
+
 	// Tamaño real de la ventana
 	static constexpr int WINDOW_WIDTH = 448;
 	static constexpr int WINDOW_HEIGHT = 484;
-	// Extremo inferior del río
+
+	// Extremo inferior del rio
 	static constexpr int RIVER_LOW = 210;
+
 	// Tamanio de cada cuadradito.
 	static constexpr float TILE_SIZE = 484 / 15;
 
+	// para cuando tiene que llegar a x distancia al salir de la ventana (logs y vehicles).
+	const int OUT_OF_WINDOW = 150;
 
 	enum TextureName
 	{
@@ -53,14 +55,13 @@ public:
 		NUM_TEXTURES
 	};
 
-	vector<Point2D> goalPositions; // posiciones de los nidos
 
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::array<Texture*, NUM_TEXTURES> textures;
 	std::mt19937 randomGenerator;
-	
+
 
 	void render() const;
 	void update();
@@ -69,49 +70,37 @@ private:
 	bool exit;
 
 	// Elemento del juego
+	Texture* _bg;
 	vector<Vehicle*> vehicles;
 	vector<Log*> logs;
 	vector<Wasp*> wasps;
+	vector<Point2D> _goalPositions; // posiciones de los nidos
 	vector<HomedFrog*> homedFrogs;
 	Frog* frog;
-
-	Texture* _bg;
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
 	// auxiliares
+	void initGame();
+	void initMap();
 	Point2D findHomedFrogPosition(HomedFrog* hf);
 	void generateWasps();
 	void manageWasps();
+	inline int getRandomRange(int min, int max) { return uniform_int_distribution<int>(min, max)(randomGenerator); }
 
 
 public:
 	Game();
 	~Game();
-
-	// Obtiene una textura por su nombre
-	Texture* getTexture(TextureName name) const;
-
-
-	// Ejecuta el bucle principal del juego
-	void run();
-
-	// Comprueba si hay algún objeto colocado en ese rectángulo
-	Collision checkCollision(const SDL_FRect& rect);
-
+	void run(); // bucle principal del juego
+	 
+	Texture* getTexture(TextureName name) const; // Obtiene una textura por su nombre
 	SDL_Renderer* getRenderer() { return renderer; }
 
-	int getRandomRange(int min, int max);
 
-
+	Collision checkCollision(const SDL_FRect& rect); 
 };
 
 inline Texture*
-Game::getTexture(TextureName name) const
-{
-	return textures[name];
-}
-
-
-
+Game::getTexture(TextureName name) const { return textures[name]; }
 #endif // GAME_H

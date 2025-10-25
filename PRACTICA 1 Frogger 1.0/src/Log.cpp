@@ -1,21 +1,16 @@
 #include "Log.h"
-#include <iostream>
-#include <sstream>
-
 #include "game.h"
 
 
 Log::Log(istream& file, Game* g) :
 	 _game(g) {
-	int posx, posy,  ntex;
-	float velx;
+	int posx, posy, ntex;
+	float velx; // en el txt algunas vels son float.
 
 	file >> posx >> posy >> velx >> ntex;
 
-	_pos.setX(posx);
-	_pos.setY(posy);
-	_vel.setX(velx);
-	_vel.setY(0.0f);
+	_pos.set(posx, posy);
+	_vel.set(velx, 0.0f);
 
 	Game::TextureName texName;
 	switch (ntex) {
@@ -35,17 +30,17 @@ void Log::render() const{
 	_tex->render(_rect);
 }
 
-void Log::update()
-{
-	if (_pos.getX() < -150 - _tex->getFrameWidth() && _vel.getX() < 0) // primero mira si se sale por la izquierda, y luego comprueba que se está moviendo a la izquierda
-	{
-		_pos.setX(448 + 150);// TODO coger window width +150
+void Log::update(){
+	// si se sale por la izquierda (tenemos en cuenta la longitud del tronco)
+	if (_pos.getX() < -_game->OUT_OF_WINDOW - _tex->getFrameWidth()) {
+		_pos.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // ponemos a la derecha
+	}
+	// si se sale por la derecha (tenemos en cuenta la longitud del tronco)
+	else if (_pos.getX() > _game->WINDOW_WIDTH + _game->OUT_OF_WINDOW + _tex->getFrameWidth()){
+		_pos.setX(-_game->OUT_OF_WINDOW); // ponemos a la izquierda
+	}
 
-	}
-	else if (_pos.getX() > 448 + 150 + _tex->getFrameWidth() && _vel.getX() > 0) // primero mira si se sale por la derecha, y luego comprueba que se está moviendo a la derecha
-	{
-		_pos.setX(-150);
-	}
+	// mueve.
 	_pos.setX(_pos.getX() + (_vel.getX() / _game->FRAME_RATE));
 
 	updateRect();

@@ -2,7 +2,6 @@
 #include "vector2D.h"
 #include "texture.h"
 #include <fstream>
-#include <istream>
 
 #include "Collision.h"
 

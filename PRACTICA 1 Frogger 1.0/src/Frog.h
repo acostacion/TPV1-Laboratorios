@@ -2,9 +2,8 @@
 #include "vector2D.h"  
 #include "texture.h"  
 #include <fstream>
-#include <istream>
 #include <SDL3/SDL.h>
-#include "Collision.h"
+
 using namespace std;
 
 class Game;
@@ -27,8 +26,10 @@ private:
 	int _lives;
 	Vector2D<float> _vel;
 	SDL_FRect _rect;
-	bool moving;
-	bool frogReset;
+	bool _moving;
+
+	// para que te teletransporte directamente al hacerte danio y no esperes a moverte.
+	bool _frogReset;
 
 	Point2D _initialPos; // donde spawnea la rana.
 
@@ -39,6 +40,8 @@ private:
 	Vector2D<float> toFloat(Point2D p);
 
 	void updateRect();
+
+	bool handleCollisions();
 
 	// baja una vida (no mas de 0)
 	inline void releaseLives() { 

@@ -1,7 +1,4 @@
 #include "Vehicle.h"
-#include <iostream> 
-#include <sstream>
-
 #include "game.h"
 
 
@@ -11,10 +8,8 @@ Vehicle::Vehicle(istream& file, Game* g) :
 
 	file >> posx >> posy >> velx >> ntex;
 
-	_pos.setX(posx);
-	_pos.setY(posy);
-	_vel.setX(velx);
-	_vel.setY(0.0f);
+	_pos.set(posx, posy);
+	_vel.set(velx, 0.0f);
 
 	Game::TextureName texName;
 	switch (ntex) {
@@ -37,27 +32,22 @@ Vehicle::Vehicle(istream& file, Game* g) :
 }
 
 void Vehicle::render() const {
-
-	if (_vel.getX() > 0) {
-		_tex->render(_rect, 0, nullptr, SDL_FLIP_HORIZONTAL);
-	}
-	else {
-		_tex->render(_rect);
-	}
-	
+	_tex->render(_rect);
 }
 
 void Vehicle::update() {
 	
+	// si se sale por la izquierda
+	if (_pos.getX() < -_game->OUT_OF_WINDOW) {
+		_pos.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // lo pone en la derecha.
+	}
+	// si se sale por la derecha.
+	else if (_pos.getX() > _game->WINDOW_WIDTH + _game->OUT_OF_WINDOW) {
+		_pos.setX(-_game->OUT_OF_WINDOW); // lo pone en la izquierda.
+	}
 
-	if (_pos.getX() < -150 && _vel.getX()<0) {
-		_pos.setX(448 + 150);// TODO coger window width +150
-		
-	}
-	else if (_pos.getX() > 448 + 150 && _vel.getX() > 0) {
-		_pos.setX(-150);
-	}
-	_pos.setX(_pos.getX() + (_vel.getX()/ _game->FRAME_RATE));// TODO igual necesita tiempo
+	// mueve.
+	_pos.setX(_pos.getX() + (_vel.getX()/ _game->FRAME_RATE));
 
 	updateRect();
 }
