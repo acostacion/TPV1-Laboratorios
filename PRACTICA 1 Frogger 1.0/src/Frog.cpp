@@ -105,13 +105,11 @@ void Frog::update(){
 	}
 }
 
-void Frog::handleEvent(SDL_Event event)  
-{  
-// TODO booleano para el movimiento q solo lo haga cuando true.  
+void Frog::handleEvent(SDL_Event event) {   
 switch (event.type)  
 {  
 case SDL_EVENT_KEY_DOWN:  
-	if (!event.key.repeat) // Corrected the usage of SDL_KeyboardEvent  
+	if (!event.key.repeat) // para que solo se mueva una vez por pulsada de tecla.
 	{  
 		switch (event.key.key)  
 		{  
