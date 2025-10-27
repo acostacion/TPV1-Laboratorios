@@ -105,41 +105,45 @@ void Frog::update(){
 	}
 }
 
-void Frog::handleEvent(SDL_Event event)
-{
-	// TODO booleano para el movimiento q solo lo haga cuando true.
-	switch (event.type){
-	case SDL_EVENT_KEY_DOWN:
-		switch (event.key.key)
-		{
-			case SDLK_W:
-				_dir = Point2D(0, -1);
-				_moving = true;
-				break;
-			case SDLK_A:
-				_dir = Point2D(-1, 0);
-				_moving = true;
-				break;
-			case SDLK_S:
-				_dir = Point2D(0, 1);
-				_moving = true;
-				break;
-			case SDLK_D:
-				_dir = Point2D(1, 0);
-				_moving = true;
-				break;
-			default:
-				break;
-		}
-		break;
+void Frog::handleEvent(SDL_Event event)  
+{  
+// TODO booleano para el movimiento q solo lo haga cuando true.  
+switch (event.type)  
+{  
+case SDL_EVENT_KEY_DOWN:  
+	if (!event.key.repeat) // Corrected the usage of SDL_KeyboardEvent  
+	{  
+		switch (event.key.key)  
+		{  
+			case SDLK_W:  
+				_dir = Point2D(0, -1);  
+				_moving = true;  
+				break;  
+			case SDLK_A:  
+				_dir = Point2D(-1, 0);  
+				_moving = true;  
+				break;  
+			case SDLK_S:  
+				_dir = Point2D(0, 1);  
+				_moving = true;  
+				break;  
+			case SDLK_D:  
+				_dir = Point2D(1, 0);  
+				_moving = true;  
+				break;  
+			default:  
+				break;  
+		}  
+	}  
+	break;  
 
-	case SDL_EVENT_KEY_UP:
-		_dir = Point2D(0, 0);
-		break;
+case SDL_EVENT_KEY_UP:  
+	_dir = Point2D(0, 0);  
+	break;  
 
-	default:
-		break;
-	}
+default:  
+	break;  
+}  
 }
 
 
