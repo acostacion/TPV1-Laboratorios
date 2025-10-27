@@ -2,8 +2,12 @@
 #define GAME_H
 
 #include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
 #include <array>
+#include <string>
 #include <istream>
+#include <fstream>
+#include <sstream>
 #include <vector>
 #include "Vehicle.h"
 #include "Log.h"
@@ -11,9 +15,9 @@
 #include "Wasp.h"
 #include "Collision.h"
 #include "HomedFrog.h"
+#include "Vector2D.h"
+#include "texture.h"
 #include <random>
-
-using namespace std;
 
 // Declaraciones anticipadas
 class Texture;
@@ -36,7 +40,10 @@ public:
 	static constexpr float TILE_SIZE = 484 / 15;
 
 	// para cuando tiene que llegar a x distancia al salir de la ventana (logs y vehicles).
-	const int OUT_OF_WINDOW = 150;
+	static constexpr int OUT_OF_WINDOW = 150;
+
+	// numero de nidos
+	static constexpr int N_GOALS = 5;
 
 	enum TextureName
 	{
@@ -71,11 +78,11 @@ private:
 
 	// Elemento del juego
 	Texture* _bg;
-	vector<Vehicle*> vehicles;
-	vector<Log*> logs;
-	vector<Wasp*> wasps;
-	vector<Point2D> _goalPositions; // posiciones de los nidos
-	vector<HomedFrog*> homedFrogs;
+	std::vector<Vehicle*> vehicles;
+	std::vector<Log*> logs;
+	std::vector<Wasp*> wasps;
+	std::vector<Point2D> _goalPositions; // posiciones de los nidos
+	std::vector<HomedFrog*> homedFrogs;
 	Frog* frog;
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
@@ -86,7 +93,7 @@ private:
 	Point2D findHomedFrogPosition(HomedFrog* hf);
 	void generateWasps();
 	void manageWasps();
-	inline int getRandomRange(int min, int max) { return uniform_int_distribution<int>(min, max)(randomGenerator); }
+	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(randomGenerator); }
 
 
 public:

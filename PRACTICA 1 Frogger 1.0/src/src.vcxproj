@@ -110,7 +110,7 @@
     <ClInclude Include="HomedFrog.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="texture.h" />
-    <ClInclude Include="vector2D.h" />
+    <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Vehicle.h" />
     <ClInclude Include="Wasp.h" />
   </ItemGroup>

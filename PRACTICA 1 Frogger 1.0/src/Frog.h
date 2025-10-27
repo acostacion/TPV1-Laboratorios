@@ -1,22 +1,20 @@
 #pragma once  
-#include "vector2D.h"  
+#include "Vector2D.h"  
 #include "texture.h"  
 #include <fstream>
 #include <SDL3/SDL.h>
-
-using namespace std;
 
 class Game;
 
 class Frog
 {
 public:
-	Frog(istream& file, Game* g);
+	Frog(std::istream& file, Game* g);
 	void render() const;
 	void update();
 	void handleEvent(SDL_Event event);
 
-	int getLives() { return _lives; }
+	int getLives() const { return _lives; }
 
 private:
 	Game* _game;
@@ -37,7 +35,7 @@ private:
 	bool canMove();
 
 	// covert Point2D -> Vector2D<float>
-	Vector2D<float> toFloat(Point2D p);
+	Vector2D<float> toFloat(Point2D p) const;
 
 	void updateRect();
 

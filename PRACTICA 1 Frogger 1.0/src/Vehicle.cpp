@@ -2,7 +2,7 @@
 #include "game.h"
 
 
-Vehicle::Vehicle(istream& file, Game* g) :
+Vehicle::Vehicle(std::istream& file, Game* g) :
 	_game(g) {
 	int posx, posy, velx, ntex;
 

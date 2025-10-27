@@ -1,18 +1,16 @@
 #pragma once
-#include "vector2D.h"
+#include "Vector2D.h"
 #include "texture.h"
 #include <fstream>
 
 #include "Collision.h"
-
-using namespace std;
 
 class Game;
 
 class Log
 {
 public:
-	Log(istream& file, Game* g);
+	Log(std::istream& file, Game* g);
 
 	void render() const;
 	void update();

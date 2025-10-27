@@ -2,7 +2,7 @@
 #include "game.h"
 
 
-Log::Log(istream& file, Game* g) :
+Log::Log(std::istream& file, Game* g) :
 	 _game(g) {
 	int posx, posy, ntex;
 	float velx; // en el txt algunas vels son float.

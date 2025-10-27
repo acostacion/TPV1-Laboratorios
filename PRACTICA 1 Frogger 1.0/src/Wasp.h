@@ -1,14 +1,11 @@
 #pragma once  
-#include "vector2D.h"  
+#include "Vector2D.h"  
 #include "texture.h"   
 #include "Collision.h"
 
-using namespace std;
-
 class Game;
 
-class Wasp
-{
+class Wasp{
 public:
 	Wasp(Game* g, int lifeTime, Point2D pos);
 

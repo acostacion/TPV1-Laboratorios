@@ -1,7 +1,7 @@
 #include "Frog.h"
 #include "game.h"
 
-Frog::Frog(istream& file, Game* g) : _game(g), _lives(3), _moving(false), _frogReset(false)
+Frog::Frog(std::istream& file, Game* g) : _game(g), _lives(3), _moving(false), _frogReset(false)
 {
 	// posicion 
 	int posx, posy;
@@ -42,7 +42,7 @@ bool Frog::canMove(){
 		&& (floatPos.getX() < _game->WINDOW_WIDTH- _game->TILE_SIZE); // DERECHA
 }
 
-Vector2D<float> Frog::toFloat(Point2D p){
+Vector2D<float> Frog::toFloat(Point2D p) const{
 	return Vector2D<float>(p.getX(), p.getY());
 }
 

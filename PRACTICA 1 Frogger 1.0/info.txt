@@ -1,0 +1,4 @@
+Carmen Gómez Becerra
+Diego Martín García
+Todo funciona correctamente.
+No se han realizado opcionales.

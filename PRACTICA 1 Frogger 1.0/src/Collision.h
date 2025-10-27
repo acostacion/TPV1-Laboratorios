@@ -1,5 +1,5 @@
 #pragma once
-#include "vector2D.h"
+#include "Vector2D.h"
 
 enum Type { NONE, ENEMY, PLATFORM, HOME };
 

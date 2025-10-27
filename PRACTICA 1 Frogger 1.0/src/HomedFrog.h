@@ -1,11 +1,9 @@
 #pragma once  
-#include "vector2D.h"  
+#include "Vector2D.h"  
 #include "texture.h"  
 #include <fstream> 
 
 #include "Collision.h"
-
-using namespace std;
 
 class Game;
 
@@ -18,11 +16,11 @@ public:
 	void update();
 	Collision checkCollision(const SDL_FRect& r);
 
-	bool isVisible() { return _isVisible; }
+	bool isVisible() const { return _isVisible; }
 	void setVisibility(bool v) { _isVisible = v; }
 
-	Point2D getPos() { return _pos; }
-	Texture* getTexture() { return _tex; }
+	Point2D getPos() const { return _pos; }
+	Texture* getTexture() const { return _tex; }
 
 private:
 	Game* _game;

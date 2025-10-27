@@ -1,14 +1,6 @@
 #include "game.h"
 
-#include <string>
 
-#include <SDL3_image/SDL_image.h>
-
-#include "texture.h"
-#include <fstream>
-#include <sstream>
-
-using namespace std;
 
 // Constantes
 constexpr const char* const WINDOW_TITLE = "Frogger 1.0";
@@ -25,7 +17,7 @@ struct TextureSpec
 
 constexpr const char* const imgBase = "../assets/images/";
 
-constexpr array<TextureSpec, Game::NUM_TEXTURES> textureList{
+constexpr std::array<TextureSpec, Game::NUM_TEXTURES> textureList{
 	TextureSpec{"frog.png", 1, 2},
 	{"background.png"},
 	{"car1.png"},
@@ -55,23 +47,23 @@ void Game::initGame(){
 		0);
 
 	if (window == nullptr) {
-		throw "window: "s + SDL_GetError();
+		throw std::string("window: ") + SDL_GetError();
 	}
 
 	renderer = SDL_CreateRenderer(window, nullptr);
 
 	if (renderer == nullptr) {
-		throw "renderer: "s + SDL_GetError();
+		throw std::string("renderer: ") + SDL_GetError();
 	}
 
 	// Carga las texturas al inicio
 	for (size_t i = 0; i < textures.size(); i++) {
 		try {
 			auto [name, nrows, ncols] = textureList[i];
-			textures[i] = new Texture(renderer, (string(imgBase) + name).c_str(), nrows, ncols);
+			textures[i] = new Texture(renderer, (std::string(imgBase) + name).c_str(), nrows, ncols);
 		}
 		catch (...) {
-			throw "Error cargando textura "s + textureList[i].name;
+			throw std::string("Error cargando textura ") + textureList[i].name;
 		}
 	}
 
@@ -82,34 +74,24 @@ void Game::initGame(){
 void Game::initMap(){
 	_bg = textures[BACKGROUND];
 
-	ifstream file("../assets/maps/default.txt");
+	std::ifstream file("../assets/maps/default.txt");
 
 	if (!file) {
-		throw "No se ha encontrado fichero de mapa "s + MAP_FILE;
+		throw std::string("No se ha encontrado fichero de mapa ") + MAP_FILE;
 	}
 	else {
 		char tipo;
-
-
 		while (file >> tipo) {
-
-			try
-			{
+			try {
 				std::string s;
 				switch (tipo) {
 				case 'V': vehicles.push_back(new Vehicle(file, this)); break;
-
 				case 'L': logs.push_back(new Log(file, this)); break;
-
 				case 'F': frog = new Frog(file, this); break;
-
 				default: getline(file, s); break; // salta linea.
 				}
 			}
-			catch (...)
-			{
-				throw "Error en el formato del fichero de mapa "s + MAP_FILE;
-			}
+			catch (...) { throw std::string("Error en el formato del fichero de mapa ") + MAP_FILE; }
 		}
 	}
 	file.close();
@@ -117,7 +99,7 @@ void Game::initMap(){
 	nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
 
 	// posiciones nidos y homedfrogs.
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < N_GOALS; i++) {
 		_goalPositions.push_back(Point2D(32 + 96 * i, 38));
 		homedFrogs.push_back(new HomedFrog(this, _goalPositions[i]));
 	}
