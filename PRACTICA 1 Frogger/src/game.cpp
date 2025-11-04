@@ -111,6 +111,7 @@ Game::Game() : exit(false) {
 }
 
 Game::~Game(){
+	// Destruir la ventana SDL, renderer, SDLquit...
 	for (Texture* t : textures) delete t;
 	for (Vehicle* v : vehicles) delete v;
 	for (Log* l : logs) delete l;
@@ -130,7 +131,6 @@ void Game::render() const{
 	frog->render();
 
 	SDL_RenderPresent(renderer);
-	SDL_Delay(50);
 }
 
 void Game::generateWasps(){
@@ -151,6 +151,7 @@ void Game::manageWasps(){
 	for (int i = 0; i < wasps.size(); i++) {
 		if (wasps[i] != nullptr && wasps[i]->isAlive()) wasps[i]->update();
 		else {
+			// TODO borrar del vector para no irlo engordando
 			delete wasps[i];
 			wasps[i] = nullptr;
 		}
@@ -174,6 +175,7 @@ void Game::run() {
 		update();
 		render();
 		handleEvents();
+		SDL_Delay(50);  // TODO mirar cuanto tardan update y render y restarlo a un delay constante. Mirar diapos
 	}
 }
 
@@ -206,6 +208,7 @@ Point2D Game::findHomedFrogPosition(HomedFrog* hf){
 	return returnPos;
 }
 
+//TODO guardar en variable la colision para no llamarlo dos veces.
 Collision Game::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;
 	

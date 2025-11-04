@@ -108,6 +108,7 @@ void Frog::update(){
 void Frog::handleEvent(SDL_Event event) {   
 switch (event.type)  
 {  
+	//TODO añadir flechas ademas de WASD, y hacer que mire hacia donde se mueve.
 case SDL_EVENT_KEY_DOWN:  
 	if (!event.key.repeat) // para que solo se mueva una vez por pulsada de tecla.
 	{  

@@ -30,7 +30,7 @@ void Log::render() const{
 	_tex->render(_rect);
 }
 
-void Log::update(){
+void Log::update(){ // Revisar cuando se sale
 	// si se sale por la izquierda (tenemos en cuenta la longitud del tronco)
 	if (_pos.getX() < -_game->OUT_OF_WINDOW - _tex->getFrameWidth()) {
 		_pos.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // ponemos a la derecha

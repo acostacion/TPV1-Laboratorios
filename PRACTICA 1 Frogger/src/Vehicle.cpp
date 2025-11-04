@@ -35,7 +35,7 @@ void Vehicle::render() const {
 	_tex->render(_rect);
 }
 
-void Vehicle::update() {
+void Vehicle::update() { // Revisar cuando se sale
 	
 	// si se sale por la izquierda
 	if (_pos.getX() < -_game->OUT_OF_WINDOW) {
