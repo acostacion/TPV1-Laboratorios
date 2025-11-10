@@ -2,7 +2,7 @@
 #include "game.h"
 
 Frog::Frog(std::istream& file, Game* g)
-	: SceneObject(g, Point2D(0.0f, 0.0f), g->getTexture(Game::FROG)), _lives(3), _moving(false), _frogReset(false) {
+	: SceneObject(g, Point2D(0.0f, 0.0f), g->getTexture(Game::FROG)), _moving(false), _frogReset(false) {
 
 	// posicion 
 	int posx, posy;
@@ -69,7 +69,7 @@ bool Frog::handleCollisions()
 	if (col.t == ENEMY) {
 		hasCol = true;
 		_frogReset = resetFrogPos();
-		releaseLives();
+		_game->releaseLives();
 	}
 	else if (col.t == PLATFORM) {
 		hasCol = true;
@@ -82,7 +82,7 @@ bool Frog::handleCollisions()
 		if (!canMove()) {
 			hasCol = true;
 			_frogReset = resetFrogPos();
-			releaseLives();
+			_game->releaseLives();
 		}
 	}
 	else if (col.t == HOME) {
@@ -94,7 +94,7 @@ bool Frog::handleCollisions()
 		if (_position.getY() <= _game->RIVER_LOW - 10) {
 			hasCol = true;
 			_frogReset = resetFrogPos();
-			releaseLives();
+			_game->releaseLives();
 		}
 	}
 

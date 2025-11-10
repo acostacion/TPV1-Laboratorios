@@ -19,5 +19,6 @@ private:
 	Vector2D<float> _vel;
 	const int MAX_LIFE_TIME; // en milisegundos
 	int _tiempoCreacion; // en milisegundos
+	Anchor _anchor;
 };
 

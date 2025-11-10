@@ -13,13 +13,9 @@ public:
 	void render() const override;
 	void update() override;
 	void handleEvent(SDL_Event event);
-
-	int getLives() const { return _lives; }
-
 private:
 	
 	Point2D _dir;
-	int _lives;
 	Vector2D<float> _vel;
 	bool _moving;
 
@@ -40,10 +36,7 @@ private:
 	bool handleCollisions();
 
 	// baja una vida (no mas de 0)
-	inline void releaseLives() { 
-		_lives--; 
-		if (_lives <= 0) _lives = 0;
-	}
+	
 
 	inline bool resetFrogPos() { 
 		_position = _initialPos; 

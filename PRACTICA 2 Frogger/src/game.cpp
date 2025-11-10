@@ -73,6 +73,7 @@ void Game::initGame(){
 
 void Game::initMap(){
 	_bg = textures[BACKGROUND];
+	_lives = 3;
 
 	std::ifstream file("../assets/maps/turtles.txt");
 
@@ -101,8 +102,8 @@ void Game::initMap(){
 
 	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < N_GOALS; i++) {
-		_goalPositions.push_back(Point2D(32 + 96 * i, 38));
-		objects.push_back((new HomedFrog(this, _goalPositions[i])));
+		goalPositions.push_back(Point2D(32 + 96 * i, 38));
+		objects.push_back((new HomedFrog(this, goalPositions[i])));
 	}
 }
 
@@ -134,34 +135,23 @@ void Game::generateWasps(){
 	// si llega el momento de crear otra avispa...
 	if (SDL_GetTicks() >= nextWaspTime) {
 		// elige entre las posiciones de spawn
-		int pos = getRandomRange(0, _goalPositions.size() - 1);
+		int pos = getRandomRange(0, goalPositions.size() - 1);
 
 		// genera avispa con lifetime y pos.
-		wasps.push_back(new Wasp(this, getRandomRange(5000, 10000), _goalPositions[pos]));
+		objects.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]));
 
 		// calcula la proxima vez que spawnee la avispa.
 		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
 	}
 }
 
-void Game::manageWasps(){
-	for (int i = 0; i < wasps.size(); i++) {
-		if (wasps[i] != nullptr && wasps[i]->isAlive()) wasps[i]->update();
-		else {
-			// TODO borrar del vector para no irlo engordando
-			delete wasps[i];
-			wasps[i] = nullptr;
-		}
-	}
-}
 
 void Game::update(){
 	// victoria y derrota.
-	if (_goalPositions.size() == 0 || frog->getLives() == 0) exit = true;
+	if (goalPositions.size() == 0 || _lives == 0) exit = true;
 
 	for (SceneObject* obj : objects) obj->update();
 	generateWasps(); // genera wasps por tiempo.
-	manageWasps(); // updatea las wasps vivas, y mata las muertas.
 }
 
 void Game::run() {
@@ -181,84 +171,31 @@ void Game::handleEvents() {
 		if (event.type == SDL_EVENT_QUIT)
 			exit = true;
 
-		frog->handleEvent(event);
-	}
-}
-
-Point2D Game::findHomedFrogPosition(HomedFrog* hf){
-	Point2D returnPos;
-
-	int i = 0;
-	bool foundPos = false;
-	while (i < _goalPositions.size() && !foundPos) {
-		// con la getX nos valdria.
-		if (_goalPositions[i].getX() == (hf->getPos().getX() + hf->getTexture()->getFrameWidth() / 2)) {
-			foundPos = true;
-			returnPos = _goalPositions[i];
+		for (SceneObject* obj : objects) {
+			// dynamic cast para ver si es una rana
+			// dynamic cast verifica en tiempo de ejecucion si el objeto es del tipo especificado, y si no devuelve nullptr.
+			Frog* f = dynamic_cast<Frog*>(obj);
+			if (f != nullptr) {
+				f->handleEvent(event);
+			}
 		}
-		i++;
 	}
-
-	return returnPos;
 }
+
 
 //TODO guardar en variable la colision para no llamarlo dos veces.
 Collision Game::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;
-	
 	// no puede detectar mas de una colision cada vez
 	bool col = false; 
 
-	// VEHICLES
-	int i = 0;
-	while (i < vehicles.size() && !col) {
-		if (vehicles[i]->checkCollision(rect).t != NONE) {
+	for (SceneObject* obj : objects) {
+		returnCol = obj->checkCollision(rect);
+		if (//obj != nullptr &&
+			returnCol.t != NONE) {
 			col = true;
-			returnCol = vehicles[i]->checkCollision(rect);
+			break; // sale del for
 		}
-		i++;
 	}
-
-	// LOGS
-	i = 0;
-	while (i < logs.size() && !col) {
-		if (logs[i]->checkCollision(rect).t != NONE) {
-			col = true;
-			returnCol = logs[i]->checkCollision(rect);
-		}
-		i++;
-	}
-
-	// WASPS
-	i = 0;
-	while (i < wasps.size() && !col){
-		if (wasps[i] != nullptr && wasps[i]->checkCollision(rect).t != NONE){
-			col = true;
-			returnCol = wasps[i]->checkCollision(rect);
-		}
-		i++;
-	}
-
-	// HOMEDFROGS
-	i = 0;
-	while (i < homedFrogs.size() && !col) {
-		HomedFrog* hf = homedFrogs[i];
-		if (hf->checkCollision(rect).t != NONE) {
-			col = true;
-
-			// mira entre las homedfrogs invisibles para ver la posicion donde choca el player antes de ser activadas.
-			if (!hf->isVisible()) {
-				Point2D hfPos = findHomedFrogPosition(hf);
-				// elimina del vector para que no aparezcan mas avispas en esa pos.
-				_goalPositions.erase(std::find(_goalPositions.begin(), _goalPositions.end(), hfPos));
-			}
-			
-			returnCol = hf->checkCollision(rect);
-			hf->setVisibility(true); // lo hacemos despues para que no afecte al findHomedFrogPos...
-		}
-		i++;
-	}
-
-	return returnCol;
 }
 

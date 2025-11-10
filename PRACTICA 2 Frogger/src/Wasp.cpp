@@ -22,6 +22,11 @@ bool Wasp::isAlive() const {
 }
 
 void Wasp::update() {
+
+	if (!isAlive()) {
+		_game->deleteAfter(_anchor);
+	}
+
 	updateRect();
 }
 

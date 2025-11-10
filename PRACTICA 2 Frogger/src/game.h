@@ -81,6 +81,7 @@ private:
 	void handleEvents();
 
 	bool exit;
+	int _lives;
 
 	// Elemento del juego
 	Texture* _bg;
@@ -89,7 +90,7 @@ private:
 	//std::vector<Vehicle*> vehicles;
 	//std::vector<Log*> logs;
 	//std::vector<Wasp*> wasps;
-	std::vector<Point2D> _goalPositions; // posiciones de los nidos
+	
 	//std::vector<HomedFrog*> homedFrogs;
 	//std::vector<TurtleGroup*> turtles;
 	//Frog* frog;
@@ -99,13 +100,13 @@ private:
 	// auxiliares
 	void initGame();
 	void initMap();
-	Point2D findHomedFrogPosition(HomedFrog* hf);
 	void generateWasps();
-	void manageWasps();
 	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(randomGenerator); }
 
 
 public:
+	std::vector<Point2D> goalPositions; // posiciones de los nidos
+
 	Game();
 	~Game();
 	void run(); // bucle principal del juego
@@ -115,6 +116,16 @@ public:
 
 
 	Collision checkCollision(const SDL_FRect& rect); 
+
+	void deleteAfter(Anchor it) {
+		delete* it;
+		objects.erase(it);
+	}
+
+	inline void releaseLives() {
+		_lives--;
+		if (_lives <= 0) _lives = 0;
+	}
 };
 
 inline Texture*
