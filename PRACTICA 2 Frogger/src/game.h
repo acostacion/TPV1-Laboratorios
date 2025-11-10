@@ -7,6 +7,7 @@
 #include <string>
 #include <istream>
 #include <fstream>
+#include <list>
 #include <sstream>
 #include <vector>
 #include "Vehicle.h"
@@ -16,9 +17,13 @@
 #include "Collision.h"
 #include "HomedFrog.h"
 #include "TurtleGroup.h"
+#include "GameObject.h"
+#include "SceneObject.h"
 #include "Vector2D.h"
 #include "texture.h"
 #include <random>
+
+using Anchor = std::list<SceneObject*>::iterator;
 
 // Declaraciones anticipadas
 class Texture;
@@ -79,13 +84,15 @@ private:
 
 	// Elemento del juego
 	Texture* _bg;
-	std::vector<Vehicle*> vehicles;
-	std::vector<Log*> logs;
-	std::vector<Wasp*> wasps;
+
+	std::list<SceneObject*> objects;
+	//std::vector<Vehicle*> vehicles;
+	//std::vector<Log*> logs;
+	//std::vector<Wasp*> wasps;
 	std::vector<Point2D> _goalPositions; // posiciones de los nidos
-	std::vector<HomedFrog*> homedFrogs;
-	std::vector<TurtleGroup*> turtles;
-	Frog* frog;
+	//std::vector<HomedFrog*> homedFrogs;
+	//std::vector<TurtleGroup*> turtles;
+	//Frog* frog;
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 

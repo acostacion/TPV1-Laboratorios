@@ -8,14 +8,14 @@ Crosser::Crosser(std::istream& file, Game* g)
 	float velx;
 	file >> posx >> posy >> velx >> _nTex;
 
-	position.set(posx, posy);
+	_position.set(posx, posy);
 	_vel.setX(velx);
 }
 
 void Crosser::update()
 {
 	// Actualiza la posición del Crosser según su velocidad
-	position.setX(position.getX() + _vel.getX() / game->FRAME_RATE);
+	_position.setX(_position.getX() + _vel.getX() / _game->FRAME_RATE);
 	updateRect();
 }
 

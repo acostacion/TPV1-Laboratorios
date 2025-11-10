@@ -10,10 +10,10 @@ class Game;
 class TurtleGroup : public Platform
 {
 private:
-	int nTurtles;
-	bool canDive;
+	int _nTurtles;
+	bool _canDive;
 public: 
-	TurtleGroup(std::istream& file, Game* g); // TODO habra mas parametros.
+	TurtleGroup(std::istream& file, Game* g);
 	void render() const override;	
 };
 

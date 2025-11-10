@@ -1,24 +1,16 @@
 #include "HomedFrog.h"
 #include "game.h"
 
-HomedFrog::HomedFrog(Game* g, Point2D pos) : _game(g), _isVisible(false) {
-	_tex = _game->getTexture(_game->FROG);
+HomedFrog::HomedFrog(Game* g, Point2D pos) : SceneObject(g, pos, g->getTexture(g->FROG)), _isVisible(false) {
 	updateRect();
 
 	// la posicion menos su tamanio /2
-	_pos.set(pos.getX() - _tex->getFrameWidth()/2, pos.getY() - _tex->getFrameHeight()/2);
-}
-
-void HomedFrog::updateRect() {
-	_rect.x = _pos.getX();
-	_rect.y = _pos.getY();
-	_rect.w = _tex->getFrameWidth();
-	_rect.h = _tex->getFrameHeight();
+	_position.set(pos.getX() - _texture->getFrameWidth()/2, pos.getY() - _texture->getFrameHeight()/2);
 }
 
 void HomedFrog::render() const {
 	if (_isVisible){
-		_tex->renderFrame(_rect, 0, 0, SDL_FLIP_VERTICAL);
+		_texture->renderFrame(getBoundingBox(), 0, 0, SDL_FLIP_VERTICAL);
 	}
 }
 
@@ -27,7 +19,8 @@ void HomedFrog::update() {
 }
 
 Collision HomedFrog::checkCollision(const SDL_FRect& r) {
-	if (SDL_HasRectIntersectionFloat(&_rect, &r)) {
+	SDL_FRect box = getBoundingBox();
+	if (SDL_HasRectIntersectionFloat(&box, &r)) {
 		if (_isVisible) {
 			return Collision{ Vector2D<float>(0.0f, 0.0f), ENEMY };
 		}

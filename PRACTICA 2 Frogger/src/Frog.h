@@ -3,27 +3,24 @@
 #include "texture.h"  
 #include <fstream>
 #include <SDL3/SDL.h>
+#include "SceneObject.h"
 
 class Game;
 
-class Frog
-{
+class Frog : public SceneObject {
 public:
 	Frog(std::istream& file, Game* g);
-	void render() const;
-	void update();
+	void render() const override;
+	void update() override;
 	void handleEvent(SDL_Event event);
 
 	int getLives() const { return _lives; }
 
 private:
-	Game* _game;
-	Texture* _tex;
-	Point2D _pos;
+	
 	Point2D _dir;
 	int _lives;
 	Vector2D<float> _vel;
-	SDL_FRect _rect;
 	bool _moving;
 
 	// para que te teletransporte directamente al hacerte danio y no esperes a moverte.
@@ -37,8 +34,9 @@ private:
 	// covert Point2D -> Vector2D<float>
 	Vector2D<float> toFloat(Point2D p) const;
 
-	void updateRect();
+	void updateRect() override;
 
+	Collision checkCollision(const SDL_FRect& r) override;
 	bool handleCollisions();
 
 	// baja una vida (no mas de 0)
@@ -48,7 +46,7 @@ private:
 	}
 
 	inline bool resetFrogPos() { 
-		_pos = _initialPos; 
+		_position = _initialPos; 
 		return true;
 	}
 

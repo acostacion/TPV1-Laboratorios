@@ -11,16 +11,17 @@ public:
 	virtual void render() const override;
 
 protected:
-	Point2D position;
-	Texture* texture;
+	Point2D _position;
+	Texture* _texture;
 
 	SceneObject(Game* game, const Point2D& position, Texture* texture);
 
-	inline SDL_FRect getBoundingBox() const { return rect; }
-	void updateRect();
+	inline SDL_FRect getBoundingBox() const { return _rect; }
+	void setBoundingBox(SDL_FRect r) { _rect = r; }
+	virtual void updateRect();
 
 private:
-	SDL_FRect rect;
+	SDL_FRect _rect;
 
 };
 

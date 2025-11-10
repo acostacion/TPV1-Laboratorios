@@ -8,8 +8,8 @@ public:
 	virtual void render() const = 0;
 	virtual ~GameObject() = default;
 protected:
-	GameObject(Game* game) : game(game) {}
+	GameObject(Game* game) : _game(game) {}
 
-	Game* game;
+	Game* _game;
 };
 

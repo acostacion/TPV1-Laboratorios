@@ -85,10 +85,10 @@ void Game::initMap(){
 			try {
 				std::string s;
 				switch (tipo) {
-				case 'V': vehicles.push_back(new Vehicle(file, this)); break;
-				case 'L': logs.push_back(new Log(file, this)); break;
-				case 'F': frog = new Frog(file, this); break;
-				case 'T': turtles.push_back(new TurtleGroup(file, this)); break;
+				case 'V': objects.push_back(new Vehicle(file, this)); break;
+				case 'L': objects.push_back(new Log(file, this)); break;
+				case 'F': objects.push_back(new Frog(file, this)); break;
+				case 'T': objects.push_back(new TurtleGroup(file, this)); break;
 				default: getline(file, s); break; // salta linea.
 				}
 			}
@@ -102,7 +102,7 @@ void Game::initMap(){
 	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < N_GOALS; i++) {
 		_goalPositions.push_back(Point2D(32 + 96 * i, 38));
-		homedFrogs.push_back(new HomedFrog(this, _goalPositions[i]));
+		objects.push_back((new HomedFrog(this, _goalPositions[i])));
 	}
 }
 
@@ -114,24 +114,18 @@ Game::Game() : exit(false) {
 Game::~Game(){
 	// Destruir la ventana SDL, renderer, SDLquit...
 	for (Texture* t : textures) delete t;
-	for (Vehicle* v : vehicles) delete v;
-	for (Log* l : logs) delete l;
-	for (Wasp* w : wasps) delete w;
-	for (HomedFrog* hf : homedFrogs) delete hf;
-	for (TurtleGroup* t : turtles) delete t;
-	delete frog;
+	for (SceneObject* obj : objects) delete obj;
 }
 
 void Game::render() const{
 	SDL_RenderClear(renderer);
 
 	_bg->render();
-	for (Vehicle* v : vehicles) v->render();
-	for (Log* l : logs) l->render();
-	for (Wasp* w : wasps) if (w != nullptr) w->render();
-	for (HomedFrog* hf : homedFrogs) hf->render();
-	for (TurtleGroup* t : turtles) t->render();
-	frog->render();
+	for (SceneObject* obj : objects){
+		if (obj != nullptr) {
+			obj->render();
+		}
+	}
 
 	SDL_RenderPresent(renderer);
 }
@@ -165,13 +159,9 @@ void Game::update(){
 	// victoria y derrota.
 	if (_goalPositions.size() == 0 || frog->getLives() == 0) exit = true;
 
-	for (Vehicle* v : vehicles) v->update();
-	for (Log* l : logs) l->update();
+	for (SceneObject* obj : objects) obj->update();
 	generateWasps(); // genera wasps por tiempo.
 	manageWasps(); // updatea las wasps vivas, y mata las muertas.
-	for (HomedFrog* hf : homedFrogs) hf->update();
-	for (TurtleGroup* t : turtles) t->update();
-	frog->update();
 }
 
 void Game::run() {

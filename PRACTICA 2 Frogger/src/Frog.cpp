@@ -1,31 +1,31 @@
 #include "Frog.h"
 #include "game.h"
 
-Frog::Frog(std::istream& file, Game* g) : _game(g), _lives(3), _moving(false), _frogReset(false)
-{
+Frog::Frog(std::istream& file, Game* g)
+	: SceneObject(g, Point2D(0.0f, 0.0f), g->getTexture(Game::FROG)), _lives(3), _moving(false), _frogReset(false) {
+
 	// posicion 
 	int posx, posy;
 	file >> posx >> posy;
-	_pos.set(posx, posy);
-	_initialPos = _pos;
+	_position.set(posx, posy);
+	_initialPos = _position;
 
-	// velocidad y textura.
+	// velocidad.
 	_vel.set(_game->TILE_SIZE);
-	_tex = _game->getTexture(Game::FROG);
 
 	updateRect();
 }
 
 void Frog::render() const{
 	// animacion
-	if (_moving) { _tex->renderFrame(_rect, 1, 0); }
-	else { _tex->renderFrame(_rect, 0, 0); }
+	if (_moving) { _texture->renderFrame(getBoundingBox(), 1, 0); }
+	else { _texture->renderFrame(getBoundingBox(), 0, 0); }
 }
 
 void Frog::move(){
 	if (canMove()){
-		Vector2D<float> floatPos = toFloat(_pos) + _vel * toFloat(_dir);
-		_pos = Point2D(floatPos.getX(), floatPos.getY());
+		Vector2D<float> floatPos = toFloat(_position) + _vel * toFloat(_dir);
+		_position = Point2D(floatPos.getX(), floatPos.getY());
 		updateRect();
 	}
 }
@@ -33,7 +33,7 @@ void Frog::move(){
 // mira si la siguiente posicion esta dentro del mapa, en cuyo caso deja mover, o si se sale.
 bool Frog::canMove(){
 	// saca la posicion en vector de float.
-	Vector2D<float> floatPos = toFloat(_pos) + _vel * toFloat(_dir);
+	Vector2D<float> floatPos = toFloat(_position) + _vel * toFloat(_dir);
 
 	// no te permite salir de la ventana.
 	return (floatPos.getY() < _game->WINDOW_HEIGHT-_game->TILE_SIZE ) // ABAJO
@@ -48,16 +48,23 @@ Vector2D<float> Frog::toFloat(Point2D p) const{
 
 void Frog::updateRect(){
 	// la hacemos mas pequenia porque colisionaba con los troncos cuando no tocaba.
-	_rect.x = _pos.getX()+5;
-	_rect.y = _pos.getY()+5;
-	_rect.w = _tex->getFrameWidth()-10;
-	_rect.h = _tex->getFrameHeight()-10;
+	SDL_FRect auxRect;
+	auxRect.x = _position.getX()+5;
+	auxRect.y = _position.getY()+5;
+	auxRect.w = _texture->getFrameWidth()-10;
+	auxRect.h = _texture->getFrameHeight()-10;
+	setBoundingBox(auxRect);
+}
+
+Collision Frog::checkCollision(const SDL_FRect& r)
+{
+	return Collision();
 }
 
 bool Frog::handleCollisions()
 {
 	bool hasCol = false;
-	Collision col = _game->checkCollision(_rect);
+	Collision col = _game->checkCollision(getBoundingBox());
 
 	if (col.t == ENEMY) {
 		hasCol = true;
@@ -68,8 +75,8 @@ bool Frog::handleCollisions()
 		hasCol = true;
 
 		// al colisionar con una plataforma te mueve con ella
-		Vector2D<float> floatPos = toFloat(_pos) + col.vel / _game->FRAME_RATE;
-		_pos = Point2D(floatPos.getX(), floatPos.getY());
+		Vector2D<float> floatPos = toFloat(_position) + col.vel / _game->FRAME_RATE;
+		_position = Point2D(floatPos.getX(), floatPos.getY());
 
 		// si la plataforma te saca del mapa, te hace danio.
 		if (!canMove()) {
@@ -84,7 +91,7 @@ bool Frog::handleCollisions()
 	}
 	else if (col.t != PLATFORM) {
 		// si no es platform y le pilla donde el rio es que se ha caido al rio y le hace danio.
-		if (_pos.getY() <= _game->RIVER_LOW - 10) {
+		if (_position.getY() <= _game->RIVER_LOW - 10) {
 			hasCol = true;
 			_frogReset = resetFrogPos();
 			releaseLives();
@@ -108,25 +115,29 @@ void Frog::update(){
 void Frog::handleEvent(SDL_Event event) {   
 switch (event.type)  
 {  
-	//TODO añadir flechas ademas de WASD, y hacer que mire hacia donde se mueve.
+	//TODO hacer que mire hacia donde se mueve.
 case SDL_EVENT_KEY_DOWN:  
 	if (!event.key.repeat) // para que solo se mueva una vez por pulsada de tecla.
 	{  
 		switch (event.key.key)  
 		{  
-			case SDLK_W:  
+			case SDLK_W:
+			case SDLK_UP:
 				_dir = Point2D(0, -1);  
 				_moving = true;  
 				break;  
-			case SDLK_A:  
+			case SDLK_A:
+			case SDLK_LEFT:
 				_dir = Point2D(-1, 0);  
 				_moving = true;  
 				break;  
-			case SDLK_S:  
+			case SDLK_S:
+			case SDLK_DOWN:
 				_dir = Point2D(0, 1);  
 				_moving = true;  
 				break;  
-			case SDLK_D:  
+			case SDLK_D:
+			case SDLK_RIGHT:
 				_dir = Point2D(1, 0);  
 				_moving = true;  
 				break;  
