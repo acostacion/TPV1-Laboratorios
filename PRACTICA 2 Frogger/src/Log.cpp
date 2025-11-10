@@ -36,7 +36,7 @@ void Log::update(){ // Revisar cuando se sale
 		_pos.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // ponemos a la derecha
 	}
 	// si se sale por la derecha (tenemos en cuenta la longitud del tronco)
-	else if (_pos.getX() > _game->WINDOW_WIDTH + _game->OUT_OF_WINDOW + _tex->getFrameWidth()){
+	else if (_pos.getX() > _game->WINDOW_WIDTH + _game->OUT_OF_WINDOW){
 		_pos.setX(-_game->OUT_OF_WINDOW); // ponemos a la izquierda
 	}
 

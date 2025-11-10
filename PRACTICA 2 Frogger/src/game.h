@@ -15,6 +15,7 @@
 #include "Wasp.h"
 #include "Collision.h"
 #include "HomedFrog.h"
+#include "TurtleGroup.h"
 #include "Vector2D.h"
 #include "texture.h"
 #include <random>
@@ -83,6 +84,7 @@ private:
 	std::vector<Wasp*> wasps;
 	std::vector<Point2D> _goalPositions; // posiciones de los nidos
 	std::vector<HomedFrog*> homedFrogs;
+	std::vector<TurtleGroup*> turtles;
 	Frog* frog;
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp

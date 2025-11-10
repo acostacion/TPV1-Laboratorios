@@ -3,8 +3,8 @@
 SceneObject::SceneObject(Game* game, const Point2D& position, Texture* texture)
 	: GameObject(game), position(position), texture(texture)
 {
-	updateRect();
 }
+
 
 void SceneObject::render() const
 {

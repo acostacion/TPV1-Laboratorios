@@ -1,1 +1,31 @@
-﻿  src.vcxproj -> C:\Users\piter\OneDrive\Escritorio\class\TPV1-Laboratorios\PRACTICA 1 Frogger\bin\srcDebug.exe
+﻿  SceneObject.cpp
+  TurtleGroup.cpp
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(16,24): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(16,24): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(16,24): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(16,24): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(16,24): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,24): warning C4244: '=': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,24): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,24): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,24): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,24): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(18,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(19,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(23,20): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(23,20): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4838: conversion from 'T' to 'float' requires a narrowing conversion
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4838:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4838:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4838:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4838:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4244:         with
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4244:         [
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4244:             T=int
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(24,17): warning C4244:         ]
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(25,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(25,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(26,27): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(26,27): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  src.vcxproj -> C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe

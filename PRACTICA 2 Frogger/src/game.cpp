@@ -74,7 +74,7 @@ void Game::initGame(){
 void Game::initMap(){
 	_bg = textures[BACKGROUND];
 
-	std::ifstream file("../assets/maps/default.txt");
+	std::ifstream file("../assets/maps/turtles.txt");
 
 	if (!file) {
 		throw std::string("No se ha encontrado fichero de mapa ") + MAP_FILE;
@@ -88,6 +88,7 @@ void Game::initMap(){
 				case 'V': vehicles.push_back(new Vehicle(file, this)); break;
 				case 'L': logs.push_back(new Log(file, this)); break;
 				case 'F': frog = new Frog(file, this); break;
+				case 'T': turtles.push_back(new TurtleGroup(file, this)); break;
 				default: getline(file, s); break; // salta linea.
 				}
 			}
@@ -117,6 +118,7 @@ Game::~Game(){
 	for (Log* l : logs) delete l;
 	for (Wasp* w : wasps) delete w;
 	for (HomedFrog* hf : homedFrogs) delete hf;
+	for (TurtleGroup* t : turtles) delete t;
 	delete frog;
 }
 
@@ -128,6 +130,7 @@ void Game::render() const{
 	for (Log* l : logs) l->render();
 	for (Wasp* w : wasps) if (w != nullptr) w->render();
 	for (HomedFrog* hf : homedFrogs) hf->render();
+	for (TurtleGroup* t : turtles) t->render();
 	frog->render();
 
 	SDL_RenderPresent(renderer);
@@ -167,6 +170,7 @@ void Game::update(){
 	generateWasps(); // genera wasps por tiempo.
 	manageWasps(); // updatea las wasps vivas, y mata las muertas.
 	for (HomedFrog* hf : homedFrogs) hf->update();
+	for (TurtleGroup* t : turtles) t->update();
 	frog->update();
 }
 

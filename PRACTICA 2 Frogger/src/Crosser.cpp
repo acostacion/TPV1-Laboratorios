@@ -16,4 +16,10 @@ void Crosser::update()
 {
 	// Actualiza la posición del Crosser según su velocidad
 	position.setX(position.getX() + _vel.getX() / game->FRAME_RATE);
+	updateRect();
+}
+
+Collision Crosser::checkCollision(const SDL_FRect& r)
+{
+	return Collision();
 }
