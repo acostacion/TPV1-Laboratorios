@@ -121,9 +121,12 @@ public:
 	Collision checkCollision(const SDL_FRect& rect); 
 
 	void deleteAfter(Anchor it) {
-		std::cout << *it << std::endl;
-		Anchor nextIt = objects.erase(it);
-		std::cout << *nextIt << std::endl;
+		SceneObject* deleteWasp = *it;
+		it = objects.erase(it);
+		deleteWasp = nullptr;
+		delete deleteWasp;
+		std::cout << deleteWasp << std::endl;
+		//st
 		
 	}
 

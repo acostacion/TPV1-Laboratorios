@@ -140,10 +140,10 @@ void Game::generateWasps(){
 		// genera avispa con lifetime y pos.
 		Wasp* wasp = new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]);
 		objects.push_back(wasp);
+		Anchor a = objects.insert(objects.end(), wasp);
 
 		// esto accede al ultimo elemento pushbackeado en la lista.
-		Anchor anchor = objects.end()--;
-		wasp->setAnchor(anchor);
+		wasp->setAnchor(a);
 
 		// calcula la proxima vez que spawnee la avispa.
 		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
@@ -187,6 +187,8 @@ void Game::handleEvents() {
 				f->handleEvent(event);
 			}
 		}
+
+		//if(event.type == SDL_KEYDOWN)
 	}
 }
 

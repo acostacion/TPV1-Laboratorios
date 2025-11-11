@@ -1,3 +1,122 @@
-﻿  Wasp.cpp
-C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Wasp.cpp(8,32): warning C4244: '=': conversión de 'Uint64' a 'int'; posible pérdida de datos
-  src.vcxproj -> C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe
+﻿  Crosser.cpp
+  Frog.cpp
+  HomedFrog.cpp
+  Log.cpp
+  Platform.cpp
+  TurtleGroup.cpp
+  Vehicle.cpp
+  Wasp.cpp
+  game.cpp
+  main.cpp
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Wasp.cpp(8,32): warning C4244: '=': conversión de 'Uint64' a 'int'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,33): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,33): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,33): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,33): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,33): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,27): warning C4244: 'argumento': conversión de 'float' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,27): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,27): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,27): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(5,27): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,53): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(28,36): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,41): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(46,31): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(52,30): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(53,30): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(54,39): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(55,40): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,53): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Frog.cpp(79,36): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(138,52): warning C4267: 'argumento': conversión de 'size_t' a 'int'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(149,33): warning C4244: '=': conversión de 'Uint64' a 'int'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(164,17): warning C4244: 'inicializando': conversión de 'Uint64' a 'int'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(168,15): warning C4244: 'inicializando': conversión de 'Uint64' a 'int'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244: 'argumento': conversión de 'T' a 'T'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:             T=float
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:         and
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\Crosser.cpp(18,34): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(9,36): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(9,36): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(9,36): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(9,36): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(9,36): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(10,36): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(10,36): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(10,36): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(10,36): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(10,36): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(11,48): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(12,46): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(38,21): warning C4838: la conversión de 'int' en 'float' requiere una conversión de restricción
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(38,21): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4838: la conversión de 'T' en 'float' requiere una conversión de restricción
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4838:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4838:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4838:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4838:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4244: 'inicializando': conversión de 'T' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4244:         with
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4244:         [
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4244:             T=int
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(39,18): warning C4244:         ]
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(40,27): warning C4838: la conversión de 'int' en 'float' requiere una conversión de restricción
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(40,27): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(41,28): warning C4838: la conversión de 'int' en 'float' requiere una conversión de restricción
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(41,28): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
+U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\src\TurtleGroup.cpp(46,16): warning C4244: 'inicializando': conversión de 'Uint64' a 'Uint32'; posible pérdida de datos
+  src.vcxproj -> U:\hlocal\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe
