@@ -120,13 +120,14 @@ public:
 
 	Collision checkCollision(const SDL_FRect& rect); 
 
+	// TODO guarda un vector de iteradores para borrar POSTERIORMENTE
 	void deleteAfter(Anchor it) {
+		// TODO el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
 		SceneObject* deleteWasp = *it;
 		it = objects.erase(it);
-		deleteWasp = nullptr;
 		delete deleteWasp;
+		deleteWasp = nullptr;
 		std::cout << deleteWasp << std::endl;
-		//st
 		
 	}
 

@@ -123,9 +123,8 @@ void Game::render() const{
 
 	_bg->render();
 	for (SceneObject* obj : objects){
-		if (obj != nullptr) {
-			obj->render();
-		}
+		obj->render();
+		
 	}
 
 	SDL_RenderPresent(renderer);
