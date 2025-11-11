@@ -138,7 +138,12 @@ void Game::generateWasps(){
 		int pos = getRandomRange(0, goalPositions.size() - 1);
 
 		// genera avispa con lifetime y pos.
-		objects.push_back(new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]));
+		Wasp* wasp = new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]);
+		objects.push_back(wasp);
+
+		// esto accede al ultimo elemento pushbackeado en la lista.
+		Anchor anchor = objects.end()--;
+		wasp->setAnchor(anchor);
 
 		// calcula la proxima vez que spawnee la avispa.
 		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
@@ -156,10 +161,13 @@ void Game::update(){
 
 void Game::run() {
 	while (!exit) {
+		int startTime = SDL_GetTicks();
 		update();
 		render();
 		handleEvents();
-		SDL_Delay(50);  // TODO mirar cuanto tardan update y render y restarlo a un delay constante. Mirar diapos
+		int endTime = SDL_GetTicks();
+		// siempre tardaria "game_delay" segundos independientemente de la velocidad que el bucle ppal vaya.
+		SDL_Delay(GAME_DELAY - (endTime-startTime)); 
 	}
 }
 
@@ -186,16 +194,24 @@ void Game::handleEvents() {
 //TODO guardar en variable la colision para no llamarlo dos veces.
 Collision Game::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;
-	// no puede detectar mas de una colision cada vez
-	bool col = false; 
 
-	for (SceneObject* obj : objects) {
+	// no puede detectar mas de una colision cada vez
+	bool col = false;
+
+	// estructura de busqueda en una lista enlazada con iteradores.
+	Anchor it = objects.begin();
+	while (it != objects.end() && !col) {
+		SceneObject* obj = *it;
 		returnCol = obj->checkCollision(rect);
-		if (//obj != nullptr &&
-			returnCol.t != NONE) {
+
+		// si se detecta colision...
+		if (returnCol.t != NONE) {
 			col = true;
-			break; // sale del for
 		}
+
+		++it;
 	}
+
+	return returnCol;
 }
 

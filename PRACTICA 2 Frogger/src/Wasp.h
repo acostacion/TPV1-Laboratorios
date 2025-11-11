@@ -1,14 +1,17 @@
 #pragma once  
 #include "Vector2D.h"  
+#include <list>
 #include "texture.h"   
 #include "Collision.h"
 #include "SceneObject.h"
 
+using Anchor = std::list<SceneObject*>::iterator;
 class Game;
 
 class Wasp : public SceneObject{
 public:
 	Wasp(Game* g, int lifeTime, Point2D pos);
+	inline void setAnchor(Anchor a) { _anchor = a; }
 
 	void render() const override;
 	void update() override;

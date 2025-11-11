@@ -51,6 +51,9 @@ public:
 	// numero de nidos
 	static constexpr int N_GOALS = 5;
 
+	// constante para el delay del bucle principal
+	static constexpr int GAME_DELAY = 50;
+
 	enum TextureName
 	{
 		FROG = 0,
@@ -118,8 +121,10 @@ public:
 	Collision checkCollision(const SDL_FRect& rect); 
 
 	void deleteAfter(Anchor it) {
-		delete* it;
-		objects.erase(it);
+		std::cout << *it << std::endl;
+		Anchor nextIt = objects.erase(it);
+		std::cout << *nextIt << std::endl;
+		
 	}
 
 	inline void releaseLives() {

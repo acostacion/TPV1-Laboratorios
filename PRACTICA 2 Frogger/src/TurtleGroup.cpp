@@ -1,6 +1,18 @@
 #include "TurtleGroup.h"
 #include "game.h"
 
+
+void TurtleGroup::updateRect()
+{
+	// rectangulo unico del conjunto de tortugas
+	SDL_FRect boundingBoxRect;
+	boundingBoxRect.x = _position.getX();
+	boundingBoxRect.y = _position.getY();
+	boundingBoxRect.w = _texture->getFrameWidth() * _nTurtles;
+	boundingBoxRect.h = _texture->getFrameHeight();
+	setBoundingBox(boundingBoxRect);
+}
+
 TurtleGroup::TurtleGroup(std::istream& file, Game* g)
 	: Platform(file, g) {
 	_nTurtles = _nTex;
@@ -15,26 +27,31 @@ TurtleGroup::TurtleGroup(std::istream& file, Game* g)
 	}
 
 	_texture = g->getTexture(g->TURTLE);
+
+	updateRect();
 }
 
 void TurtleGroup::render() const {
 	for (int i = 0; i < _nTurtles; i++) {
-		SDL_FRect destRect = {
+		// rectangulos para las diferentes texturas de tortugas
+		SDL_FRect textureRect = {
 			_position.getX() + i * _texture->getFrameWidth(),
 			_position.getY(),
 			_texture->getFrameWidth(),
 			_texture->getFrameHeight()
 		};
 		
-		/*
 		int frame = 0;
-		if (canDive) {
+		if (_canDive) {
 			Uint32 time = SDL_GetTicks();
 			frame = (time / 250) % 7; // Cambia de frame cada 250 ms
 		}
-		*/
-		_texture->renderFrame(destRect, 0,0);
-
+		
+		_texture->renderFrame(textureRect, 0,0);
 	}
+}
 
+void TurtleGroup::update() {
+	updateRect();
+	Platform::update();
 }

@@ -23,11 +23,12 @@ bool Wasp::isAlive() const {
 
 void Wasp::update() {
 
+	updateRect();
+
 	if (!isAlive()) {
 		_game->deleteAfter(_anchor);
 	}
 
-	updateRect();
 }
 
 Collision Wasp::checkCollision(const SDL_FRect& r) {
