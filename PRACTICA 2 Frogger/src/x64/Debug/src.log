@@ -1,6 +1,14 @@
-﻿  game.cpp
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(146,52): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(157,33): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(172,17): warning C4244: 'initializing': conversion from 'Uint64' to 'int', possible loss of data
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(186,15): warning C4244: 'initializing': conversion from 'Uint64' to 'int', possible loss of data
-  src.vcxproj -> C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe
+﻿  SceneObject.cpp
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,26): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,26): warning C4244:         with
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,26): warning C4244:         [
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,26): warning C4244:             T=int
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(17,26): warning C4244:         ]
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(18,26): warning C4244: '=': conversión de 'T' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(18,26): warning C4244:         with
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(18,26): warning C4244:         [
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(18,26): warning C4244:             T=int
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(18,26): warning C4244:         ]
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(19,35): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\src\SceneObject.cpp(20,36): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
+  src.vcxproj -> C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe

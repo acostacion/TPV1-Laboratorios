@@ -115,8 +115,8 @@ Game::Game() : exit(false) {
 }
 
 void Game::eraseGame() {
-	for (Texture* t : textures) delete t;
 	for (SceneObject* obj : objects) delete obj;
+	for (Texture* t : textures) delete t;
 }
 
 Game::~Game(){
@@ -133,7 +133,6 @@ void Game::render() const{
 	_bg->render();
 	for (SceneObject* obj : objects){
 		obj->render();
-		
 	}
 
 	SDL_RenderPresent(renderer);
@@ -195,31 +194,24 @@ void Game::createMessageBox() {
 		{ /* .flags, .buttonid, .text */        0, 0, "no" },
 		{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
 	};
-	const SDL_MessageBoxColorScheme colorScheme = {
-		{ /* .colors (.r, .g, .b) */
-			/* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
-			{ 255,   0,   0 },
-			/* [SDL_MESSAGEBOX_COLOR_TEXT] */
-			{   0, 255,   0 },
-			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
-			{ 255, 255,   0 },
-			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
-			{   0,   0, 255 },
-			/* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
-			{ 255,   0, 255 }
-		}
-	};
+
 	const SDL_MessageBoxData messageboxdata = {
 		SDL_MESSAGEBOX_INFORMATION, /* .flags */
 		window, /* .window */
 		"Reinicio de partida", /* .title */
-		"Desea reiniciar la partida?", /* .message */
+		"¿Desea reiniciar la partida?", /* .message */
 		SDL_arraysize(buttons), /* .numbuttons */
 		buttons, /* .buttons */
-		&colorScheme /* .colorScheme */
 	};
 	int buttonid;
 	SDL_ShowMessageBox(&messageboxdata, &buttonid);
+	if (buttonid == 1){
+		eraseGame();
+		initMap();
+	}
+	else {
+		run();
+	}
 
 }
 
@@ -241,34 +233,8 @@ void Game::handleEvents() {
 		}
 
 		if (event.type == SDL_EVENT_KEY_DOWN) {
-
 			if (event.key.key == SDLK_0) {
-				// La tecla '0' ha sido pulsada.
-				// Ahora verificamos el estado actual de Ctrl y Shift.
-
-				// Obtener el estado actual del teclado (sigue siendo igual que en SDL2)
-				const bool* state = SDL_GetKeyboardState(NULL);
-
-				// Comprobar si Ctrl (izquierda O derecha) y Shift (izquierda O derecha) están pulsadas
-				bool ctrl_pressed = state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL];
-				bool shift_pressed = state[SDL_SCANCODE_LSHIFT] || state[SDL_SCANCODE_RSHIFT];
-
-				if (ctrl_pressed && shift_pressed) {
-					//printf("¡Combinación detectada en SDL3: Ctrl + Shift + 0!\n");
-					// Aquí va tu código específico para esta acción
-				}
-				else {
-					//printf("Tecla 0 pulsada, pero no con Ctrl y Shift a la vez en SDL3.\n");
-				}
-			}
-
-
-			if (event.key.key == SDLK_0 
-				//&& event.key.key == SDL_KMOD_CTRL && event.key.key == SDL_KMOD_SHIFT
-				) {
 				createMessageBox();
-				eraseGame();
-				initMap();
 			}
 		}
 	}
