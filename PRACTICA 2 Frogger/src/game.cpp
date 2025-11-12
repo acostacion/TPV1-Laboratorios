@@ -2,6 +2,7 @@
 
 
 
+
 // Constantes
 constexpr const char* const WINDOW_TITLE = "Frogger 1.0";
 constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
@@ -56,6 +57,12 @@ void Game::initGame(){
 		throw std::string("renderer: ") + SDL_GetError();
 	}
 
+	// Configura que se pueden utilizar capas translúcidas
+	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+}
+
+void Game::initMap(){
+
 	// Carga las texturas al inicio
 	for (size_t i = 0; i < textures.size(); i++) {
 		try {
@@ -67,11 +74,6 @@ void Game::initGame(){
 		}
 	}
 
-	// Configura que se pueden utilizar capas translúcidas
-	// SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
-}
-
-void Game::initMap(){
 	_bg = textures[BACKGROUND];
 	_lives = 3;
 
@@ -112,10 +114,17 @@ Game::Game() : exit(false) {
 	initMap();
 }
 
-Game::~Game(){
-	// Destruir la ventana SDL, renderer, SDLquit...
+void Game::eraseGame() {
 	for (Texture* t : textures) delete t;
 	for (SceneObject* obj : objects) delete obj;
+}
+
+Game::~Game(){
+	// Destruir la ventana SDL, renderer, SDLquit...
+	eraseGame();
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
 }
 
 void Game::render() const{
@@ -181,6 +190,39 @@ void Game::run() {
 	}
 }
 
+void Game::createMessageBox() {
+	const SDL_MessageBoxButtonData buttons[] = {
+		{ /* .flags, .buttonid, .text */        0, 0, "no" },
+		{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
+	};
+	const SDL_MessageBoxColorScheme colorScheme = {
+		{ /* .colors (.r, .g, .b) */
+			/* [SDL_MESSAGEBOX_COLOR_BACKGROUND] */
+			{ 255,   0,   0 },
+			/* [SDL_MESSAGEBOX_COLOR_TEXT] */
+			{   0, 255,   0 },
+			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BORDER] */
+			{ 255, 255,   0 },
+			/* [SDL_MESSAGEBOX_COLOR_BUTTON_BACKGROUND] */
+			{   0,   0, 255 },
+			/* [SDL_MESSAGEBOX_COLOR_BUTTON_SELECTED] */
+			{ 255,   0, 255 }
+		}
+	};
+	const SDL_MessageBoxData messageboxdata = {
+		SDL_MESSAGEBOX_INFORMATION, /* .flags */
+		window, /* .window */
+		"Reinicio de partida", /* .title */
+		"Desea reiniciar la partida?", /* .message */
+		SDL_arraysize(buttons), /* .numbuttons */
+		buttons, /* .buttons */
+		&colorScheme /* .colorScheme */
+	};
+	int buttonid;
+	SDL_ShowMessageBox(&messageboxdata, &buttonid);
+
+}
+
 void Game::handleEvents() {
 	SDL_Event event;
 
@@ -198,7 +240,37 @@ void Game::handleEvents() {
 			}
 		}
 
-		//if(event.type == SDL_KEYDOWN)
+		if (event.type == SDL_EVENT_KEY_DOWN) {
+
+			if (event.key.key == SDLK_0) {
+				// La tecla '0' ha sido pulsada.
+				// Ahora verificamos el estado actual de Ctrl y Shift.
+
+				// Obtener el estado actual del teclado (sigue siendo igual que en SDL2)
+				const bool* state = SDL_GetKeyboardState(NULL);
+
+				// Comprobar si Ctrl (izquierda O derecha) y Shift (izquierda O derecha) están pulsadas
+				bool ctrl_pressed = state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL];
+				bool shift_pressed = state[SDL_SCANCODE_LSHIFT] || state[SDL_SCANCODE_RSHIFT];
+
+				if (ctrl_pressed && shift_pressed) {
+					//printf("¡Combinación detectada en SDL3: Ctrl + Shift + 0!\n");
+					// Aquí va tu código específico para esta acción
+				}
+				else {
+					//printf("Tecla 0 pulsada, pero no con Ctrl y Shift a la vez en SDL3.\n");
+				}
+			}
+
+
+			if (event.key.key == SDLK_0 
+				//&& event.key.key == SDL_KMOD_CTRL && event.key.key == SDL_KMOD_SHIFT
+				) {
+				createMessageBox();
+				eraseGame();
+				initMap();
+			}
+		}
 	}
 }
 

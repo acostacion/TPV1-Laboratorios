@@ -105,7 +105,9 @@ private:
 	void initGame();
 	void initMap();
 	void generateWasps();
+	void eraseGame();
 	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(randomGenerator); }
+	void createMessageBox();
 
 
 public:
