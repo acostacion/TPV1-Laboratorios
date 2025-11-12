@@ -164,7 +164,18 @@ void Game::run() {
 		update();
 		render();
 		handleEvents();
+
+		for (Anchor it : toDelete) {
+			// elimina de la lista de sceneobjects y borra el objeto.
+			SceneObject* obj = *it;
+			objects.erase(it);
+			delete obj;
+		}
+		// limpia el vector auxiliar.
+		toDelete.clear();
+
 		int endTime = SDL_GetTicks();
+
 		// siempre tardaria "game_delay" segundos independientemente de la velocidad que el bucle ppal vaya.
 		SDL_Delay(GAME_DELAY - (endTime-startTime)); 
 	}

@@ -89,7 +89,8 @@ private:
 	// Elemento del juego
 	Texture* _bg;
 
-	std::list<SceneObject*> objects;
+	std::list<SceneObject*> objects; 
+	std::vector<Anchor> toDelete; // lista de objetos a borrar
 	//std::vector<Vehicle*> vehicles;
 	//std::vector<Log*> logs;
 	//std::vector<Wasp*> wasps;
@@ -123,12 +124,7 @@ public:
 	// TODO guarda un vector de iteradores para borrar POSTERIORMENTE
 	void deleteAfter(Anchor it) {
 		// TODO el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
-		SceneObject* deleteWasp = *it;
-		it = objects.erase(it);
-		delete deleteWasp;
-		deleteWasp = nullptr;
-		std::cout << deleteWasp << std::endl;
-		
+		toDelete.push_back(it);
 	}
 
 	inline void releaseLives() {
