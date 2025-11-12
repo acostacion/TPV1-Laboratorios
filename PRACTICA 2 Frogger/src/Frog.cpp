@@ -18,8 +18,15 @@ Frog::Frog(std::istream& file, Game* g)
 
 void Frog::render() const{
 	// animacion
-	if (_moving) { _texture->renderFrame(getBoundingBox(), 1, 0); }
-	else { _texture->renderFrame(getBoundingBox(), 0, 0); }
+	SDL_FRect renderRect;
+
+	renderRect.x = _position.getX();
+	renderRect.y = _position.getY();
+	renderRect.w = _texture->getFrameWidth();
+	renderRect.h = _texture->getFrameHeight();
+
+	if (_moving) { _texture->renderFrame(renderRect, 1, 0); }
+	else { _texture->renderFrame(renderRect, 0, 0); }
 }
 
 void Frog::move(){

@@ -22,10 +22,10 @@ int main(int argc, char* argv[])
         Game().run();
     }
     catch (std::string e) {
-        std::cout << e;
+        throw GameError(e);
     }
 	catch (...) {
-		std::cerr << "Caught and exception of unknown type ...";
+		throw GameError("Caught and exception of unknown type ...");
 	}
 
 	return 0;

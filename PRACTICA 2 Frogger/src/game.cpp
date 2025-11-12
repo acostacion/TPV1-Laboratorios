@@ -39,7 +39,7 @@ void Game::initGame(){
 		SDL_Init(SDL_INIT_VIDEO);
 	}
 	catch (...) {
-		throw "No se ha cargado SDL correctamente";
+		throw SDLError("No se ha cargado SDL correctamente ");
 	}
 
 	window = SDL_CreateWindow(WINDOW_TITLE,
@@ -48,13 +48,13 @@ void Game::initGame(){
 		0);
 
 	if (window == nullptr) {
-		throw std::string("window: ") + SDL_GetError();
+		throw SDLError("window: ");
 	}
 
 	renderer = SDL_CreateRenderer(window, nullptr);
 
 	if (renderer == nullptr) {
-		throw std::string("renderer: ") + SDL_GetError();
+		throw SDLError("renderer: ");
 	}
 
 	// Configura que se pueden utilizar capas translúcidas
@@ -70,7 +70,7 @@ void Game::initMap(){
 			textures[i] = new Texture(renderer, (std::string(imgBase) + name).c_str(), nrows, ncols);
 		}
 		catch (...) {
-			throw std::string("Error cargando textura ") + textureList[i].name;
+			throw FileNotFoundError("Error cargando textura " + (std::string)textureList[i].name);
 		}
 	}
 
@@ -80,7 +80,7 @@ void Game::initMap(){
 	std::ifstream file("../assets/maps/turtles.txt");
 
 	if (!file) {
-		throw std::string("No se ha encontrado fichero de mapa ") + MAP_FILE;
+		throw FileNotFoundError("No se ha encontrado fichero de mapa " + (std::string)MAP_FILE);
 	}
 	else {
 		char tipo;
@@ -95,7 +95,7 @@ void Game::initMap(){
 				default: getline(file, s); break; // salta linea.
 				}
 			}
-			catch (...) { throw std::string("Error en el formato del fichero de mapa ") + MAP_FILE; }
+			catch (...) { throw FileFormatError("Error en el formato del fichero de mapa " + (std::string)MAP_FILE); }
 		}
 	}
 	file.close();

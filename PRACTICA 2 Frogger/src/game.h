@@ -21,6 +21,10 @@
 #include "SceneObject.h"
 #include "Vector2D.h"
 #include "texture.h"
+#include "FileFormatError.h"
+#include "FileNotFoundError.h"
+#include "SDLError.h"
+#include "GameError.h"
 #include <random>
 
 using Anchor = std::list<SceneObject*>::iterator;
