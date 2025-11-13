@@ -75,7 +75,6 @@ void Game::initMap(){
 	_lives = 3;
 
 	std::ifstream file("../assets/maps/turtles.txt");
-
 	if (!file) {
 		throw FileNotFoundError("No se ha encontrado fichero de mapa " + (std::string)MAP_FILE);
 	}

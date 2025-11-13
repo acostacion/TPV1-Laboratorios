@@ -95,17 +95,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Crosser.cpp" />
-    <ClCompile Include="FileFormatError.cpp" />
-    <ClCompile Include="FileNotFoundError.cpp" />
     <ClCompile Include="Frog.cpp" />
     <ClCompile Include="game.cpp" />
-    <ClCompile Include="GameError.cpp" />
     <ClCompile Include="HomedFrog.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="SceneObject.cpp" />
-    <ClCompile Include="SDLError.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="TurtleGroup.cpp" />
     <ClCompile Include="Vehicle.cpp" />

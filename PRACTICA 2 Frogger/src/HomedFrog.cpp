@@ -1,5 +1,6 @@
 #include "HomedFrog.h"
 #include "game.h"
+#include <algorithm>
 
 HomedFrog::HomedFrog(Game* g, Point2D pos) : SceneObject(g, pos, g->getTexture(g->FROG)), _isVisible(false) {
 	updateRect();

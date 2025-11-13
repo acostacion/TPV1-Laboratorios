@@ -2,6 +2,7 @@
 #define TEXTURE_H
 
 #include <SDL3/SDL.h>
+#include "FileNotFoundError.h"
 
 /**
  * Object-oriented wrapper for SDL textures with frame support.

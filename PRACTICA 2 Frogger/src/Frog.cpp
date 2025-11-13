@@ -153,11 +153,9 @@ case SDL_EVENT_KEY_DOWN:
 		}
 	}  
 	break;  
-
 case SDL_EVENT_KEY_UP:  
 	_dir = Point2D(0, 0);  
 	break;  
-
 default:  
 	break;  
 }  
