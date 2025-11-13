@@ -1,8 +1,5 @@
 #include "game.h"
 
-
-
-
 // Constantes
 constexpr const char* const WINDOW_TITLE = "Frogger 1.0";
 constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
@@ -33,7 +30,7 @@ constexpr std::array<TextureSpec, Game::NUM_TEXTURES> textureList{
 	{"wasp.png"}
 };
 
-void Game::initGame(){
+void Game::initSDLWindow(){
 	// Carga SDL y sus bibliotecas auxiliares
 	try {
 		SDL_Init(SDL_INIT_VIDEO);
@@ -88,10 +85,13 @@ void Game::initMap(){
 			try {
 				std::string s;
 				switch (tipo) {
-				case 'V': objects.push_back(new Vehicle(file, this)); break;
-				case 'L': objects.push_back(new Log(file, this)); break;
-				case 'F': objects.push_back(new Frog(file, this)); break;
-				case 'T': objects.push_back(new TurtleGroup(file, this)); break;
+				case 'F':
+					_frog = new Frog(file, this);
+					objects.insert(objects.end(), _frog);
+					break;
+				case 'V': objects.insert(objects.end(), new Vehicle(file, this)); break;
+				case 'L':  objects.insert(objects.end(), new Log(file, this)); break;
+				case 'T':  objects.insert(objects.end(), new TurtleGroup(file, this)); break;
 				default: getline(file, s); break; // salta linea.
 				}
 			}
@@ -105,18 +105,20 @@ void Game::initMap(){
 	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < N_GOALS; i++) {
 		goalPositions.push_back(Point2D(32 + 96 * i, 38));
-		objects.push_back((new HomedFrog(this, goalPositions[i])));
+		objects.insert(objects.end(), new HomedFrog(this, goalPositions[i]));
 	}
 }
 
 Game::Game() : exit(false) {
-	initGame();
+	initSDLWindow();
 	initMap();
 }
 
 void Game::eraseGame() {
 	for (SceneObject* obj : objects) delete obj;
+	objects.clear();
 	for (Texture* t : textures) delete t;
+	_frog = nullptr;
 }
 
 Game::~Game(){
@@ -180,9 +182,6 @@ void Game::run() {
 		update();
 		render();
 		handleEvents();
-
-		
-
 		int endTime = SDL_GetTicks();
 
 		// siempre tardaria "game_delay" segundos independientemente de la velocidad que el bucle ppal vaya.
@@ -197,18 +196,20 @@ void Game::createMessageBox() {
 	};
 
 	const SDL_MessageBoxData messageboxdata = {
-		SDL_MESSAGEBOX_INFORMATION, /* .flags */
-		window, /* .window */
-		"Reinicio de partida", /* .title */
+		SDL_MESSAGEBOX_INFORMATION,		/* .flags */
+		window,									/* .window */
+		"Reinicio de partida",			/* .title */
 		"¿Desea reiniciar la partida?", /* .message */
-		SDL_arraysize(buttons), /* .numbuttons */
-		buttons, /* .buttons */
+		SDL_arraysize(buttons),		/* .numbuttons */
+		buttons,								/* .buttons */
 	};
 	int buttonid;
 	SDL_ShowMessageBox(&messageboxdata, &buttonid);
+
 	if (buttonid == 1){
 		eraseGame();
 		initMap();
+		run();
 	}
 	else {
 		run();
@@ -224,15 +225,7 @@ void Game::handleEvents() {
 		if (event.type == SDL_EVENT_QUIT)
 			exit = true;
 
-		for (SceneObject* obj : objects) {
-
-			// dynamic cast para ver si es una rana
-			// dynamic cast verifica en tiempo de ejecucion si el objeto es del tipo especificado, y si no devuelve nullptr.
-			Frog* f = dynamic_cast<Frog*>(obj);
-			if (f != nullptr) {
-				f->handleEvent(event);
-			}
-		}
+		_frog->handleEvent(event);
 
 		if (event.type == SDL_EVENT_KEY_DOWN) {
 			if (event.key.key == SDLK_0) {
@@ -242,8 +235,6 @@ void Game::handleEvents() {
 	}
 }
 
-
-//TODO guardar en variable la colision para no llamarlo dos veces.
 Collision Game::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;
 

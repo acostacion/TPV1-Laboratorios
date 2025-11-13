@@ -90,23 +90,18 @@ private:
 	bool exit;
 	int _lives;
 
-	// Elemento del juego
+	// Elementos del juego
 	Texture* _bg;
-
+	Frog* _frog;
 	std::list<SceneObject*> objects; 
-	std::vector<Anchor> toDelete; // lista de objetos a borrar
-	//std::vector<Vehicle*> vehicles;
-	//std::vector<Log*> logs;
-	//std::vector<Wasp*> wasps;
-	
-	//std::vector<HomedFrog*> homedFrogs;
-	//std::vector<TurtleGroup*> turtles;
-	//Frog* frog;
+
+	std::vector<Anchor> toDelete; // lista de objetos a borrar en deleteAfter
+
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
 	// auxiliares
-	void initGame();
+	void initSDLWindow();
 	void initMap();
 	void generateWasps();
 	void eraseGame();
@@ -125,11 +120,10 @@ public:
 	SDL_Renderer* getRenderer() { return renderer; }
 
 
-	Collision checkCollision(const SDL_FRect& rect); 
+	Collision checkCollision(const SDL_FRect& rect);
 
-	// TODO guarda un vector de iteradores para borrar POSTERIORMENTE
-	void deleteAfter(Anchor it) {
-		// TODO el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
+	//el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
+	void deleteAfter(Anchor it){
 		toDelete.push_back(it);
 	}
 

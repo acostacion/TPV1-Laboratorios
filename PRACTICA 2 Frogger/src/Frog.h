@@ -1,6 +1,5 @@
 #pragma once  
-#include "Vector2D.h"  
-#include "texture.h"  
+#include "Vector2D.h"   
 #include <fstream>
 #include <SDL3/SDL.h>
 #include "SceneObject.h"
@@ -13,11 +12,13 @@ public:
 	void render() const override;
 	void update() override;
 	void handleEvent(SDL_Event event);
+
 private:
-	
 	Point2D _dir;
 	Vector2D<float> _vel;
 	bool _moving;
+
+	int _animFrame;
 
 	// para que te teletransporte directamente al hacerte danio y no esperes a moverte.
 	bool _frogReset;
@@ -34,9 +35,6 @@ private:
 
 	Collision checkCollision(const SDL_FRect& r) override;
 	bool handleCollisions();
-
-	// baja una vida (no mas de 0)
-	
 
 	inline bool resetFrogPos() { 
 		_position = _initialPos; 

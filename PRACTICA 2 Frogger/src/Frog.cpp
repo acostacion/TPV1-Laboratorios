@@ -25,14 +25,15 @@ void Frog::render() const{
 	renderRect.w = _texture->getFrameWidth();
 	renderRect.h = _texture->getFrameHeight();
 
-	if (_moving) { _texture->renderFrame(renderRect, 1, 0); }
-	else { _texture->renderFrame(renderRect, 0, 0); }
+	
+	_texture->renderFrame(renderRect, 0, _animFrame); 
 }
 
 void Frog::move(){
 	if (canMove()){
 		Vector2D<float> floatPos = toFloat(_position) + _vel * toFloat(_dir);
 		_position = Point2D(floatPos.getX(), floatPos.getY());
+		_animFrame = (_animFrame + 1) % _texture->getNumColumns();
 		updateRect();
 	}
 }
@@ -120,12 +121,11 @@ void Frog::update(){
 }
 
 void Frog::handleEvent(SDL_Event event) {   
-switch (event.type)  
-{  
+switch (event.type) {  
 	//TODO hacer que mire hacia donde se mueve.
 case SDL_EVENT_KEY_DOWN:  
 	if (!event.key.repeat) // para que solo se mueva una vez por pulsada de tecla.
-	{  
+	{
 		switch (event.key.key)  
 		{  
 			case SDLK_W:
@@ -150,7 +150,7 @@ case SDL_EVENT_KEY_DOWN:
 				break;  
 			default:  
 				break;  
-		}  
+		}
 	}  
 	break;  
 

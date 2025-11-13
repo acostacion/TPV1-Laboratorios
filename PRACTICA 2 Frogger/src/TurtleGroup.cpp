@@ -13,6 +13,7 @@ void TurtleGroup::updateRect()
 	setBoundingBox(boundingBoxRect);
 }
 
+
 TurtleGroup::TurtleGroup(std::istream& file, Game* g)
 	: Platform(file, g) {
 	_nTurtles = _nTex;
@@ -40,18 +41,34 @@ void TurtleGroup::render() const {
 			_texture->getFrameWidth(),
 			_texture->getFrameHeight()
 		};
-		
-		int frame = 0;
-		if (_canDive) {
-			Uint32 time = SDL_GetTicks();
-			frame = (time / 250) % 7; // Cambia de frame cada 250 ms
-		}
-		
-		_texture->renderFrame(textureRect, 0,0);
+
+		_texture->renderFrame(textureRect, 0,_animFrame);
+	}
+}
+
+void TurtleGroup::animate(){
+	// Cambia de frame cada 250 ms
+	Uint32 time = SDL_GetTicks();
+	if (_canDive) {
+		_animFrame = (time / 250) % _texture->getNumColumns();
+	}
+	else {
+		_animFrame = (time / 250) % 3;
 	}
 }
 
 void TurtleGroup::update() {
+	animate();
 	updateRect();
 	Platform::update();
+}
+
+Collision TurtleGroup::checkCollision(const SDL_FRect& r) {
+	SDL_FRect box = getBoundingBox();
+	if (SDL_HasRectIntersectionFloat(&box, &r) && (_animFrame >= 0 && _animFrame <= 3)) { // si esta en los frames de idle...
+		return Collision{ _vel, PLATFORM };
+	}
+	else {
+		return Collision{ Vector2D<float>(0.0f, 0.0f), NONE };
+	}
 }

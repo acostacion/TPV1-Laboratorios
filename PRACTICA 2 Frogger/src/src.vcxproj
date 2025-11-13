@@ -100,7 +100,6 @@
     <ClCompile Include="Frog.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GameError.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="HomedFrog.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
