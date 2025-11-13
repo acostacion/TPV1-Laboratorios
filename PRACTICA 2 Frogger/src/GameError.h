@@ -6,7 +6,7 @@ class GameError: public std::logic_error
 {
 public:
 	GameError(const std::string& msg) : std::logic_error(msg) { message = msg; }
-	char const* what() const override {
+	inline char const* what() const override {
 		return message.c_str();
 	}
 protected:
