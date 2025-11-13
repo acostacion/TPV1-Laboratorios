@@ -146,7 +146,6 @@ void Game::generateWasps(){
 
 		// genera avispa con lifetime y pos.
 		Wasp* wasp = new Wasp(this, getRandomRange(5000, 10000), goalPositions[pos]);
-		objects.push_back(wasp);
 		Anchor a = objects.insert(objects.end(), wasp);
 
 		// esto accede al ultimo elemento pushbackeado en la lista.
@@ -164,6 +163,15 @@ void Game::update(){
 
 	for (SceneObject* obj : objects) obj->update();
 	generateWasps(); // genera wasps por tiempo.
+
+	for (Anchor it : toDelete) {
+		// elimina de la lista de sceneobjects y borra el objeto.
+		SceneObject* obj = *it;
+		objects.erase(it);
+		delete obj;
+	}
+	// limpia el vector auxiliar.
+	toDelete.clear();
 }
 
 void Game::run() {
@@ -173,14 +181,7 @@ void Game::run() {
 		render();
 		handleEvents();
 
-		for (Anchor it : toDelete) {
-			// elimina de la lista de sceneobjects y borra el objeto.
-			SceneObject* obj = *it;
-			objects.erase(it);
-			delete obj;
-		}
-		// limpia el vector auxiliar.
-		toDelete.clear();
+		
 
 		int endTime = SDL_GetTicks();
 
@@ -224,6 +225,7 @@ void Game::handleEvents() {
 			exit = true;
 
 		for (SceneObject* obj : objects) {
+
 			// dynamic cast para ver si es una rana
 			// dynamic cast verifica en tiempo de ejecucion si el objeto es del tipo especificado, y si no devuelve nullptr.
 			Frog* f = dynamic_cast<Frog*>(obj);
