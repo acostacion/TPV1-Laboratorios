@@ -161,7 +161,14 @@ void Game::generateWasps(){
 
 void Game::update(){
 	// victoria y derrota.
-	if (goalPositions.size() == 0 || _lives == 0) exit = true;
+	if (_lives == 0) {
+		std::cout << "Game Over!" << std::endl;
+		exit = true;
+	}
+	else if (goalPositions.size() == 0) {
+		std::cout << "You Win!" << std::endl;
+		exit = true;
+	}
 
 	for (SceneObject* obj : objects) obj->update();
 	generateWasps(); // genera wasps por tiempo.
