@@ -18,11 +18,12 @@ public:
 	// TODO ver que hay que aniadir.
 	virtual void addEventListener();
 	virtual void addObject();
-
+	Game* getGame() const { return _game; }
 protected:
-	Game* _game;
 	std::list<GameObject*> _gameObjects;
 	//list<EventHandler*> _handleEvents;
 	//list<DelayedCallback> _delayedCallbacks;
+private:
+	Game* _game;
 };
 

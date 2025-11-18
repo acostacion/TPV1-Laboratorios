@@ -1,6 +1,7 @@
 #pragma once
 
 class Game;
+class PlayState;
 class GameObject
 {
 public:
@@ -8,8 +9,10 @@ public:
 	virtual void render() const = 0;
 	virtual ~GameObject() = default;
 protected:
-	GameObject(Game* game) : _game(game) {}
+	GameObject(Game* game, PlayState* ps) : _game(game), _playState(ps) {}
 
 	Game* _game;
+	PlayState* _playState;
+
 };
 

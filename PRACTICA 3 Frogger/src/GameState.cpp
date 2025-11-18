@@ -1,5 +1,6 @@
 #include "GameState.h"
 #include "game.h"
+#include "PlayState.h"
 
 void GameState::render() const {
 	for (GameObject* obj : _gameObjects) {

@@ -26,6 +26,7 @@
 #include "SDLError.h"
 #include "GameError.h"
 #include <random>
+#include "gameStateMachine.h"
 
 // using Anchor = std::list<SceneObject*>::iterator; TODO ver donde esta
 
@@ -34,7 +35,8 @@ class Texture;
 /**
  * Clase principal del juego.
  */
-class Game{
+class Game: private GameStateMachine
+{
 public:
 	// Se actualiza el juego cada tantos milisegundos
 	static constexpr int FRAME_RATE = 30;
@@ -77,62 +79,29 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::array<Texture*, NUM_TEXTURES> textures;
-	std::mt19937 randomGenerator;
-
-
-	void render() const;
-	void update();
-	void handleEvents();
 
 	bool exit;
-	int _lives;
-
-	// Elementos del juego
-	Texture* _bg;
-	Frog* _frog;
-	std::list<SceneObject*> objects; 
-
-	std::vector<Anchor> toDelete; // lista de objetos a borrar en deleteAfter
-
-
-	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
 	// auxiliares
 	void initSDLWindow();
-	void initMap();
-	void generateWasps();
-	void eraseGame();
-	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(randomGenerator); }
-	void createMessageBox();
+	void initTextures();
 
 
 public:
-	std::vector<Point2D> goalPositions; // posiciones de los nidos
-
 	Game();
 	~Game();
 	void run(); // bucle principal del juego
+	void eraseGame();
+
 	 
 	Texture* getTexture(TextureName name) const; // Obtiene una textura por su nombre
 	SDL_Renderer* getRenderer() { return renderer; }
+	SDL_Window* getWindow() { return window; }
 
-
-	Collision checkCollision(const SDL_FRect& rect);
-
-	//el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
-	void deleteAfter(Anchor it){
-		toDelete.push_back(it);
-	}
-
-	inline void releaseLives() {
-		_lives--;
-		if (_lives <= 0) _lives = 0;
-	}
 };
 
 inline Texture*
 Game::getTexture(TextureName name) const { return textures[name]; }
-
 
 #endif // GAME_H
 

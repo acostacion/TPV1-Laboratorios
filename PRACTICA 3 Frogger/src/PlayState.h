@@ -42,6 +42,7 @@ private:
 
 	bool exit;
 	int _lives;
+	Game* _g;
 
 	// Elementos del juego
 	Texture* _bg;
