@@ -34,28 +34,27 @@ public:
 	static constexpr int N_GOALS = 5;
 
 private:
-	std::mt19937 randomGenerator;
+	std::mt19937 _randomGenerator;
 
-	void render() const override;
 	void update() override;
 	void handleEvent(const SDL_Event& event) override;
 
-	bool exit;
+	bool _exit;
 	int _lives;
 
 	// Elementos del juego
 	Texture* _bg;
 	Frog* _frog;
-	std::list<SceneObject*> objects; // Lista de los objetos en el propio juego.
-	std::vector<Anchor> toDelete; // lista de objetos a borrar en deleteAfter
+	std::list<SceneObject*> _sceneObjects; // Lista de los objetos en el propio juego.
+	std::vector<Anchor> _toDelete; // lista de objetos a borrar en deleteAfter
 
-	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
+	int _nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
 	// auxiliares
 	void initMap();
 	void generateWasps();
 	void eraseState();
-	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(randomGenerator); }
+	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(_randomGenerator); }
 	void createMessageBox();
 
 
@@ -69,7 +68,7 @@ public:
 
 	//el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
 	void deleteAfter(Anchor it) {
-		toDelete.push_back(it);
+		_toDelete.push_back(it);
 	}
 
 	inline void releaseLives() {

@@ -79,29 +79,28 @@ SDLApplication::SDLApplication() : exit(false) {
 	pushState(new PlayState(this));
 }
 
-void SDLApplication::eraseGame() {
+void SDLApplication::deleteTextures() {
 	for (Texture* t : textures) delete t;
 }
 
 SDLApplication::~SDLApplication(){
 	// Destruir la ventana SDL, renderer, SDLquit...
-	eraseGame();
+	deleteTextures();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
 
 void SDLApplication::run() {
-	while (!exit) {
+	while (!exit && !empty()) {
 		int startTime = SDL_GetTicks();
-		GameStateMachine::update();
-		GameStateMachine::render();
-		//GameStateMachine::handleEvent(const SDL_Event & event); TODO pasarle el evento ya veremos como
+		update();
+		render();
 		SDL_Event event;
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_EVENT_QUIT)
 				exit = true;
-			GameStateMachine::handleEvent(event);
+			handleEvent(event);
 		}
 
 		int endTime = SDL_GetTicks();
@@ -110,5 +109,6 @@ void SDLApplication::run() {
 		SDL_Delay(GAME_DELAY - (endTime-startTime)); 
 	}
 }
+
 
 

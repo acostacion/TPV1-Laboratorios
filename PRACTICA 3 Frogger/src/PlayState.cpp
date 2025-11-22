@@ -7,7 +7,7 @@ constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
 constexpr const char* const imgBase = "../assets/images/";
 
 void PlayState::initMap() {
-	_bg = _sdl->getTexture(SDLApplication::BACKGROUND);
+	_bg = getSDLApp()->getTexture(SDLApplication::BACKGROUND);
 	_lives = 3;
 
 	std::ifstream file("../assets/maps/turtles.txt");
@@ -16,18 +16,35 @@ void PlayState::initMap() {
 	}
 	else {
 		char tipo;
+		SceneObject* obj;
 		while (file >> tipo) {
 			try {
 				std::string s;
 				switch (tipo) {
 				case 'F':
-					_frog = new Frog(file, _sdl, this);
-					objects.insert(objects.end(), _frog);
+					_frog = new Frog(file, getSDLApp(), this);
+					_sceneObjects.insert(_sceneObjects.end(), _frog);
+					addObject(_frog);
 					addEventListener(_frog);
 					break;
-				case 'V': objects.insert(objects.end(), new Vehicle(file, _sdl, this)); break;
-				case 'L':  objects.insert(objects.end(), new Log(file, _sdl, this)); break;
-				case 'T':  objects.insert(objects.end(), new TurtleGroup(file, _sdl, this)); break;
+				case 'V':
+					obj = new Vehicle(file, getSDLApp(), this);
+					_sceneObjects.insert(_sceneObjects.end(), obj);
+					addObject(obj);
+					break;
+
+				case 'L':
+					obj = new Log(file, getSDLApp(), this);
+					_sceneObjects.insert(_sceneObjects.end(), obj);
+					addObject(obj);
+					break;
+
+				case 'T':
+					obj = new TurtleGroup(file, getSDLApp(), this);
+					_sceneObjects.insert(_sceneObjects.end(), obj);
+					addObject(obj);
+					break;
+
 				default: getline(file, s); break; // salta linea.
 				}
 			}
@@ -36,57 +53,49 @@ void PlayState::initMap() {
 	}
 	file.close();
 
-	nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
+	_nextWaspTime = getRandomRange(5000, 10000); // entre 5 y 10 segundos
 
 	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < N_GOALS; i++) {
 		goalPositions.push_back(Point2D(32 + 96 * i, 38));
-		objects.insert(objects.end(), new HomedFrog(_sdl,this, goalPositions[i]));
+		HomedFrog* hf = new HomedFrog(getSDLApp(), this, goalPositions[i]);
+		_sceneObjects.insert(_sceneObjects.end(), hf);
+		addObject(hf);
 	}
 }
 
 void PlayState::eraseState(){
-	for (SceneObject* obj : objects) delete obj;
-	objects.clear();
-	// TODO eliminar texturas en el game
-	_sdl->eraseGame();
+	//for (SceneObject* obj : _sceneObjects) delete obj;
+	_sceneObjects.clear();
+	getSDLApp()->deleteTextures();
 	_frog = nullptr;
 }
 
-PlayState::PlayState(SDLApplication* sdl) : GameState(sdl), exit(false) {
+PlayState::PlayState(SDLApplication* sdl) : GameState(sdl), _exit(false) {
 	initMap();
 }
 
 PlayState::~PlayState() {
 	eraseState();
-}
-
-void PlayState::render() const {
-	SDL_RenderClear(_sdl->getRenderer());
-
-	_bg->render();
-	for (SceneObject* obj : objects) {
-		obj->render();
-	}
-
-	SDL_RenderPresent(_sdl->getRenderer());
+	eraseObjects();
 }
 
 void PlayState::generateWasps() {
 	// si llega el momento de crear otra avispa...
-	if (SDL_GetTicks() >= nextWaspTime) {
+	if (SDL_GetTicks() >= _nextWaspTime) {
 		// elige entre las posiciones de spawn
 		int pos = getRandomRange(0, goalPositions.size() - 1);
 
 		// genera avispa con lifetime y pos.
-		Wasp* wasp = new Wasp(_sdl, this, getRandomRange(5000, 10000), goalPositions[pos]);
-		Anchor a = objects.insert(objects.end(), wasp);
+		Wasp* wasp = new Wasp(getSDLApp(), this, getRandomRange(5000, 10000), goalPositions[pos]);
+		Anchor a = _sceneObjects.insert(_sceneObjects.end(), wasp);
+		// TODO aniadir al otro vector.
 
 		// esto accede al ultimo elemento pushbackeado en la lista.
 		wasp->setAnchor(a);
 
 		// calcula la proxima vez que spawnee la avispa.
-		nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
+		_nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
 	}
 }
 
@@ -95,24 +104,24 @@ void PlayState::update() {
 	// victoria y derrota.
 	if (_lives == 0) {
 		std::cout << "Game Over!" << std::endl;
-		exit = true;
+		_exit = true;
 	}
 	else if (goalPositions.size() == 0) {
 		std::cout << "You Win!" << std::endl;
-		exit = true;
+		_exit = true;
 	}
 
-	for (SceneObject* obj : objects) obj->update();
+	for (SceneObject* obj : _sceneObjects) obj->update();
 	generateWasps(); // genera wasps por tiempo.
 
-	for (Anchor it : toDelete) {
+	for (Anchor it : _toDelete) {
 		// elimina de la lista de sceneobjects y borra el objeto.
 		SceneObject* obj = *it;
-		objects.erase(it);
+		_sceneObjects.erase(it);
 		delete obj;
 	}
 	// limpia el vector auxiliar.
-	toDelete.clear();
+	_toDelete.clear();
 }
 
 
@@ -124,7 +133,7 @@ void PlayState::createMessageBox() {
 
 	const SDL_MessageBoxData messageboxdata = {
 		SDL_MESSAGEBOX_INFORMATION,		/* .flags */
-		_sdl->getWindow(),									/* .window */
+		getSDLApp()->getWindow(),									/* .window */
 		"Reinicio de partida",			/* .title */
 		"¿Desea reiniciar la partida?", /* .message */
 		SDL_arraysize(buttons),		/* .numbuttons */
@@ -135,11 +144,12 @@ void PlayState::createMessageBox() {
 
 	if (buttonid == 1) {
 		eraseState();
+		eraseObjects();
 		initMap();
-		_sdl->run();
+		getSDLApp()->run();
 	}
 	else {
-		_sdl->run();
+		getSDLApp()->run();
 	}
 
 }
@@ -150,11 +160,11 @@ void PlayState::handleEvent(const SDL_Event& event) {
 		//_frog->handleEvent(event);
 	GameState::handleEvent(event);
 
-		if (event.type == SDL_EVENT_KEY_DOWN) {
-			if (event.key.key == SDLK_0) {
-				createMessageBox();
-			}
+	if (event.type == SDL_EVENT_KEY_DOWN) {
+		if (event.key.key == SDLK_0) {
+			createMessageBox();
 		}
+	}
 }
 
 
@@ -166,8 +176,8 @@ Collision PlayState::checkCollision(const SDL_FRect& rect) {
 	bool col = false;
 
 	// estructura de busqueda en una lista enlazada con iteradores.
-	Anchor it = objects.begin();
-	while (it != objects.end() && !col) {
+	Anchor it = _sceneObjects.begin();
+	while (it != _sceneObjects.end() && !col) {
 		SceneObject* obj = *it;
 		returnCol = obj->checkCollision(rect);
 

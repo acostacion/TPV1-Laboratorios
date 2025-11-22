@@ -91,12 +91,12 @@ public:
 	SDLApplication();
 	~SDLApplication();
 	void run(); // bucle principal del juego
-	void eraseGame();
+	void deleteTextures();
 
 	 
 	Texture* getTexture(TextureName name) const; // Obtiene una textura por su nombre
-	SDL_Renderer* getRenderer() { return renderer; }
-	SDL_Window* getWindow() { return window; }
+	SDL_Renderer* getRenderer() const { return renderer; }
+	SDL_Window* getWindow() const { return window; }
 
 };
 
