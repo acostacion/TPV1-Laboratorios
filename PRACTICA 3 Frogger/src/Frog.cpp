@@ -1,8 +1,9 @@
 #include "Frog.h"
-#include "game.h"
+#include "PlayState.h"
+#include "SDLApplication.h"
 
-Frog::Frog(std::istream& file, Game* g)
-	: SceneObject(g, Point2D(0.0f, 0.0f), g->getTexture(Game::FROG)), _moving(false), _frogReset(false) {
+Frog::Frog(std::istream& file, SDLApplication* sdl, PlayState* ps)
+	: SceneObject(sdl, ps, Point2D(0.0f, 0.0f), sdl->getTexture(SDLApplication::FROG)), _moving(false), _frogReset(false) {
 
 	// posicion 
 	int posx, posy;
@@ -11,7 +12,7 @@ Frog::Frog(std::istream& file, Game* g)
 	_initialPos = _position;
 
 	// velocidad.
-	_vel.set(_game->TILE_SIZE);
+	_vel.set(SDLApplication::TILE_SIZE);
 
 	updateRect();
 }
@@ -44,10 +45,10 @@ bool Frog::canMove(){
 	Vector2D<float> floatPos = toFloat(_position) + _vel * toFloat(_dir);
 
 	// no te permite salir de la ventana.
-	return (floatPos.getY() < _game->WINDOW_HEIGHT-_game->TILE_SIZE ) // ABAJO
+	return (floatPos.getY() < SDLApplication::WINDOW_HEIGHT - SDLApplication::TILE_SIZE ) // ABAJO
 		&& (floatPos.getY() > 0)		                              // ARRIBA
 		&& (floatPos.getX() > 0)									  // IZQUIERDA
-		&& (floatPos.getX() < _game->WINDOW_WIDTH- _game->TILE_SIZE); // DERECHA
+		&& (floatPos.getX() < SDLApplication::WINDOW_WIDTH - SDLApplication::TILE_SIZE); // DERECHA
 }
 
 Vector2D<float> Frog::toFloat(Point2D p) const{
@@ -72,25 +73,25 @@ Collision Frog::checkCollision(const SDL_FRect& r)
 bool Frog::handleCollisions()
 {
 	bool hasCol = false;
-	Collision col = _game->checkCollision(getBoundingBox());
+	Collision col = _playState->checkCollision(getBoundingBox());
 
 	if (col.t == ENEMY) {
 		hasCol = true;
 		_frogReset = resetFrogPos();
-		_game->releaseLives();
+		_playState->releaseLives();
 	}
 	else if (col.t == PLATFORM) {
 		hasCol = true;
 
 		// al colisionar con una plataforma te mueve con ella
-		Vector2D<float> floatPos = toFloat(_position) + col.vel / _game->FRAME_RATE;
+		Vector2D<float> floatPos = toFloat(_position) + col.vel / SDLApplication::FRAME_RATE;
 		_position = Point2D(floatPos.getX(), floatPos.getY());
 
 		// si la plataforma te saca del mapa, te hace danio.
 		if (!canMove()) {
 			hasCol = true;
 			_frogReset = resetFrogPos();
-			_game->releaseLives();
+			_playState->releaseLives();
 		}
 	}
 	else if (col.t == HOME) {
@@ -99,10 +100,10 @@ bool Frog::handleCollisions()
 	}
 	else if (col.t != PLATFORM) {
 		// si no es platform y le pilla donde el rio es que se ha caido al rio y le hace danio.
-		if (_position.getY() <= _game->RIVER_LOW - 10) {
+		if (_position.getY() <= SDLApplication::RIVER_LOW - 10) {
 			hasCol = true;
 			_frogReset = resetFrogPos();
-			_game->releaseLives();
+			_playState->releaseLives();
 		}
 	}
 

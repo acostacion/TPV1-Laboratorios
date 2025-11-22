@@ -1,7 +1,8 @@
 #include "Wasp.h"
-#include "game.h"
+#include "PlayState.h"
+#include "SDLApplication.h"
 
-Wasp::Wasp(Game* g, int lifeTime, Point2D pos) : SceneObject(g, pos, g->getTexture(g->WASP)) , MAX_LIFE_TIME(lifeTime), _vel(Vector2D<float>(0.0f, 0.0f)){
+Wasp::Wasp(SDLApplication* sdl, PlayState* ps, int lifeTime, Point2D pos) : SceneObject(sdl, ps, pos, sdl->getTexture(SDLApplication::WASP)), MAX_LIFE_TIME(lifeTime), _vel(Vector2D<float>(0.0f, 0.0f)){
 	updateRect();
 
 	// sdl_getticks es el tiempo que lleva la ventana sdl abierta.
@@ -25,7 +26,7 @@ void Wasp::update() {
 	updateRect();
 
 	if (!isAlive()) {
-		_game->deleteAfter(_anchor);
+		_playState->deleteAfter(_anchor);
 	}
 }
 

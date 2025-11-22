@@ -6,11 +6,12 @@
 #include "SceneObject.h"
 
 using Anchor = std::list<SceneObject*>::iterator;
-class Game;
+class PlayState;
+class SDLApplication;
 
 class Wasp : public SceneObject{
 public:
-	Wasp(Game* g, int lifeTime, Point2D pos);
+	Wasp(SDLApplication* sdl, PlayState* ps, int lifeTime, Point2D pos);
 	inline void setAnchor(Anchor a) { _anchor = a; }
 
 	void render() const override;

@@ -1,10 +1,11 @@
 #pragma once
 #include "Platform.h"
 
-class Game;
+class SDLApplication;
+class PlayState;
 
 class Log : public Platform {
 public:
-	Log(std::istream& file, Game* g);
+	Log(std::istream& file, SDLApplication* sdl, PlayState* ps);
 };
 

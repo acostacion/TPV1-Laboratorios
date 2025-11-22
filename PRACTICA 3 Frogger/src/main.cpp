@@ -8,7 +8,7 @@
 
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
-#include "game.h"
+#include "SDLApplication.h"
 
 using uint = unsigned int; // alias para el tipo unsigned int
 
@@ -19,7 +19,7 @@ constexpr uint WIN_HEIGHT = 600;
 int main(int argc, char* argv[])
 {
     try {
-        Game().run();
+        SDLApplication().run();
     }
     catch (std::string e) {
         throw GameError(e);

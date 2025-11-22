@@ -1,5 +1,5 @@
 #include "GameState.h"
-#include "game.h"
+#include "SDLApplication.h"
 #include "PlayState.h"
 
 void GameState::render() const {
@@ -14,6 +14,6 @@ void GameState::update() {
 	}
 }
 
-void GameState::handleEvent(const SDL_Event& event) {
-	// TODO hacer con eventhandler.
-}
+//void GameState::handleEvent(const SDL_Event& event) {
+//	// TODO hacer con eventhandler.
+//}

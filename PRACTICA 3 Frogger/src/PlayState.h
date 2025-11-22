@@ -26,7 +26,7 @@
 #include "GameState.h"
 #include <random>
 
-class Game;
+class SDLApplication;
 // using Anchor = std::list<SceneObject*>::iterator; TODO ver donde esta
 class PlayState : public GameState{
 public:
@@ -38,11 +38,10 @@ private:
 
 	void render() const override;
 	void update() override;
-	void handleEvent(const SDL_Event& event) override;
+	//void handleEvent(const SDL_Event& event) override;
 
 	bool exit;
 	int _lives;
-	Game* _g;
 
 	// Elementos del juego
 	Texture* _bg;
@@ -65,7 +64,7 @@ private:
 public:
 	std::vector<Point2D> goalPositions; // posiciones de los nidos
 
-	PlayState();
+	PlayState(SDLApplication* sdl);
 	~PlayState();
 
 	Collision checkCollision(const SDL_FRect& rect);

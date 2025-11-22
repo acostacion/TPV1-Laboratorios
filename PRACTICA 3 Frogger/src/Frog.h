@@ -4,11 +4,12 @@
 #include <SDL3/SDL.h>
 #include "SceneObject.h"
 
-class Game;
+class PlayState;
+class SDLApplication;
 
 class Frog : public SceneObject {
 public:
-	Frog(std::istream& file, Game* g);
+	Frog(std::istream& file, SDLApplication* sdl, PlayState* ps);
 	void render() const override;
 	void update() override;
 	void handleEvent(SDL_Event event);

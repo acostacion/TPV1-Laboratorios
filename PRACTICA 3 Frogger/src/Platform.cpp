@@ -1,16 +1,17 @@
 #include "Platform.h"
-#include "game.h"
+#include "SDLApplication.h"
+#include "PlayState.h"
 
-Platform::Platform(std::istream& file, Game* g) : Crosser(file, g) {}
+Platform::Platform(std::istream& file, SDLApplication* sdl, PlayState* ps) : Crosser(file, sdl, ps) {}
 
 void Platform::update() {
 	// si se sale por la izquierda (tenemos en cuenta la longitud del tronco)
-	if (_position.getX() < -_game->OUT_OF_WINDOW - _texture->getFrameWidth()) {
-		_position.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // ponemos a la derecha
+	if (_position.getX() < -SDLApplication::OUT_OF_WINDOW - _texture->getFrameWidth()) {
+		_position.setX(SDLApplication::WINDOW_WIDTH + SDLApplication::OUT_OF_WINDOW); // ponemos a la derecha
 	}
 	// si se sale por la derecha (tenemos en cuenta la longitud del tronco)
-	else if (_position.getX() > _game->WINDOW_WIDTH + _game->OUT_OF_WINDOW) {
-		_position.setX(-_game->OUT_OF_WINDOW); // ponemos a la izquierda
+	else if (_position.getX() > SDLApplication::WINDOW_WIDTH + SDLApplication::OUT_OF_WINDOW) {
+		_position.setX(-SDLApplication::OUT_OF_WINDOW); // ponemos a la izquierda
 	}
 
 	Crosser::update();

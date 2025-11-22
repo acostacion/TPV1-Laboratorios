@@ -4,11 +4,12 @@
 #include "Collision.h"
 #include "SceneObject.h"
 
-class Game;
+class PlayState;
+class SDLApplication;
 
 class HomedFrog : public SceneObject {
 public:
-	HomedFrog(Game* g, Point2D pos);
+	HomedFrog(SDLApplication* sdl, PlayState* ps, Point2D pos);
 
 	void render() const override;
 	void update() override;

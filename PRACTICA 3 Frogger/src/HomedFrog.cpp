@@ -1,8 +1,9 @@
 #include "HomedFrog.h"
-#include "game.h"
+#include "PlayState.h"
+#include "SDLApplication.h"
 #include <algorithm>
 
-HomedFrog::HomedFrog(Game* g, Point2D pos) : SceneObject(g, pos, g->getTexture(g->FROG)), _isVisible(false) {
+HomedFrog::HomedFrog(SDLApplication* sdl, PlayState* ps, Point2D pos) : SceneObject(sdl, ps, pos, sdl->getTexture(SDLApplication::FROG)), _isVisible(false) {
 	updateRect();
 
 	// la posicion menos su tamanio /2
@@ -31,7 +32,7 @@ Collision HomedFrog::checkCollision(const SDL_FRect& r) {
 		else {
 			// elimina del vector la posicion del nido alcanzado.
 			_isVisible = true;
-			_game->goalPositions.erase(std::find(_game->goalPositions.begin(), _game->goalPositions.end(), findGoalPosition()));
+			_playState->goalPositions.erase(std::find(_playState->goalPositions.begin(), _playState->goalPositions.end(), findGoalPosition()));
 			return Collision{ Vector2D<float>(0.0f, 0.0f), HOME };
 		}
 	}
@@ -45,11 +46,11 @@ Point2D HomedFrog::findGoalPosition() {
 
 	int i = 0;
 	bool foundPos = false;
-	while (i < _game->goalPositions.size() && !foundPos) {
+	while (i < _playState->goalPositions.size() && !foundPos) {
 		// con la getX nos valdria.
-		if (_game->goalPositions[i].getX() == (_position.getX() + _texture->getFrameWidth() / 2)) {
+		if (_playState->goalPositions[i].getX() == (_position.getX() + _texture->getFrameWidth() / 2)) {
 			foundPos = true;
-			returnPos = _game->goalPositions[i];
+			returnPos = _playState->goalPositions[i];
 		}
 		i++;
 	}

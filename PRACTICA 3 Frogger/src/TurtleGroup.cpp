@@ -1,5 +1,6 @@
 #include "TurtleGroup.h"
-#include "game.h"
+#include "SDLApplication.h"
+#include "PlayState.h"
 
 
 void TurtleGroup::updateRect()
@@ -14,8 +15,8 @@ void TurtleGroup::updateRect()
 }
 
 
-TurtleGroup::TurtleGroup(std::istream& file, Game* g)
-	: Platform(file, g) {
+TurtleGroup::TurtleGroup(std::istream& file, SDLApplication* sdl, PlayState* ps)
+	: Platform(file, sdl, ps) {
 	_nTurtles = _nTex;
 	int dive;
 	file >> dive;
@@ -27,7 +28,7 @@ TurtleGroup::TurtleGroup(std::istream& file, Game* g)
 		_canDive = false;
 	}
 
-	_texture = g->getTexture(g->TURTLE);
+	_texture = _sdlApp->getTexture(SDLApplication::TURTLE);
 
 	updateRect();
 }

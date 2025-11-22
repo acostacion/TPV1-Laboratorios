@@ -1,24 +1,25 @@
 #include "Vehicle.h"
-#include "game.h"
+#include "SDLApplication.h"
+#include "PlayState.h"
 
 
-Vehicle::Vehicle(std::istream& file, Game* g) : Crosser(file, g) {
-	Game::TextureName texName;
+Vehicle::Vehicle(std::istream& file, SDLApplication* sdl, PlayState* ps) : Crosser(file, sdl, ps) {
+	SDLApplication::TextureName texName;
 	switch (_nTex) {
-	case 1: texName = _game->CAR1;
+	case 1: texName = SDLApplication::CAR1;
 		break;
-	case 2:	texName = _game->CAR2;
+	case 2:	texName = SDLApplication::CAR2;
 		break;
-	case 3: texName = _game->CAR3;
+	case 3: texName = SDLApplication::CAR3;
 		break;
-	case 4: texName = _game->CAR4;
+	case 4: texName = SDLApplication::CAR4;
 		break;
-	case 5: texName = _game->CAR5;
+	case 5: texName = SDLApplication::CAR5;
 		break;
 	default: break;
 	}
 
-	_texture = _game->getTexture(texName);
+	_texture = _sdlApp->getTexture(texName);
 
 	updateRect();
 }
@@ -26,12 +27,12 @@ Vehicle::Vehicle(std::istream& file, Game* g) : Crosser(file, g) {
 void Vehicle::update() { // Revisar cuando se sale
 	
 	// si se sale por la izquierda
-	if (_position.getX() < -_game->OUT_OF_WINDOW) {
-		_position.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // lo pone en la derecha.
+	if (_position.getX() < - SDLApplication::OUT_OF_WINDOW) {
+		_position.setX(SDLApplication::WINDOW_WIDTH + SDLApplication::OUT_OF_WINDOW); // lo pone en la derecha.
 	}
 	// si se sale por la derecha.
-	else if (_position.getX() > _game->WINDOW_WIDTH + _game->OUT_OF_WINDOW) {
-		_position.setX(-_game->OUT_OF_WINDOW); // lo pone en la izquierda.
+	else if (_position.getX() > SDLApplication::WINDOW_WIDTH + SDLApplication::OUT_OF_WINDOW) {
+		_position.setX(-SDLApplication::OUT_OF_WINDOW); // lo pone en la izquierda.
 	}
 
 	Crosser::update();

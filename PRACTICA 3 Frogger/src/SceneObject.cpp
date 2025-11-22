@@ -1,7 +1,9 @@
 #include "SceneObject.h"
+#include "PlayState.h"
+#include "SDLApplication.h"
 
-SceneObject::SceneObject(Game* game, const Point2D& position, Texture* texture)
-	: GameObject(game), _position(position), _texture(texture) {}
+SceneObject::SceneObject(SDLApplication* sdl, PlayState* ps, const Point2D& position, Texture* texture)
+	: GameObject(sdl), _playState(ps), _position(position), _texture(texture) {}
 
 void SceneObject::render() const
 {

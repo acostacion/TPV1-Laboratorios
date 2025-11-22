@@ -4,26 +4,25 @@
 //#include "EventHandler.h"
 //#include "DelayedCallback.h"
 #include "SDL3/SDL_events.h"
-class Game;
+class SDLApplication;
 
 class GameState
 { 
 public:
-	GameState();
+	GameState(SDLApplication* sdl) : _sdl(sdl) {}
 	virtual ~GameState() = default;
 	virtual void render() const;
 	virtual void update();
-	virtual void handleEvent(const SDL_Event& event);
+	//virtual void handleEvent(const SDL_Event& event);
 
 	// TODO ver que hay que aniadir.
-	virtual void addEventListener();
-	virtual void addObject();
-	Game* getGame() const { return _game; }
+	//virtual void addEventListener();
+	//virtual void addObject();
+	SDLApplication* getSDLApp() const { return _sdl; }
 protected:
+	SDLApplication* _sdl;
 	std::list<GameObject*> _gameObjects;
 	//list<EventHandler*> _handleEvents;
 	//list<DelayedCallback> _delayedCallbacks;
-private:
-	Game* _game;
 };
 

@@ -1,5 +1,5 @@
 #include "PlayState.h"
-#include "game.h"
+#include "SDLApplication.h"
 
 // Constantes
 constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
@@ -7,7 +7,7 @@ constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
 constexpr const char* const imgBase = "../assets/images/";
 
 void PlayState::initMap() {
-	_bg = _g->getTexture(_g->BACKGROUND);
+	_bg = _sdl->getTexture(SDLApplication::BACKGROUND);
 	_lives = 3;
 
 	std::ifstream file("../assets/maps/turtles.txt");
@@ -21,12 +21,12 @@ void PlayState::initMap() {
 				std::string s;
 				switch (tipo) {
 				case 'F':
-					_frog = new Frog(file, _g);
+					_frog = new Frog(file, _sdl, this);
 					objects.insert(objects.end(), _frog);
 					break;
-				case 'V': objects.insert(objects.end(), new Vehicle(file, _g)); break;
-				case 'L':  objects.insert(objects.end(), new Log(file, _g)); break;
-				case 'T':  objects.insert(objects.end(), new TurtleGroup(file, _g)); break;
+				case 'V': objects.insert(objects.end(), new Vehicle(file, _sdl, this)); break;
+				case 'L':  objects.insert(objects.end(), new Log(file, _sdl, this)); break;
+				case 'T':  objects.insert(objects.end(), new TurtleGroup(file, _sdl, this)); break;
 				default: getline(file, s); break; // salta linea.
 				}
 			}
@@ -40,7 +40,7 @@ void PlayState::initMap() {
 	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < N_GOALS; i++) {
 		goalPositions.push_back(Point2D(32 + 96 * i, 38));
-		objects.insert(objects.end(), new HomedFrog(_g, goalPositions[i]));
+		objects.insert(objects.end(), new HomedFrog(_sdl,this, goalPositions[i]));
 	}
 }
 
@@ -48,11 +48,11 @@ void PlayState::eraseState(){
 	for (SceneObject* obj : objects) delete obj;
 	objects.clear();
 	// TODO eliminar texturas en el game
-	_g->eraseGame();
+	_sdl->eraseGame();
 	_frog = nullptr;
 }
 
-PlayState::PlayState() : exit(false), _g(getGame()) {
+PlayState::PlayState(SDLApplication* sdl) : GameState(sdl), exit(false) {
 	initMap();
 }
 
@@ -61,14 +61,14 @@ PlayState::~PlayState() {
 }
 
 void PlayState::render() const {
-	SDL_RenderClear(_g->getRenderer());
+	SDL_RenderClear(_sdl->getRenderer());
 
 	_bg->render();
 	for (SceneObject* obj : objects) {
 		obj->render();
 	}
 
-	SDL_RenderPresent(_g->getRenderer());
+	SDL_RenderPresent(_sdl->getRenderer());
 }
 
 void PlayState::generateWasps() {
@@ -78,7 +78,7 @@ void PlayState::generateWasps() {
 		int pos = getRandomRange(0, goalPositions.size() - 1);
 
 		// genera avispa con lifetime y pos.
-		Wasp* wasp = new Wasp(_g, getRandomRange(5000, 10000), goalPositions[pos]);
+		Wasp* wasp = new Wasp(_sdl, this, getRandomRange(5000, 10000), goalPositions[pos]);
 		Anchor a = objects.insert(objects.end(), wasp);
 
 		// esto accede al ultimo elemento pushbackeado en la lista.
@@ -123,7 +123,7 @@ void PlayState::createMessageBox() {
 
 	const SDL_MessageBoxData messageboxdata = {
 		SDL_MESSAGEBOX_INFORMATION,		/* .flags */
-		_g->getWindow(),									/* .window */
+		_sdl->getWindow(),									/* .window */
 		"Reinicio de partida",			/* .title */
 		"¿Desea reiniciar la partida?", /* .message */
 		SDL_arraysize(buttons),		/* .numbuttons */
@@ -135,10 +135,10 @@ void PlayState::createMessageBox() {
 	if (buttonid == 1) {
 		eraseState();
 		initMap();
-		_g->run();
+		_sdl->run();
 	}
 	else {
-		_g->run();
+		_sdl->run();
 	}
 
 }
