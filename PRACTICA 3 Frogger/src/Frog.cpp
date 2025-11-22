@@ -121,7 +121,7 @@ void Frog::update(){
 	}
 }
 
-void Frog::handleEvent(SDL_Event event) {   
+void Frog::handleEvent(const SDL_Event& event) {
 switch (event.type) {  
 	//TODO hacer que mire hacia donde se mueve.
 case SDL_EVENT_KEY_DOWN:  

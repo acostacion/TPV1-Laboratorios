@@ -38,7 +38,7 @@ private:
 
 	void render() const override;
 	void update() override;
-	//void handleEvent(const SDL_Event& event) override;
+	void handleEvent(const SDL_Event& event) override;
 
 	bool exit;
 	int _lives;
@@ -46,10 +46,8 @@ private:
 	// Elementos del juego
 	Texture* _bg;
 	Frog* _frog;
-	std::list<SceneObject*> objects;
-
+	std::list<SceneObject*> objects; // Lista de los objetos en el propio juego.
 	std::vector<Anchor> toDelete; // lista de objetos a borrar en deleteAfter
-
 
 	int nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 

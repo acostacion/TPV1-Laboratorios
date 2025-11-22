@@ -3,16 +3,17 @@
 #include <fstream>
 #include <SDL3/SDL.h>
 #include "SceneObject.h"
+#include "EventHandler.h"
 
 class PlayState;
 class SDLApplication;
 
-class Frog : public SceneObject {
+class Frog : public SceneObject, public EventHandler {
 public:
 	Frog(std::istream& file, SDLApplication* sdl, PlayState* ps);
 	void render() const override;
 	void update() override;
-	void handleEvent(SDL_Event event);
+	void handleEvent(const SDL_Event& event) override;
 
 private:
 	Point2D _dir;

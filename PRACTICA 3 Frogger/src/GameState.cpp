@@ -14,6 +14,9 @@ void GameState::update() {
 	}
 }
 
-//void GameState::handleEvent(const SDL_Event& event) {
-//	// TODO hacer con eventhandler.
-//}
+void GameState::handleEvent(const SDL_Event& event) {
+	// TODO hacer con eventhandler.
+	for (EventHandler* handler : _handleEvents) {
+		handler->handleEvent(event);
+	}
+}

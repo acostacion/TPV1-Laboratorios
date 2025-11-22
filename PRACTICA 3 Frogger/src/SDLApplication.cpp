@@ -97,6 +97,13 @@ void SDLApplication::run() {
 		GameStateMachine::update();
 		GameStateMachine::render();
 		//GameStateMachine::handleEvent(const SDL_Event & event); TODO pasarle el evento ya veremos como
+		SDL_Event event;
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_EVENT_QUIT)
+				exit = true;
+			GameStateMachine::handleEvent(event);
+		}
+
 		int endTime = SDL_GetTicks();
 
 		// siempre tardaria "game_delay" segundos independientemente de la velocidad que el bucle ppal vaya.

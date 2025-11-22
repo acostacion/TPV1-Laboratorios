@@ -23,6 +23,7 @@ void PlayState::initMap() {
 				case 'F':
 					_frog = new Frog(file, _sdl, this);
 					objects.insert(objects.end(), _frog);
+					addEventListener(_frog);
 					break;
 				case 'V': objects.insert(objects.end(), new Vehicle(file, _sdl, this)); break;
 				case 'L':  objects.insert(objects.end(), new Log(file, _sdl, this)); break;
@@ -143,26 +144,21 @@ void PlayState::createMessageBox() {
 
 }
 
-/*
-void Game::handleEvents() {
-	SDL_Event event;
 
+void PlayState::handleEvent(const SDL_Event& event) {
 	// Only quit is handled directly, everything else is delegated
-	while (SDL_PollEvent(&event)) {
-		if (event.type == SDL_EVENT_QUIT)
-			exit = true;
-
-		_frog->handleEvent(event);
+		//_frog->handleEvent(event);
+	GameState::handleEvent(event);
 
 		if (event.type == SDL_EVENT_KEY_DOWN) {
 			if (event.key.key == SDLK_0) {
 				createMessageBox();
 			}
 		}
-	}
 }
 
-*/
+
+
 Collision PlayState::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;
 

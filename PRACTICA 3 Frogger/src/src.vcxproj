@@ -94,7 +94,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="Crosser.cpp" />
+    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="Frog.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameState.cpp" />
@@ -111,11 +113,14 @@
     <ClCompile Include="Wasp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Crosser.h" />
+    <ClInclude Include="EventHandler.h" />
     <ClInclude Include="FileFormatError.h" />
     <ClInclude Include="FileNotFoundError.h" />
     <ClInclude Include="Frog.h" />
+    <ClInclude Include="Label.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="GameError.h" />
     <ClInclude Include="GameObject.h" />
