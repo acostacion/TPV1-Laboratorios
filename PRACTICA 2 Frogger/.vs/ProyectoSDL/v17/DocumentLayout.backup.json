@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\game.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\src\\GameError.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{54D9697F-F768-4D8F-A8D4-B48FCF35917B}|src\\src.vcxproj|solutionrelative:src\\GameError.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -19,12 +23,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "game.cpp",
+              "DocumentMoniker": "C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\src\\game.cpp",
+              "RelativeDocumentMoniker": "src\\game.cpp",
+              "ToolTip": "C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\src\\game.cpp",
+              "RelativeToolTip": "src\\game.cpp",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAE8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-22T08:05:44.259Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "GameError.h",
               "DocumentMoniker": "C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\src\\GameError.h",
               "RelativeDocumentMoniker": "src\\GameError.h",
               "ToolTip": "C:\\Users\\Diego\\Desktop\\Unity Projects\\TPV1-Laboratorios\\PRACTICA 2 Frogger\\src\\GameError.h",
               "RelativeToolTip": "src\\GameError.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-13T10:37:59.597Z",
               "EditorCaption": ""
