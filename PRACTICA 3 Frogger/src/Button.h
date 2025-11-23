@@ -13,7 +13,7 @@ using SDLEventCallback = std::function<void()>; // Define SDLEventCallback
 class Button : public Label, public EventHandler  
 {  
 public:  
-	Button(SDLApplication* sdl, const Point2D& position, Texture* texture) : Label(sdl, position, texture) {}  
+	Button(SDLApplication* sdl, const Point2D& position, Texture* texture);
 
 	virtual ~Button() override = default;  
 	void render() const override;
@@ -25,4 +25,12 @@ public:
 private:  
 	std::list<SDLEventCallback> callbacks; 
 	Vector2D<float> _mousePos;
+
+	enum mouseState {
+		MOUSE_OUT = 0,
+		MOUSE_OVER = 1
+	};
+	int _mouseState = MOUSE_OUT;
+	SDL_Rect rect;
+	SDL_Point point;
 };

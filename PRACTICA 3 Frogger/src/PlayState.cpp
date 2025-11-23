@@ -2,17 +2,17 @@
 #include "SDLApplication.h"
 
 // Constantes
-constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
+constexpr const char* const MAP_ROUTE = "../assets/maps/";
 
 constexpr const char* const imgBase = "../assets/images/";
 
-void PlayState::initMap() {
+void PlayState::initMap(std::string f) {
 	_bg = getSDLApp()->getTexture(SDLApplication::BACKGROUND);
 	_lives = 3;
 
-	std::ifstream file(MAP_FILE);
+	std::ifstream file(_mapFile);
 	if (!file) {
-		throw FileNotFoundError("No se ha encontrado fichero de mapa " + (std::string)MAP_FILE);
+		throw FileNotFoundError("No se ha encontrado fichero de mapa " + _mapFile);
 	}
 	else {
 		char tipo;
@@ -48,7 +48,7 @@ void PlayState::initMap() {
 				default: getline(file, s); break; // salta linea.
 				}
 			}
-			catch (...) { throw FileFormatError("Error en el formato del fichero de mapa " + (std::string)MAP_FILE); }
+			catch (...) { throw FileFormatError("Error en el formato del fichero de mapa " + _mapFile); }
 		}
 	}
 	file.close();
@@ -72,8 +72,9 @@ void PlayState::eraseState(){
 	//_frog = nullptr;
 }
 
-PlayState::PlayState(SDLApplication* sdl) : GameState(sdl), _exit(false) {
-	initMap();
+PlayState::PlayState(SDLApplication* sdl, std::string file) : GameState(sdl), _exit(false) {
+	_mapFile = MAP_ROUTE + file + ".txt";
+	initMap(_mapFile);
 }
 
 PlayState::~PlayState() {
@@ -154,7 +155,7 @@ void PlayState::createMessageBox() {
 		eraseState();
 		eraseHandlers();
 		eraseObjects();
-		initMap();
+		initMap(_mapFile);
 		getSDLApp()->initTextures();
 		getSDLApp()->run();
 	}

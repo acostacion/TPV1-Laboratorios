@@ -98,6 +98,7 @@
     <ClCompile Include="Crosser.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="Frog.cpp" />
+    <ClCompile Include="Label.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameState.cpp" />
