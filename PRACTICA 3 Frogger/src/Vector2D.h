@@ -8,9 +8,8 @@
 template<typename T = float>
 class Vector2D
 {
-	T x, y;
-
 public:
+	T x, y;
 	Vector2D(T x, T y) : x(x), y(y) { }
 	Vector2D() : Vector2D(0, 0) { }
 

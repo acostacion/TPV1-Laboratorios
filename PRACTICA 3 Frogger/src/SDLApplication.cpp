@@ -80,7 +80,10 @@ SDLApplication::SDLApplication() : exit(false) {
 }
 
 void SDLApplication::deleteTextures() {
-	for (Texture* t : textures) delete t;
+	for (Texture* t : textures) {
+		t = nullptr;
+		delete t;
+	}
 }
 
 SDLApplication::~SDLApplication(){

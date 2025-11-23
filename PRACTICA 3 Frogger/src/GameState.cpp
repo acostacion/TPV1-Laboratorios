@@ -8,9 +8,6 @@ GameState::~GameState() {
 }
 
 void GameState::render() const {
-	SDL_RenderClear(getSDLApp()->getRenderer());
-
-	//_bg->render(); TODO meter lo del fondo.
 
 	for (GameObject* obj : _gameObjects) {
 		obj->render();
@@ -33,7 +30,6 @@ void GameState::handleEvent(const SDL_Event& event) {
 
 void GameState::eraseHandlers()
 {
-	for (EventHandler* h : _eventHandlers) delete h;
 	_eventHandlers.clear();
 }
 

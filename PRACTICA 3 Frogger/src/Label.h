@@ -6,7 +6,7 @@
 class SDLApplication;
 class Label : public GameObject
 {
-private:
+protected:
 	Point2D _position;
 	Texture* _texture;
 public:

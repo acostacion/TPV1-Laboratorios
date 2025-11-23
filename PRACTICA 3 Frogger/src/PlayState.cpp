@@ -66,9 +66,10 @@ void PlayState::initMap() {
 
 void PlayState::eraseState(){
 	//for (SceneObject* obj : _sceneObjects) delete obj;
+	delete _bg;
 	_sceneObjects.clear();
 	getSDLApp()->deleteTextures();
-	_frog = nullptr;
+	//_frog = nullptr;
 }
 
 PlayState::PlayState(SDLApplication* sdl) : GameState(sdl), _exit(false) {
@@ -99,6 +100,13 @@ void PlayState::generateWasps() {
 	}
 }
 
+
+void PlayState::render() const {
+	SDL_RenderClear(getSDLApp()->getRenderer());
+	_bg->render();
+	GameState::render();
+	SDL_RenderPresent(getSDLApp()->getRenderer());
+}
 
 void PlayState::update() {
 	// victoria y derrota.
@@ -144,8 +152,10 @@ void PlayState::createMessageBox() {
 
 	if (buttonid == 1) {
 		eraseState();
+		eraseHandlers();
 		eraseObjects();
 		initMap();
+		getSDLApp()->initTextures();
 		getSDLApp()->run();
 	}
 	else {

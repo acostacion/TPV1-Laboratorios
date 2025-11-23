@@ -84,7 +84,6 @@ private:
 
 	// auxiliares
 	void initSDLWindow();
-	void initTextures();
 
 
 public:
@@ -92,8 +91,8 @@ public:
 	~SDLApplication();
 	void run(); // bucle principal del juego
 	void deleteTextures();
+	void initTextures();
 
-	 
 	Texture* getTexture(TextureName name) const; // Obtiene una textura por su nombre
 	SDL_Renderer* getRenderer() const { return renderer; }
 	SDL_Window* getWindow() const { return window; }
