@@ -27,6 +27,9 @@
 #include "GameError.h"
 #include <random>
 #include "gameStateMachine.h"
+#include "Label.h"
+#include "MainMenuState.h"
+#include "PlayState.h"
 
 // using Anchor = std::list<SceneObject*>::iterator; TODO ver donde esta
 
@@ -71,6 +74,20 @@ public:
 		LOG2,
 		TURTLE,
 		WASP,
+		t_AVISPADO,
+		t_CONTINUAR,
+		t_ELIGEUNMAPA,
+		t_GAMEOVER,
+		t_HASGANADO,
+		t_LEFT,
+		t_ORIGINAL,
+		t_PRACTICA1,
+		t_REINICIAR,
+		t_RIGHT,
+		t_SALIR,
+		t_TRIVIAL,
+		t_VELOZ,
+		t_VOLVERALMENU,
 		NUM_TEXTURES
 	};
 

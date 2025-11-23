@@ -98,6 +98,7 @@
     <ClCompile Include="Crosser.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="Frog.cpp" />
+    <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="SDLApplication.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="gameStateMachine.cpp" />
@@ -121,6 +122,7 @@
     <ClInclude Include="FileNotFoundError.h" />
     <ClInclude Include="Frog.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="SDLApplication.h" />
     <ClInclude Include="GameError.h" />
     <ClInclude Include="GameObject.h" />

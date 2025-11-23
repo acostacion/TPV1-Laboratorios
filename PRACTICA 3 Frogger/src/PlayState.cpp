@@ -10,7 +10,7 @@ void PlayState::initMap() {
 	_bg = getSDLApp()->getTexture(SDLApplication::BACKGROUND);
 	_lives = 3;
 
-	std::ifstream file("../assets/maps/turtles.txt");
+	std::ifstream file(MAP_FILE);
 	if (!file) {
 		throw FileNotFoundError("No se ha encontrado fichero de mapa " + (std::string)MAP_FILE);
 	}

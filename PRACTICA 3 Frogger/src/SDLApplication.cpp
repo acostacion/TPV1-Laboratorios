@@ -1,9 +1,7 @@
 #include "SDLApplication.h"
-#include "PlayState.h"
 
 // Constantes
 constexpr const char* const WINDOW_TITLE = "Frogger 1.0";
-constexpr const char* const MAP_FILE = "../assets/maps/default.txt";
 
 // Estructura para especificar las texturas que hay que
 // cargar y el tamaño de su matriz de frames
@@ -28,7 +26,21 @@ constexpr std::array<TextureSpec, SDLApplication::NUM_TEXTURES> textureList{
 	{"log1.png"},
 	{"log2.png"},
 	{"turtle.png", 1, 7},
-	{"wasp.png"}
+	{"wasp.png"},
+	{"texts/Avispado.png"},
+	{"texts/CONTINUAR.png"},
+	{ "texts/ELIGE UN MAPA.png" },
+	{ "texts/GAME OVER.png" },
+	{ "texts/HAS GANADO.png" },
+	{ "texts/left.png" },
+	{ "texts/Original.png" },
+	{ "texts/Práctica 1.png" },
+	{ "texts/REINICIAR.png" },
+	{ "texts/right.png" },
+	{ "texts/SALIR.png" },
+	{ "texts/Trivial.png" },
+	{ "texts/Veloz.png" },
+	{ "texts/VOLVER AL MENÚ.png" }
 };
 
 void SDLApplication::initSDLWindow(){
@@ -76,7 +88,8 @@ void SDLApplication::initTextures(){
 SDLApplication::SDLApplication() : exit(false) {
 	initSDLWindow();
 	initTextures();
-	pushState(new PlayState(this));
+	pushState(new MainMenuState(this));
+	//pushState(new PlayState(this));
 }
 
 void SDLApplication::deleteTextures() {

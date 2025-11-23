@@ -15,6 +15,7 @@ public:
 	}
 	virtual ~Label() override = default;
 	virtual void render() const override;
+	virtual void update() override {}
 
 };
 
