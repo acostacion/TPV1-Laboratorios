@@ -12,7 +12,7 @@ void GameState::render() const {
 	for (GameObject* obj : _gameObjects) {
 		obj->render();
 	}
-	SDL_RenderPresent(getSDLApp()->getRenderer());
+	//SDL_RenderPresent(getSDLApp()->getRenderer());
 }
 
 void GameState::update() {

@@ -64,6 +64,7 @@ public:
 	{
 		FROG = 0,
 		BACKGROUND,
+		MENUBACKGROUND,
 		CAR1,
 		CAR2,
 		CAR3,
@@ -96,6 +97,7 @@ private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 	std::array<Texture*, NUM_TEXTURES> textures;
+	GameStateMachine* _gsMachine;
 
 	bool exit;
 
@@ -113,6 +115,7 @@ public:
 	Texture* getTexture(TextureName name) const; // Obtiene una textura por su nombre
 	SDL_Renderer* getRenderer() const { return renderer; }
 	SDL_Window* getWindow() const { return window; }
+	GameStateMachine* getStateMachine() { return _gsMachine; }
 
 };
 

@@ -17,6 +17,7 @@ constexpr const char* const imgBase = "../assets/images/";
 constexpr std::array<TextureSpec, SDLApplication::NUM_TEXTURES> textureList{
 	TextureSpec{"frog.png", 1, 2},
 	{"background.png"},
+	{"menuBackground.png"},
 	{"car1.png"},
 	{"car2.png"},
 	{"car3.png"},
@@ -83,12 +84,18 @@ void SDLApplication::initTextures(){
 			throw FileNotFoundError("Error cargando textura " + (std::string)textureList[i].name);
 		}
 	}
+
+	
 }
 
 SDLApplication::SDLApplication() : exit(false) {
 	initSDLWindow();
 	initTextures();
+	// Inicia la máquina de estados con el menú principal
+	_gsMachine = new GameStateMachine();
+	//_gsMachine->pushState(new MainMenuState(this));
 	pushState(new MainMenuState(this));
+
 	//pushState(new PlayState(this));
 }
 
@@ -102,6 +109,7 @@ void SDLApplication::deleteTextures() {
 SDLApplication::~SDLApplication(){
 	// Destruir la ventana SDL, renderer, SDLquit...
 	deleteTextures();
+	delete _gsMachine;
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
 	SDL_Quit();

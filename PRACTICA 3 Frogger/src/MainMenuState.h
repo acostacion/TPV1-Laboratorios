@@ -35,12 +35,17 @@ public:
 	MainMenuState(SDLApplication* sdl);
 	~MainMenuState();
 
+	void render() const override;
 	void handleEvent(const SDL_Event& event) override;
 
 private:
+	Texture* _backgroundTexture;
 	Label* _chooseMap;
-	//Button* _levelSelector;
+	Button* _levelSelector;
 	//Button* _leftArrow;
 	//Button* _rightArrow;
 	//Button _exitButton;
+
+	void loadLevel(const std::string& levelName);
+
 };

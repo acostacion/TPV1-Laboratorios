@@ -42,6 +42,7 @@ private:
 
 	bool _exit;
 	int _lives;
+	std::string _mapFile;
 
 	// Elementos del juego
 	Texture* _bg;
@@ -52,7 +53,7 @@ private:
 	int _nextWaspTime; // tiempo en milisegundos para el siguiente Wasp
 
 	// auxiliares
-	void initMap();
+	void initMap(std::string f);
 	void generateWasps();
 	void eraseState();
 	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(_randomGenerator); }
@@ -62,7 +63,7 @@ private:
 public:
 	std::vector<Point2D> goalPositions; // posiciones de los nidos
 
-	PlayState(SDLApplication* sdl);
+	PlayState(SDLApplication* sdl, std::string file);
 	~PlayState();
 
 	Collision checkCollision(const SDL_FRect& rect);
