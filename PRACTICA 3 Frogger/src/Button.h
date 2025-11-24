@@ -8,12 +8,12 @@
 #include "SDL3/SDL_events.h"  
 #include "Vector2D.h"
 
-using SDLEventCallback = std::function<void()>; // Define SDLEventCallback  
+using SDLEventCallback = std::function<void()>; // Define SDLEventCallback
 
 class Button : public Label, public EventHandler  
 {  
 public:  
-	Button(SDLApplication* sdl, const Point2D& position, Texture* texture);
+	Button(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture);
 
 	virtual ~Button() override = default;  
 	void render() const override;

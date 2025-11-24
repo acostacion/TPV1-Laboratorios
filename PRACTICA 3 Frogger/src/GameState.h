@@ -5,7 +5,7 @@
 //#include "DelayedCallback.h"
 #include "SDL3/SDL_events.h"
 class SDLApplication;
-
+using Anchor = std::list<SceneObject*>::iterator;
 class GameState { 
 public:
 	GameState(SDLApplication* sdl) : _sdl(sdl) {}
@@ -21,7 +21,9 @@ public:
 	void eraseHandlers();
 
 	// Aniade un objeto.
-	void addObject(GameObject* obj) { _gameObjects.push_back(obj); }
+	Anchor addObject(GameObject* obj){
+		auto a = _gameObjects.insert(_gameObjects.end(), obj);
+	}
 	void eraseObjects();
 
 private:

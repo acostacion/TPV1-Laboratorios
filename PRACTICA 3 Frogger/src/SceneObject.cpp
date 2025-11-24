@@ -3,7 +3,7 @@
 #include "SDLApplication.h"
 
 SceneObject::SceneObject(SDLApplication* sdl, PlayState* ps, const Point2D& position, Texture* texture)
-	: GameObject(sdl), _playState(ps), _position(position), _texture(texture) {}
+	: GameObject(sdl, ps), _playState(ps), _position(position), _texture(texture) {}
 
 void SceneObject::render() const
 {

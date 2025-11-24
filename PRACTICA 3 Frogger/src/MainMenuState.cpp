@@ -6,17 +6,22 @@ MainMenuState::MainMenuState(SDLApplication* sdl) : GameState(sdl)
 {
 	_backgroundTexture = getSDLApp()->getTexture(SDLApplication::MENUBACKGROUND);
 
-	_chooseMap = new Label(getSDLApp(), Point2D(100, 200), getSDLApp()->getTexture(SDLApplication::t_ELIGEUNMAPA));
+	_chooseMap = new Label(getSDLApp(), this, Point2D(100, 200), getSDLApp()->getTexture(SDLApplication::t_ELIGEUNMAPA));
 	addObject(_chooseMap);
 
-	_levelSelector = new Button(getSDLApp(), Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_ORIGINAL));
+	_levelSelector = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_ORIGINAL));
 	addObject(_levelSelector);
 	addEventListener(_levelSelector);
 
 	/*for (auto entry : std::filesystem::directory_iterator("maps"))
 		std::cout << entry.path().stem().string() << std::endl;*/
 
-	_levelSelector->connect([this]() { loadLevel("Original"); });
+	//button.connect(std::bind(&Clase::método, this));
+	//_levelSelector->connect([this]() { loadLevel("Original"); });
+	//_levelSelector->connect(std::bind(&MainMenuState::loadLevel("Original"), this));
+
+	for (auto entry : std::filesystem::directory_iterator("maps"))
+		std::cout << entry.path().stem().string() << std::endl;
 }
 
 MainMenuState::~MainMenuState()

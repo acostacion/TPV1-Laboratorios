@@ -10,8 +10,8 @@ protected:
 	Point2D _position;
 	Texture* _texture;
 public:
-	Label(SDLApplication* sdl, const Point2D& position, Texture* texture)
-		: GameObject(sdl), _position(position), _texture(texture) {
+	Label(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture)
+		: GameObject(sdl, gs), _position(position), _texture(texture) {
 	}
 	virtual ~Label() override = default;
 	virtual void render() const override;

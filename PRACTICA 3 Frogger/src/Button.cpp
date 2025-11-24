@@ -1,6 +1,6 @@
 #include "Button.h"
 
-Button::Button(SDLApplication* sdl, const Point2D& position, Texture* texture) : Label(sdl, position, texture) {
+Button::Button(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture) : Label(sdl, gs, position, texture) {
 	// zona del boton.
 	rect = { position.x, position.y, texture->getFrameWidth(), texture->getFrameHeight() };
 }

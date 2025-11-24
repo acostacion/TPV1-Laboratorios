@@ -1,0 +1,7 @@
+- No nos van los callbacks.
+- No podemos acceder desde fuera a GameStateMachine por la herencia privada.
+- No podemos meter las avispas en el vector de GameObjects de GameState porque Anchor es using Anchor = std::list<SceneObject*>::iterator;
+- Salta una excepción a la hora de lo de leer mapas: for (auto entry : std::filesystem::directory_iterator("maps")) cout << entry.path().stem().string() << endl;
+- De qué forma hacer bien la lectura de mapas, se ocurren muchas maneras pero no sabemos cuál es la mejor...
+- Memoryleaks
+- Menus

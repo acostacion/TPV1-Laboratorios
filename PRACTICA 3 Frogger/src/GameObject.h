@@ -1,5 +1,6 @@
 #pragma once
 class SDLApplication;
+class GameState;
 class GameObject
 {
 public:
@@ -7,7 +8,8 @@ public:
 	virtual void render() const = 0;
 	virtual ~GameObject() = default;
 protected:
-	GameObject(SDLApplication* sdl) : _sdlApp(sdl) {}
+	GameObject(SDLApplication* sdl, GameState* gs) : _sdlApp(sdl), _gameState(gs) {}
 	SDLApplication* _sdlApp;
+	GameState* _gameState;
 };
 

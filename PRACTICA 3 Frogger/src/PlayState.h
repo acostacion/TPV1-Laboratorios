@@ -27,7 +27,7 @@
 #include <random>
 
 class SDLApplication;
-// using Anchor = std::list<SceneObject*>::iterator; TODO ver donde esta
+using Anchor = std::list<SceneObject*>::iterator;
 class PlayState : public GameState{
 public:
 	// numero de nidos
