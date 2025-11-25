@@ -92,6 +92,11 @@ public:
 		NUM_TEXTURES
 	};
 
+	using GameStateMachine::pushState;
+	using GameStateMachine::popState;
+	using GameStateMachine::replaceState;
+	using GameStateMachine::empty;
+
 
 private:
 	SDL_Window* window;
@@ -116,6 +121,8 @@ public:
 	SDL_Renderer* getRenderer() const { return renderer; }
 	SDL_Window* getWindow() const { return window; }
 	GameStateMachine* getStateMachine() { return _gsMachine; }
+
+	void setExit(bool e) { exit = e; }
 
 };
 

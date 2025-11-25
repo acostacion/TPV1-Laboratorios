@@ -18,7 +18,7 @@ public:
 	virtual ~Button() override = default;  
 	void render() const override;
 	void update() override;
-	void handleEvent(const SDL_Event& event) override;  
+	void handleEvent(const SDL_Event& event) override;
 
 	void connect(const SDLEventCallback& callback) { callbacks.push_back(callback); }
 

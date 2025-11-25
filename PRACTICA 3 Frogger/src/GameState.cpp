@@ -3,7 +3,7 @@
 #include "PlayState.h"
 
 GameState::~GameState() {
-	eraseHandlers();
+	//eraseHandlers();
 	eraseObjects();
 }
 

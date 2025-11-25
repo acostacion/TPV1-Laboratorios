@@ -35,19 +35,23 @@ void Button::update()
 void Button::handleEvent(const SDL_Event& event)
 {
 	// cuando hay left click...
-	if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN && event.button.button == SDL_BUTTON_LEFT) {
+	if (event.type == SDL_EVENT_MOUSE_BUTTON_DOWN ) {
 
-		// pillamos la posicion del raton.
-		point.x = event.button.x;
-		point.y = event.button.y;
+		if (event.button.button == SDL_BUTTON_LEFT) {
+			// pillamos la posicion del raton.
+			point.x = event.button.x;
+			point.y = event.button.y;
 
-		// mira que se haya cliqueado en el boton.
-		if (SDL_PointInRect(&point, &rect))
-		{
-			// llama a lo que le hayas conectado.
-			for (SDLEventCallback buttonCallback : callbacks) {
-				buttonCallback();
+			// mira que se haya cliqueado en el boton.
+			if (SDL_PointInRect(&point, &rect))
+			{
+				// llama a lo que le hayas conectado.
+				for (SDLEventCallback buttonCallback : callbacks) {
+					buttonCallback();
+				}
 			}
 		}
+
+
 	}
 }

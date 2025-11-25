@@ -132,6 +132,12 @@ void SDLApplication::run() {
 		// siempre tardaria "game_delay" segundos independientemente de la velocidad que el bucle ppal vaya.
 		SDL_Delay(GAME_DELAY - (endTime-startTime)); 
 	}
+	if (empty()) {
+		exit = true;
+	}
+	if (exit) {
+		delete this;
+	}
 }
 
 

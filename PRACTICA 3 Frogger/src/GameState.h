@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include "GameObject.h"
+#include "SceneObject.h"
 #include "EventHandler.h"
 //#include "DelayedCallback.h"
 #include "SDL3/SDL_events.h"
@@ -19,11 +20,13 @@ public:
 	// Aniade objetos que necesiten gestionar eventos.
 	void addEventListener(EventHandler* handler) { _eventHandlers.push_back(handler); }
 	void eraseHandlers();
-
+	/*
 	// Aniade un objeto.
 	Anchor addObject(GameObject* obj){
 		auto a = _gameObjects.insert(_gameObjects.end(), obj);
 	}
+	*/
+	void addObject(GameObject* obj) { _gameObjects.push_back(obj); }
 	void eraseObjects();
 
 private:

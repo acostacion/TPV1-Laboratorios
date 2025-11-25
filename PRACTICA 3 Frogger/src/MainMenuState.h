@@ -8,13 +8,6 @@
 #include <list>
 #include <sstream>
 #include <vector>
-#include "Vehicle.h"
-#include "Log.h"
-#include "Frog.h"
-#include "Wasp.h"
-#include "Collision.h"
-#include "HomedFrog.h"
-#include "TurtleGroup.h"
 #include "GameObject.h"
 #include "SceneObject.h"
 #include "Vector2D.h"
@@ -42,10 +35,11 @@ private:
 	Texture* _backgroundTexture;
 	Label* _chooseMap;
 	Button* _levelSelector;
-	//Button* _leftArrow;
-	//Button* _rightArrow;
-	//Button _exitButton;
+	Button* _leftArrow;
+	Button* _rightArrow;
+	Button* _exitButton;
 
 	void loadLevel(const std::string& levelName);
+	void quit();
 
 };
