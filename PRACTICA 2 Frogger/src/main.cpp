@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     try {
         Game().run();
     }
-    catch (std::string e) {
+    catch (GameError(e)) { // TODO arreglar
         throw GameError(e);
     }
 	catch (...) {

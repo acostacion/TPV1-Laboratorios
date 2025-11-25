@@ -24,9 +24,9 @@ Vehicle::Vehicle(std::istream& file, Game* g) : Crosser(file, g) {
 }
 
 void Vehicle::update() { // Revisar cuando se sale
-	
+	// TODO cambiar update repetido
 	// si se sale por la izquierda
-	if (_position.getX() < -_game->OUT_OF_WINDOW) {
+	if (_position.getX() < -_game->OUT_OF_WINDOW) { // TODO con dos puntos put of widowd
 		_position.setX(_game->WINDOW_WIDTH + _game->OUT_OF_WINDOW); // lo pone en la derecha.
 	}
 	// si se sale por la derecha.

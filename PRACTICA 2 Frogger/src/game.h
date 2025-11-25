@@ -109,7 +109,7 @@ private:
 	void createMessageBox();
 
 
-public:
+public: // TODO no hacer atributos publicos, goalPositions hacer constante.
 	std::vector<Point2D> goalPositions; // posiciones de los nidos
 
 	Game();

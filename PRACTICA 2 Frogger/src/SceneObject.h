@@ -5,7 +5,7 @@
 #include "Collision.h"
 class SceneObject : public GameObject {
 public:
-	virtual ~SceneObject() override = default;
+	// TODO el destructor que pones con default es lo mismo que no poner nada.
 	virtual Collision checkCollision(const SDL_FRect& r) = 0;
 	virtual void render() const override;
 
@@ -20,6 +20,6 @@ protected:
 	virtual void updateRect();
 
 private:
-	SDL_FRect _rect;
+	SDL_FRect _rect; // TODO en lugar del rect hacer width height
 };
 

@@ -1,6 +1,1 @@
-﻿  game.cpp
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(146,52): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(156,33): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(187,17): warning C4244: 'initializing': conversion from 'Uint64' to 'int', possible loss of data
-C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\src\game.cpp(191,15): warning C4244: 'initializing': conversion from 'Uint64' to 'int', possible loss of data
-  src.vcxproj -> C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe
+﻿  src.vcxproj -> C:\Users\usuario_local\Music\TPV1-Laboratorios\PRACTICA 2 Frogger\bin\srcDebug.exe

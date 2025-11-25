@@ -191,7 +191,10 @@ void Game::run() {
 		int endTime = SDL_GetTicks();
 
 		// siempre tardaria "game_delay" segundos independientemente de la velocidad que el bucle ppal vaya.
-		SDL_Delay(GAME_DELAY - (endTime-startTime)); 
+		int delay = (endTime - startTime);
+		if (delay < GAME_DELAY) {
+			SDL_Delay(GAME_DELAY - delay);
+		}
 	}
 }
 
