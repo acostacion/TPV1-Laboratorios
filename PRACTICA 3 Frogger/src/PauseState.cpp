@@ -1,7 +1,8 @@
 #include "PauseState.h"
 #include "SDLApplication.h"
 
-PauseState::PauseState(SDLApplication* sdl) : GameState(sdl) {
+PauseState::PauseState(SDLApplication* sdl, PlayState* ps) : GameState(sdl), _playState(ps){
+	
 	_continua = new Button(getSDLApp(), this, Point2D(175, 200), getSDLApp()->getTexture(SDLApplication::t_CONTINUAR));
 	addObject(_continua);
 	addEventListener(_continua);
@@ -18,8 +19,42 @@ PauseState::PauseState(SDLApplication* sdl) : GameState(sdl) {
 	addObject(_exitButton);
 	addEventListener(_exitButton);
 
-	_exitButton->connect([this]() { quit(); });
 	_continua->connect([this]() { getSDLApp()->popState(); });
+	_reset->connect([this]() { createMessageBox(); });
+	_backToMenu->connect([this]() { returnToMenu(); });
+	_exitButton->connect([this]() { quit(); });
+}
+
+void PauseState::createMessageBox() {
+	const SDL_MessageBoxButtonData buttons[] = {
+		{ /* .flags, .buttonid, .text */        0, 0, "no" },
+		{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
+	};
+
+	const SDL_MessageBoxData messageboxdata = {
+		SDL_MESSAGEBOX_INFORMATION,		/* .flags */
+		getSDLApp()->getWindow(),									/* .window */
+		"Reinicio de partida",			/* .title */
+		"¿Desea reiniciar la partida?", /* .message */
+		SDL_arraysize(buttons),		/* .numbuttons */
+		buttons,								/* .buttons */
+	};
+	int buttonid;
+	SDL_ShowMessageBox(&messageboxdata, &buttonid);
+
+	if (buttonid == 1) {
+		getSDLApp()->popState();
+		_playState->reset();
+	}
+	else {
+		getSDLApp()->run();
+	}
+
+}
+
+void PauseState::returnToMenu() {
+	getSDLApp()->popState();
+	getSDLApp()->popState();
 }
 
 void PauseState::quit() {
@@ -33,4 +68,16 @@ PauseState::~PauseState() {
 	delete _reset;
 	delete _backToMenu;
 	delete _exitButton;
+}
+
+void PauseState::render() const
+{
+	SDL_RenderClear(getSDLApp()->getRenderer());
+	// TODO: fondo transparente
+	GameState::render();
+	SDL_RenderPresent(getSDLApp()->getRenderer());
+}
+
+void PauseState::handleEvent(const SDL_Event& event){
+	GameState::handleEvent(event);
 }

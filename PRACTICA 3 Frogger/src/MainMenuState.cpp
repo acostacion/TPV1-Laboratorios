@@ -1,6 +1,7 @@
 #include "MainMenuState.h"
 
 #include "SDLApplication.h"
+#include "PauseState.h"
 
 MainMenuState::MainMenuState(SDLApplication* sdl) : GameState(sdl)
 {
@@ -66,8 +67,6 @@ void MainMenuState::loadLevel(const std::string& levelName)
 	getSDLApp()->pushState(playState);
 }
 
-void MainMenuState::quit()
-{
-	//getSDLApp()->setExit(true);
+void MainMenuState::quit(){
 	getSDLApp()->popState();
 }

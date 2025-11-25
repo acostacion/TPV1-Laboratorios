@@ -91,10 +91,10 @@ void PlayState::generateWasps() {
 		// genera avispa con lifetime y pos.
 		Wasp* wasp = new Wasp(getSDLApp(), this, getRandomRange(5000, 10000), goalPositions[pos]);
 		Anchor a = _sceneObjects.insert(_sceneObjects.end(), wasp);
-		// TODO aniadir al otro vector.
 
 		// esto accede al ultimo elemento pushbackeado en la lista.
-		wasp->setAnchor(a);
+		wasp->setAnchor(a); // TODO hacer otro addobject
+		wasp->setAnchor(addObject(wasp)); // set Anchor Game Object.
 
 		// calcula la proxima vez que spawnee la avispa.
 		_nextWaspTime = SDL_GetTicks() + getRandomRange(5000, 10000);
@@ -134,51 +134,26 @@ void PlayState::update() {
 }
 
 
-void PlayState::createMessageBox() {
-	const SDL_MessageBoxButtonData buttons[] = {
-		{ /* .flags, .buttonid, .text */        0, 0, "no" },
-		{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
-	};
-
-	const SDL_MessageBoxData messageboxdata = {
-		SDL_MESSAGEBOX_INFORMATION,		/* .flags */
-		getSDLApp()->getWindow(),									/* .window */
-		"Reinicio de partida",			/* .title */
-		"¿Desea reiniciar la partida?", /* .message */
-		SDL_arraysize(buttons),		/* .numbuttons */
-		buttons,								/* .buttons */
-	};
-	int buttonid;
-	SDL_ShowMessageBox(&messageboxdata, &buttonid);
-
-	if (buttonid == 1) {
-		eraseState();
-		eraseHandlers();
-		eraseObjects();
-		initMap(_mapFile);
-		getSDLApp()->initTextures();
-		getSDLApp()->run();
-	}
-	else {
-		getSDLApp()->run();
-	}
-
-}
-
-
 void PlayState::handleEvent(const SDL_Event& event) {
-	// Only quit is handled directly, everything else is delegated
-		//_frog->handleEvent(event);
-	GameState::handleEvent(event);
 
 	if (event.type == SDL_EVENT_KEY_DOWN) {
-		if (event.key.key == SDLK_0) {
-			createMessageBox();
+		if (event.key.key == SDLK_ESCAPE) {
+			getSDLApp()->pushState(new PauseState(getSDLApp(), this));
 		}
 	}
+
+	GameState::handleEvent(event);
 }
 
-
+void PlayState::reset()
+{
+	eraseState();
+	eraseHandlers();
+	eraseObjects();
+	initMap(_mapFile);
+	getSDLApp()->initTextures();
+	getSDLApp()->run();
+}
 
 Collision PlayState::checkCollision(const SDL_FRect& rect) {
 	Collision returnCol;

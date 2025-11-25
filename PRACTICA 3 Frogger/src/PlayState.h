@@ -24,6 +24,7 @@
 #include "SDLError.h"
 #include "GameError.h"
 #include "GameState.h"
+#include "PauseState.h"
 #include <random>
 
 class SDLApplication;
@@ -58,13 +59,16 @@ private:
 	void eraseState();
 	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(_randomGenerator); }
 	void createMessageBox();
-
+	
 
 public:
 	std::vector<Point2D> goalPositions; // posiciones de los nidos
 
 	PlayState(SDLApplication* sdl, std::string file);
 	~PlayState();
+
+	// para la messagebox de pausestate
+	void reset();
 
 	Collision checkCollision(const SDL_FRect& rect);
 

@@ -25,13 +25,14 @@
 class SDLApplication;
 class PauseState : public GameState {
 public:
-	PauseState(SDLApplication* sdl);
+	PauseState(SDLApplication* sdl, PlayState* ps);
 	~PauseState();
 
 	void render() const override;
 	void handleEvent(const SDL_Event& event) override;
 
 private:
+	PlayState* _playState;
 	//Texture* _backgroundTexture;
 	Button* _continua;
 	Button* _reset;
@@ -39,6 +40,8 @@ private:
 	Button* _exitButton;
 
 	void loadLevel(const std::string& levelName);
+	void createMessageBox();
+	void returnToMenu();
 	void quit();
 
 };
