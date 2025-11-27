@@ -13,16 +13,21 @@ using SDLEventCallback = std::function<void()>; // Define SDLEventCallback
 class Button : public Label, public EventHandler  
 {  
 public:  
-	Button(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture);
+	Button(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture, bool active = true);
 
 	~Button() override;  
 	void render() const override;
 	void update() override;
 	void handleEvent(const SDL_Event& event) override;
 
+	void setActive(bool a) { _active = a; }
+	bool isActive() const { return _active; }
+
 	void connect(const SDLEventCallback& callback) { callbacks.push_back(callback); }
 
-private:  
+private:
+	bool _active;
+
 	std::list<SDLEventCallback> callbacks; 
 	Vector2D<float> _mousePos;
 

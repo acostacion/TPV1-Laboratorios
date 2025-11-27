@@ -29,6 +29,7 @@ public:
 	~MainMenuState();
 
 	void render() const override;
+	void update() override;
 	void handleEvent(const SDL_Event& event) override;
 
 private:
@@ -39,7 +40,10 @@ private:
 	Button* _rightArrow;
 	Button* _exitButton;
 
-	void loadLevel(const std::string& levelName);
-	void quit();
+	std::vector<Button*> _buttons;
+	int _actualButton;
+	void left();
+	void right();
 
+	void loadLevel(const std::string& levelName);
 };
