@@ -28,23 +28,17 @@ MainMenuState::MainMenuState(SDLApplication* sdl) : GameState(sdl)
 
 	_exitButton->connect([this]() { quit(); });
 
-	/*for (auto entry : std::filesystem::directory_iterator("maps"))
-		std::cout << entry.path().stem().string() << std::endl;*/
-
-	//button.connect(std::bind(&Clase::método, this));
-	_levelSelector->connect([this]() { loadLevel("Original"); });
-	//_levelSelector->connect(std::bind(&MainMenuState::loadLevel("Original"), this));
-	/*
-	for (auto entry : std::filesystem::directory_iterator("PRACTICA 3 Frogger/assets/maps")) {
+	_levelSelector->connect([this]() { loadLevel("trivial"); });
+	
+	for (auto entry : std::filesystem::directory_iterator("C:/Users/Diego/Desktop/Unity Projects/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps")) {
 		std::cout << entry.path().stem().string() << std::endl;
-
 	}
-	*/
+	
 }
 
 MainMenuState::~MainMenuState()
 {
-	delete _chooseMap;
+	
 }
 
 void MainMenuState::render() const

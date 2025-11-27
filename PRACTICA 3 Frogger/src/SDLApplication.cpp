@@ -136,7 +136,8 @@ void SDLApplication::run() {
 		exit = true;
 	}
 	if (exit) {
-		delete this;
+		//delete this;
+		SDL_Quit();
 	}
 }
 

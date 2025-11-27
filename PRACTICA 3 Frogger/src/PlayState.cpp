@@ -66,9 +66,9 @@ void PlayState::initMap(std::string f) {
 
 void PlayState::eraseState(){
 	//for (SceneObject* obj : _sceneObjects) delete obj;
-	delete _bg;
+	_bg = nullptr;
 	_sceneObjects.clear();
-	getSDLApp()->deleteTextures();
+	//getSDLApp()->deleteTextures();
 	//_frog = nullptr;
 }
 
@@ -79,7 +79,7 @@ PlayState::PlayState(SDLApplication* sdl, std::string file) : GameState(sdl), _e
 
 PlayState::~PlayState() {
 	eraseState();
-	eraseObjects();
+	//eraseObjects();
 }
 
 void PlayState::generateWasps() {
@@ -114,10 +114,14 @@ void PlayState::update() {
 	if (_lives == 0) {
 		std::cout << "Game Over!" << std::endl;
 		_exit = true;
+		//getSDLApp()->setExit(true);
+		getSDLApp()->pushState(new EndState(getSDLApp(), false));
+		
 	}
 	else if (goalPositions.size() == 0) {
 		std::cout << "You Win!" << std::endl;
 		_exit = true;
+		getSDLApp()->pushState(new EndState(getSDLApp(), true));
 	}
 
 	for (SceneObject* obj : _sceneObjects) obj->update();

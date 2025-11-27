@@ -25,6 +25,7 @@
 #include "GameError.h"
 #include "GameState.h"
 #include "PauseState.h"
+#include "EndState.h"
 #include <random>
 
 class SDLApplication;

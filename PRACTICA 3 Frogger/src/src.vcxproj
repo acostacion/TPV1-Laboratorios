@@ -96,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Crosser.cpp" />
+    <ClCompile Include="EndState.cpp" />
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="Frog.cpp" />
     <ClCompile Include="Label.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Crosser.h" />
+    <ClInclude Include="EndState.h" />
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="FileFormatError.h" />
     <ClInclude Include="FileNotFoundError.h" />

@@ -28,7 +28,7 @@ void Button::update()
 		_mouseState = MOUSE_OVER;
 	}
 	else {
-		_mouseState = MOUSE_OUT;	
+		_mouseState = MOUSE_OUT;
 	}
 }
 
@@ -54,4 +54,7 @@ void Button::handleEvent(const SDL_Event& event)
 
 
 	}
+}
+Button::~Button()
+{
 }

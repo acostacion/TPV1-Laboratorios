@@ -3,19 +3,19 @@
 
 PauseState::PauseState(SDLApplication* sdl, PlayState* ps) : GameState(sdl), _playState(ps){
 	
-	_continua = new Button(getSDLApp(), this, Point2D(175, 200), getSDLApp()->getTexture(SDLApplication::t_CONTINUAR));
+	_continua = new Button(getSDLApp(), this, Point2D(150, 100), getSDLApp()->getTexture(SDLApplication::t_CONTINUAR));
 	addObject(_continua);
 	addEventListener(_continua);
 
-	_reset = new Button(getSDLApp(), this, Point2D(175, 275), getSDLApp()->getTexture(SDLApplication::t_REINICIAR));
+	_reset = new Button(getSDLApp(), this, Point2D(150, 200), getSDLApp()->getTexture(SDLApplication::t_REINICIAR));
 	addObject(_reset);
 	addEventListener(_reset);
 
-	_backToMenu = new Button(getSDLApp(), this, Point2D(150, 350), getSDLApp()->getTexture(SDLApplication::t_VOLVERALMENU));
+	_backToMenu = new Button(getSDLApp(), this, Point2D(100, 300), getSDLApp()->getTexture(SDLApplication::t_VOLVERALMENU));
 	addObject(_backToMenu);
 	addEventListener(_backToMenu);
 
-	_exitButton = new Button(getSDLApp(), this, Point2D(200, 425), getSDLApp()->getTexture(SDLApplication::t_SALIR));
+	_exitButton = new Button(getSDLApp(), this, Point2D(190, 400), getSDLApp()->getTexture(SDLApplication::t_SALIR));
 	addObject(_exitButton);
 	addEventListener(_exitButton);
 
@@ -33,11 +33,11 @@ void PauseState::createMessageBox() {
 
 	const SDL_MessageBoxData messageboxdata = {
 		SDL_MESSAGEBOX_INFORMATION,		/* .flags */
-		getSDLApp()->getWindow(),									/* .window */
+		getSDLApp()->getWindow(),		/* .window */
 		"Reinicio de partida",			/* .title */
 		"¿Desea reiniciar la partida?", /* .message */
-		SDL_arraysize(buttons),		/* .numbuttons */
-		buttons,								/* .buttons */
+		SDL_arraysize(buttons),		    /* .numbuttons */
+		buttons,						/* .buttons */
 	};
 	int buttonid;
 	SDL_ShowMessageBox(&messageboxdata, &buttonid);
@@ -64,10 +64,7 @@ void PauseState::quit() {
 }
 
 PauseState::~PauseState() {
-	delete _continua;
-	delete _reset;
-	delete _backToMenu;
-	delete _exitButton;
+
 }
 
 void PauseState::render() const

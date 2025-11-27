@@ -1,6 +1,7 @@
 #include "GameState.h"
 #include "SDLApplication.h"
 #include "PlayState.h"
+#include "Button.h"
 
 GameState::~GameState() {
 	//eraseHandlers();
@@ -35,5 +36,6 @@ void GameState::eraseHandlers()
 
 void GameState::eraseObjects() {
 	for (GameObject* obj : _gameObjects) delete obj;
+	
 	_gameObjects.clear();
 }
