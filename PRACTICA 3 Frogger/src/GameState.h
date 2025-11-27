@@ -5,8 +5,10 @@
 #include "EventHandler.h"
 //#include "DelayedCallback.h"
 #include "SDL3/SDL_events.h"
+#include <functional>
 class SDLApplication;
 using AnchorGameObject = std::list<GameObject*>::iterator;
+using DelayedCallback = std::function<void()>;
 class GameState { 
 public:
 	GameState(SDLApplication* sdl) : _sdl(sdl) {}
@@ -27,6 +29,9 @@ public:
 	}
 
 	void eraseObjects();
+	void removeObject(AnchorGameObject it);
+
+	void runLater(DelayedCallback callback, Uint32 delayMs);
 
 private:
 	std::list<GameObject*> _gameObjects; // Todos los objetos del estado.

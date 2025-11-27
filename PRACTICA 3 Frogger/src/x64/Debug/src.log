@@ -1,2 +1,4 @@
-﻿  MainMenuState.cpp
-  src.vcxproj -> C:\Users\Usuario\Music\TPV1-Laboratorios\PRACTICA 3 Frogger\bin\srcDebug.exe
+﻿  PlayState.cpp
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 3 Frogger\src\PlayState.cpp(88,52): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 3 Frogger\src\PlayState.cpp(99,34): warning C4244: '=': conversion from 'Uint64' to 'int', possible loss of data
+  src.vcxproj -> C:\Users\Diego\Desktop\Unity Projects\TPV1-Laboratorios\PRACTICA 3 Frogger\bin\srcDebug.exe

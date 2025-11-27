@@ -39,3 +39,23 @@ void GameState::eraseObjects() {
 	
 	_gameObjects.clear();
 }
+
+void GameState::removeObject(AnchorGameObject it)
+{
+	delete* it;
+	_gameObjects.erase(it);
+}
+
+void GameState::runLater(DelayedCallback callback, Uint32 delayMs)
+{
+	Uint32 targetTime = SDL_GetTicks() + delayMs;
+	auto delayedCallback = [callback, targetTime]() {
+		if (SDL_GetTicks() >= targetTime) {
+			callback();
+			return true; // Indica que se ha ejecutado
+		}
+		return false; // Aún no es el momento
+		};
+	// Aquí deberías almacenar delayedCallback en una lista y verificarla en cada actualización
+	// para ejecutar las funciones cuando llegue el momento.
+}

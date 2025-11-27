@@ -44,7 +44,6 @@ void PlayState::initMap(std::string f) {
 					_sceneObjects.insert(_sceneObjects.end(), obj);
 					addObject(obj);
 					break;
-
 				default: getline(file, s); break; // salta linea.
 				}
 			}
@@ -126,15 +125,8 @@ void PlayState::update() {
 
 	for (SceneObject* obj : _sceneObjects) obj->update();
 	generateWasps(); // genera wasps por tiempo.
-
-	for (Anchor it : _toDelete) {
-		// elimina de la lista de sceneobjects y borra el objeto.
-		SceneObject* obj = *it;
-		_sceneObjects.erase(it);
-		delete obj;
-	}
-	// limpia el vector auxiliar.
-	_toDelete.clear();
+	
+	//removeObject(); // elimina objetos marcados para borrar.
 }
 
 
@@ -182,3 +174,8 @@ Collision PlayState::checkCollision(const SDL_FRect& rect) {
 	return returnCol;
 }
 
+void PlayState::removeObject(Anchor it)
+{
+	//delete* it;
+	_sceneObjects.erase(it);
+}

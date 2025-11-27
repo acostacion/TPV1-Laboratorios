@@ -31,8 +31,8 @@ MainMenuState::MainMenuState(SDLApplication* sdl) : GameState(sdl), _actualButto
 	//_levelSelector->connect([this]() { loadLevel("trivial"); });
 
 	// "C:/Users/Diego/Desktop/Unity Projects/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps"
-	// 
-	for (auto entry : std::filesystem::directory_iterator("C:/Users/Usuario/Music/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps")) {
+	// "C:/Users/Usuario/Music/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps"
+	for (auto entry : std::filesystem::directory_iterator("C:/Users/Diego/Desktop/Unity Projects/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps")) {
 
 		const std::string s = entry.path().stem().string();
 
@@ -118,11 +118,17 @@ void MainMenuState::update()
 
 void MainMenuState::handleEvent(const SDL_Event& event)
 {
-	//if (event.type == SDL_EVENT_KEY_DOWN) {
-	//	if (event.key.key == SDLK_ESCAPE) {
-	//		getSDLApp()->pushState(new PauseState(getSDLApp(), this));
-	//	}
-	//}
+	if (event.type == SDL_EVENT_KEY_DOWN) {
+		if (event.key.key == SDLK_LEFT) {
+			left();
+		}
+		else if (event.key.key == SDLK_RIGHT) {
+			right();
+		}
+		else if (event.key.key == SDLK_RETURN) {
+            _buttons[_actualButton]->click();
+		}
+	}
 
 	GameState::handleEvent(event);
 }

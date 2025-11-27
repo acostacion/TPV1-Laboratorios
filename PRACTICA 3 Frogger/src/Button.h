@@ -24,6 +24,11 @@ public:
 	bool isActive() const { return _active; }
 
 	void connect(const SDLEventCallback& callback) { callbacks.push_back(callback); }
+	void click() {
+		for (SDLEventCallback buttonCallback : callbacks) {
+			buttonCallback();
+		}
+	}
 
 private:
 	bool _active;

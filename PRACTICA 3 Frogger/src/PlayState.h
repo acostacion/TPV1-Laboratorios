@@ -74,9 +74,7 @@ public:
 	Collision checkCollision(const SDL_FRect& rect);
 
 	//el contenido que hay aqui ahora mismo se tiene que hacer (lo de borrar) al final del bucle ppal.
-	void deleteAfter(Anchor it) {
-		_toDelete.push_back(it);
-	}
+	void removeObject(Anchor it);
 
 	inline void releaseLives() {
 		_lives--;
