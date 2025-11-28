@@ -20,6 +20,10 @@ void GameState::update() {
 	for (GameObject* obj : _gameObjects) {
 		obj->update();
 	}
+	for (DelayedCallback callback : pendingCallbacks) {
+		callback();
+	}
+	pendingCallbacks.clear();
 }
 
 void GameState::handleEvent(const SDL_Event& event) {
@@ -42,20 +46,11 @@ void GameState::eraseObjects() {
 
 void GameState::removeObject(AnchorGameObject it)
 {
-	delete* it;
+	//delete* it;
 	_gameObjects.erase(it);
 }
 
-void GameState::runLater(DelayedCallback callback, Uint32 delayMs)
+void GameState::runLater(DelayedCallback callback)
 {
-	Uint32 targetTime = SDL_GetTicks() + delayMs;
-	auto delayedCallback = [callback, targetTime]() {
-		if (SDL_GetTicks() >= targetTime) {
-			callback();
-			return true; // Indica que se ha ejecutado
-		}
-		return false; // Aún no es el momento
-		};
-	// Aquí deberías almacenar delayedCallback en una lista y verificarla en cada actualización
-	// para ejecutar las funciones cuando llegue el momento.
+	pendingCallbacks.push_back(callback);
 }

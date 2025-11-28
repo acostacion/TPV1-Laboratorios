@@ -31,11 +31,12 @@ public:
 	void eraseObjects();
 	void removeObject(AnchorGameObject it);
 
-	void runLater(DelayedCallback callback, Uint32 delayMs);
+	void runLater(DelayedCallback callback);
 
 private:
 	std::list<GameObject*> _gameObjects; // Todos los objetos del estado.
 	std::list<EventHandler*> _eventHandlers; // Todo lo que tenga que manejar eventos.
+	std::list<DelayedCallback> pendingCallbacks;
 	//list<DelayedCallback> _delayedCallbacks;
 
 	SDLApplication* _sdl;

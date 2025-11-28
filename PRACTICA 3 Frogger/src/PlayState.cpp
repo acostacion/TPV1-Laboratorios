@@ -123,7 +123,8 @@ void PlayState::update() {
 		getSDLApp()->pushState(new EndState(getSDLApp(), true));
 	}
 
-	for (SceneObject* obj : _sceneObjects) obj->update();
+	//for (SceneObject* obj : _sceneObjects) obj->update();
+	GameState::update();
 	generateWasps(); // genera wasps por tiempo.
 	
 	//removeObject(); // elimina objetos marcados para borrar.

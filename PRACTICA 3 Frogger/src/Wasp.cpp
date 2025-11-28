@@ -26,8 +26,16 @@ void Wasp::update() {
 	updateRect();
 
 	if (!isAlive()) {
+
+		_gameState->runLater([this, ps = _playState, gs = _gameState]() {
+			ps->removeObject(_anchor);
+			gs->removeObject(_anchorGameObject);
+			delete this;
+			});
+		/*
 		_playState->removeObject(_anchor);
 		_gameState->removeObject(_anchorGameObject);
+		*/
 	}
 }
 
