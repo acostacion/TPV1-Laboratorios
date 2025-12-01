@@ -16,17 +16,7 @@ using uint = unsigned int; // alias para el tipo unsigned int
 constexpr uint WIN_WIDTH = 800;
 constexpr uint WIN_HEIGHT = 600;
 
-int main(int argc, char* argv[])
-{
-    try {
-        SDLApplication().run();
-    }
-    catch (std::string e) {
-        throw GameError(e);
-    }
-	catch (...) {
-		throw GameError("Caught and exception of unknown type ...");
-	}
-
+int main(int argc, char* argv[]) {
+	SDLApplication().run();
 	return 0;
 }

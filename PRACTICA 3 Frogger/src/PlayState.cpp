@@ -3,7 +3,6 @@
 
 // Constantes
 constexpr const char* const MAP_ROUTE = "../assets/maps/";
-
 constexpr const char* const imgBase = "../assets/images/";
 
 void PlayState::initMap(std::string f) {
@@ -56,19 +55,16 @@ void PlayState::initMap(std::string f) {
 
 	// posiciones nidos y homedfrogs.
 	for (int i = 0; i < N_GOALS; i++) {
-		goalPositions.push_back(Point2D(32 + 96 * i, 38));
-		HomedFrog* hf = new HomedFrog(getSDLApp(), this, goalPositions[i]);
+		_goalPositions.push_back(Point2D(32 + 96 * i, 38));
+		HomedFrog* hf = new HomedFrog(getSDLApp(), this, _goalPositions[i]);
 		_sceneObjects.insert(_sceneObjects.end(), hf);
 		addObject(hf);
 	}
 }
 
 void PlayState::eraseState(){
-	//for (SceneObject* obj : _sceneObjects) delete obj;
 	_bg = nullptr;
 	_sceneObjects.clear();
-	//getSDLApp()->deleteTextures();
-	//_frog = nullptr;
 }
 
 PlayState::PlayState(SDLApplication* sdl, std::string file) : GameState(sdl), _exit(false) {
@@ -78,17 +74,16 @@ PlayState::PlayState(SDLApplication* sdl, std::string file) : GameState(sdl), _e
 
 PlayState::~PlayState() {
 	eraseState();
-	//eraseObjects();
 }
 
 void PlayState::generateWasps() {
 	// si llega el momento de crear otra avispa...
 	if (SDL_GetTicks() >= _nextWaspTime) {
 		// elige entre las posiciones de spawn
-		int pos = getRandomRange(0, goalPositions.size() - 1);
+		int pos = getRandomRange(0,_goalPositions.size() - 1);
 
 		// genera avispa con lifetime y pos.
-		Wasp* wasp = new Wasp(getSDLApp(), this, getRandomRange(5000, 10000), goalPositions[pos]);
+		Wasp* wasp = new Wasp(getSDLApp(), this, getRandomRange(5000, 10000), _goalPositions[pos]);
 		Anchor a = _sceneObjects.insert(_sceneObjects.end(), wasp);
 
 		// esto accede al ultimo elemento pushbackeado en la lista.
@@ -117,7 +112,7 @@ void PlayState::update() {
 		getSDLApp()->pushState(new EndState(getSDLApp(), false));
 		
 	}
-	else if (goalPositions.size() == 0) {
+	else if (_goalPositions.size() == 0) {
 		std::cout << "You Win!" << std::endl;
 		_exit = true;
 		getSDLApp()->pushState(new EndState(getSDLApp(), true));

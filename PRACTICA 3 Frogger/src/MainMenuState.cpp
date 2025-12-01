@@ -1,140 +1,91 @@
 #include "MainMenuState.h"
 
+#include "PlayState.h"
 #include "SDLApplication.h"
-#include "PauseState.h"
 
-MainMenuState::MainMenuState(SDLApplication* sdl) : GameState(sdl), _actualButton(0)
-{
-	_backgroundTexture = getSDLApp()->getTexture(SDLApplication::MENUBACKGROUND);
+MainMenuState::MainMenuState(SDLApplication* sdl) : GameState(sdl), _actualButton(0) {
+	_bgTexture = getSDLApp()->getTexture(SDLApplication::MENUBACKGROUND);
 
-	_chooseMap = new Label(getSDLApp(), this, Point2D(100, 200), getSDLApp()->getTexture(SDLApplication::t_ELIGEUNMAPA));
-	addObject(_chooseMap);
-
-	/*_levelSelector = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_ORIGINAL));
-	addObject(_levelSelector);
-	addEventListener(_levelSelector);*/
+	_chooseMapLabel = new Label(getSDLApp(), this, Point2D(100, 200), getSDLApp()->getTexture(SDLApplication::t_ELIGEUNMAPA));
+	addObject(_chooseMapLabel);
 
 	_leftArrow = new Button(getSDLApp(), this, Point2D(50, 300), getSDLApp()->getTexture(SDLApplication::t_LEFT));
 	addObject(_leftArrow);
 	addEventListener(_leftArrow);
+	_leftArrow->connect([this]() { left(); });
 
 	_rightArrow = new Button(getSDLApp(), this, Point2D(350, 300), getSDLApp()->getTexture(SDLApplication::t_RIGHT));
 	addObject(_rightArrow);
 	addEventListener(_rightArrow);
+	_rightArrow->connect([this]() { right(); });
 
 	_exitButton = new Button(getSDLApp(), this, Point2D(175, 375), getSDLApp()->getTexture(SDLApplication::t_SALIR));
 	addObject(_exitButton);
 	addEventListener(_exitButton);
-
-	
-
-	//_levelSelector->connect([this]() { loadLevel("trivial"); });
+	_exitButton->connect([this]() { getSDLApp()->popState(); });
 
 	// "C:/Users/Diego/Desktop/Unity Projects/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps"
 	// "C:/Users/Usuario/Music/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps"
-	for (auto entry : std::filesystem::directory_iterator("C:/Users/Diego/Desktop/Unity Projects/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps")) {
+	for (auto entry : std::filesystem::directory_iterator("C:/Users/Usuario/Music/TPV1-Laboratorios/PRACTICA 3 Frogger/assets/maps")) {
 
 		const std::string s = entry.path().stem().string();
 
+		SDLApplication::TextureName t = SDLApplication::t_AVISPADO; // le damos la primera para que no salte excepcion
+		bool active = false;
 
 		if (s == "Avispado") {
-			Button* b = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_AVISPADO));
-			_buttons.push_back(b);
-			addObject(b);
-			addEventListener(b);
-			b->connect([this]() { loadLevel("Avispado"); });
+			active = true;
 		}
 		else if (s == "Original") {
-			Button* b = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_ORIGINAL), false);
-			_buttons.push_back(b);
-			addObject(b);
-			addEventListener(b);
-			b->connect([this]() { loadLevel("Original"); });
+			t = SDLApplication::t_ORIGINAL;
 		}
 		else if (s == "Practica 1") {
-			Button* b = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_PRACTICA1), false);
-			_buttons.push_back(b);
-			addObject(b);
-			addEventListener(b);
-			b->connect([this]() { loadLevel("Practica 1"); });
+			t = SDLApplication::t_PRACTICA1;
 		}
 		else if (s == "Trivial") {
-			Button* b = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_TRIVIAL), false);
-			_buttons.push_back(b);
-			addObject(b);
-			addEventListener(b);
-			b->connect([this]() { loadLevel("Trivial"); });
+			t = SDLApplication::t_TRIVIAL;
 		}
 		else if (s == "Veloz") {
-			Button* b = new Button(getSDLApp(), this, Point2D(150, 300), getSDLApp()->getTexture(SDLApplication::t_VELOZ), false);
-			_buttons.push_back(b);
-			addObject(b);
-			addEventListener(b);
-			b->connect([this]() { loadLevel("Veloz"); });
+			t = SDLApplication::t_VELOZ;
 		}
+
+		Button* b = new Button(getSDLApp(), this, Point2D(150, 300),
+			getSDLApp()->getTexture(t), active);
+		_buttons.push_back(b);
+		addObject(b);
+		addEventListener(b);
+		b->connect([this, s]() { loadLevel(s); });
 	}
-
-	_leftArrow->connect([this]() { left(); });
-	_rightArrow->connect([this]() { right(); });
-	_exitButton->connect([this]() { getSDLApp()->popState(); });
-	
 }
 
-MainMenuState::~MainMenuState()
-{
-	
-}
-
-void MainMenuState::render() const
-{
+void MainMenuState::render() const {
 	SDL_RenderClear(getSDLApp()->getRenderer());
-	_backgroundTexture->render();
+	_bgTexture->render();
 	GameState::render();
 	SDL_RenderPresent(getSDLApp()->getRenderer());
-
 }
 
-void MainMenuState::update()
-{
-	if (_actualButton == 0)
-	{
-		_leftArrow->setActive(false);
-	}
-	else
-	{
-		_leftArrow->setActive(true);
-	}
+void MainMenuState::update() {
+	_leftArrow->setActive(_actualButton > 0);
+	_rightArrow->setActive(_actualButton < _buttons.size() - 1);
 
-	if (_actualButton == _buttons.size() - 1)
-	{
-		_rightArrow->setActive(false);
-	}
-	else
-	{
-		_rightArrow->setActive(true);
-	}
 	GameState::update();
 }
 
-void MainMenuState::handleEvent(const SDL_Event& event)
-{
+void MainMenuState::handleEvent(const SDL_Event& event) {
 	if (event.type == SDL_EVENT_KEY_DOWN) {
-		if (event.key.key == SDLK_LEFT) {
-			left();
-		}
-		else if (event.key.key == SDLK_RIGHT) {
-			right();
-		}
-		else if (event.key.key == SDLK_RETURN) {
-            _buttons[_actualButton]->click();
+		switch (event.key.key) {
+		case SDLK_LEFT: left(); break;
+		case SDLK_RIGHT: right(); break;
+		case SDLK_RETURN: _buttons[_actualButton]->click(); break;
+		default:break;
 		}
 	}
 
 	GameState::handleEvent(event);
 }
 
-void MainMenuState::left()
-{
+void MainMenuState::left() {
 	if (_actualButton > 0) {
 		_buttons[_actualButton]->setActive(false);
 		_actualButton--;
@@ -142,17 +93,17 @@ void MainMenuState::left()
 	}
 }
 
-void MainMenuState::right()
-{
-	if (_actualButton < _buttons.size()-1) {
+void MainMenuState::right() {
+	if (_actualButton < _buttons.size() - 1) {
 		_buttons[_actualButton]->setActive(false);
 		_actualButton++;
 		_buttons[_actualButton]->setActive(true);
 	}
 }
 
-void MainMenuState::loadLevel(const std::string& levelName)
-{
+void MainMenuState::loadLevel(const std::string& levelName) {
 	PlayState* playState = new PlayState(getSDLApp(), levelName);
 	getSDLApp()->pushState(playState);
 }
+
+

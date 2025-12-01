@@ -32,7 +32,8 @@ Collision HomedFrog::checkCollision(const SDL_FRect& r) {
 		else {
 			// elimina del vector la posicion del nido alcanzado.
 			_isVisible = true;
-			_playState->goalPositions.erase(std::find(_playState->goalPositions.begin(), _playState->goalPositions.end(), findGoalPosition()));
+			std::vector<Point2D> goalPos = _playState->getGoalPositions();
+			goalPos.erase(std::find(goalPos.begin(), goalPos.end(), findGoalPosition()));
 			return Collision{ Vector2D<float>(0.0f, 0.0f), HOME };
 		}
 	}
@@ -46,11 +47,12 @@ Point2D HomedFrog::findGoalPosition() {
 
 	int i = 0;
 	bool foundPos = false;
-	while (i < _playState->goalPositions.size() && !foundPos) {
+	std::vector<Point2D> goalPos = _playState->getGoalPositions();
+	while (i < goalPos.size() && !foundPos) {
 		// con la getX nos valdria.
-		if (_playState->goalPositions[i].getX() == (_position.getX() + _texture->getFrameWidth() / 2)) {
+		if (goalPos[i].getX() == (_position.getX() + _texture->getFrameWidth() / 2)) {
 			foundPos = true;
-			returnPos = _playState->goalPositions[i];
+			returnPos = goalPos[i];
 		}
 		i++;
 	}

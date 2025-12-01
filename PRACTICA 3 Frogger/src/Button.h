@@ -15,7 +15,7 @@ class Button : public Label, public EventHandler
 public:  
 	Button(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture, bool active = true);
 
-	~Button() override;  
+	~Button() override = default;  
 	void render() const override;
 	void update() override;
 	void handleEvent(const SDL_Event& event) override;

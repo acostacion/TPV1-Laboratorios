@@ -2,7 +2,9 @@
 
 Button::Button(SDLApplication* sdl, GameState* gs, const Point2D& position, Texture* texture, bool active) : Label(sdl, gs, position, texture), _active(active) {
 	// zona del boton.
-	rect = { position.x, position.y, texture->getFrameWidth(), texture->getFrameHeight() };
+	int x = _position.getX();
+	int y = _position.getY();
+	rect = { x, y, texture->getFrameWidth(), texture->getFrameHeight() };
 }
 
 void Button::render() const
@@ -25,10 +27,12 @@ void Button::update()
 {
 	if (_active)
 	{
-		SDL_GetMouseState(&_mousePos.x, &_mousePos.y);
+		float x = _mousePos.getX();
+		float y = _mousePos.getY();
+		SDL_GetMouseState(&x, &y);
 
 		// si el raton esta sobre el rectangulo del boton...
-		SDL_Point point = SDL_Point((int)_mousePos.x, (int)_mousePos.y);
+		SDL_Point point = SDL_Point((x, y));
 		if (SDL_PointInRect(&point, &rect)) {
 			_mouseState = MOUSE_OVER;
 		}
@@ -59,11 +63,7 @@ void Button::handleEvent(const SDL_Event& event)
 					}
 				}
 			}
-
-
 		}
 	}
 }
-Button::~Button()
-{
-}
+

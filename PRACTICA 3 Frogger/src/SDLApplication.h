@@ -120,7 +120,7 @@ public:
 	Texture* getTexture(TextureName name) const; // Obtiene una textura por su nombre
 	SDL_Renderer* getRenderer() const { return renderer; }
 	SDL_Window* getWindow() const { return window; }
-	GameStateMachine* getStateMachine() { return _gsMachine; }
+	GameStateMachine* getStateMachine() const { return _gsMachine; }
 
 	void setExit(bool e) { exit = e; }
 

@@ -3,11 +3,9 @@
 #include "SDLApplication.h"
 
 Log::Log(std::istream& file, SDLApplication* sdl, PlayState* ps) : Platform(file, sdl, ps) {
-	SDLApplication::TextureName texName;
+	SDLApplication::TextureName texName = SDLApplication::LOG2; // case 1.
 	switch (_nTex) {
 	case 0: texName = SDLApplication::LOG1;
-		break;
-	case 1:	texName = SDLApplication::LOG2;
 		break;
 	default: break;
 	}

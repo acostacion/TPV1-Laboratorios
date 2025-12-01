@@ -4,7 +4,7 @@
 
 
 Vehicle::Vehicle(std::istream& file, SDLApplication* sdl, PlayState* ps) : Crosser(file, sdl, ps) {
-	SDLApplication::TextureName texName;
+	SDLApplication::TextureName texName = SDLApplication::CAR5; // case 5.
 	switch (_nTex) {
 	case 1: texName = SDLApplication::CAR1;
 		break;
@@ -13,8 +13,6 @@ Vehicle::Vehicle(std::istream& file, SDLApplication* sdl, PlayState* ps) : Cross
 	case 3: texName = SDLApplication::CAR3;
 		break;
 	case 4: texName = SDLApplication::CAR4;
-		break;
-	case 5: texName = SDLApplication::CAR5;
 		break;
 	default: break;
 	}

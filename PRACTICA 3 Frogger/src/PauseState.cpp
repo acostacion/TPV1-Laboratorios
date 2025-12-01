@@ -2,33 +2,44 @@
 #include "SDLApplication.h"
 
 PauseState::PauseState(SDLApplication* sdl, PlayState* ps) : GameState(sdl), _playState(ps){
-	
-	_continua = new Button(getSDLApp(), this, Point2D(150, 100), getSDLApp()->getTexture(SDLApplication::t_CONTINUAR));
-	addObject(_continua);
-	addEventListener(_continua);
 
-	_reset = new Button(getSDLApp(), this, Point2D(150, 200), getSDLApp()->getTexture(SDLApplication::t_REINICIAR));
-	addObject(_reset);
-	addEventListener(_reset);
+	// crea los botones
+	_buttons.push_back(new Button(getSDLApp(), this, Point2D(150, 100), getSDLApp()->getTexture(SDLApplication::t_CONTINUAR)));
+	_buttons.push_back(new Button(getSDLApp(), this, Point2D(150, 200), getSDLApp()->getTexture(SDLApplication::t_REINICIAR)));
+	_buttons.push_back(new Button(getSDLApp(), this, Point2D(100, 300), getSDLApp()->getTexture(SDLApplication::t_VOLVERALMENU)));
+	_buttons.push_back(new Button(getSDLApp(), this, Point2D(190, 400), getSDLApp()->getTexture(SDLApplication::t_SALIR)));
 
-	_backToMenu = new Button(getSDLApp(), this, Point2D(100, 300), getSDLApp()->getTexture(SDLApplication::t_VOLVERALMENU));
-	addObject(_backToMenu);
-	addEventListener(_backToMenu);
+	// monta los botones y segun el que sea lo conecta
+	for (int i = 0; i < _buttons.size(); i++) {
 
-	_exitButton = new Button(getSDLApp(), this, Point2D(190, 400), getSDLApp()->getTexture(SDLApplication::t_SALIR));
-	addObject(_exitButton);
-	addEventListener(_exitButton);
+		addObject(_buttons[i]);
+		addEventListener(_buttons[i]);
 
-	_continua->connect([this]() { getSDLApp()->popState(); });
-	_reset->connect([this]() { createMessageBox(); });
-	_backToMenu->connect([this]() { returnToMenu(); });
-	_exitButton->connect([this]() { quit(); });
+		switch (i) {
+		case 0: _buttons[i]->connect([this]() { getSDLApp()->popState(); }); break;
+
+		case 1: _buttons[i]->connect([this]() { createMessageBox(); }); break;
+
+		case 2: _buttons[i]->connect([this]() {
+			getSDLApp()->popState();
+			getSDLApp()->popState();
+		}); break;
+
+		case 3: _buttons[i]->connect([this]() {
+			getSDLApp()->popState();
+			getSDLApp()->popState();
+			getSDLApp()->popState();
+		}); break;
+
+		default:break;
+		}
+	}
 }
 
 void PauseState::createMessageBox() {
 	const SDL_MessageBoxButtonData buttons[] = {
-		{ /* .flags, .buttonid, .text */        0, 0, "no" },
-		{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "yes" },
+		{ 0, 0, "No" },
+		{ SDL_MESSAGEBOX_BUTTON_RETURNKEY_DEFAULT, 1, "Sí" },
 	};
 
 	const SDL_MessageBoxData messageboxdata = {
@@ -49,28 +60,11 @@ void PauseState::createMessageBox() {
 	else {
 		getSDLApp()->run();
 	}
-
 }
 
-void PauseState::returnToMenu() {
-	getSDLApp()->popState();
-	getSDLApp()->popState();
-}
 
-void PauseState::quit() {
-	getSDLApp()->popState();
-	getSDLApp()->popState();
-	getSDLApp()->popState();
-}
-
-PauseState::~PauseState() {
-
-}
-
-void PauseState::render() const
-{
+void PauseState::render() const {
 	SDL_RenderClear(getSDLApp()->getRenderer());
-	// TODO: fondo transparente
 	GameState::render();
 	SDL_RenderPresent(getSDLApp()->getRenderer());
 }

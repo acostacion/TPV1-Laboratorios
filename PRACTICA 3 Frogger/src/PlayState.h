@@ -30,10 +30,10 @@
 
 class SDLApplication;
 using Anchor = std::list<SceneObject*>::iterator;
+
 class PlayState : public GameState{
 public:
-	// numero de nidos
-	static constexpr int N_GOALS = 5;
+	static constexpr int N_GOALS = 5; // numero de nidos
 
 private:
 	std::mt19937 _randomGenerator;
@@ -58,18 +58,20 @@ private:
 	void initMap(std::string f);
 	void generateWasps();
 	void eraseState();
-	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(_randomGenerator); }
-	void createMessageBox();
-	
 
+	inline int getRandomRange(int min, int max) { return std::uniform_int_distribution<int>(min, max)(_randomGenerator); }
+
+	std::vector<Point2D> _goalPositions; // posiciones de los nidos
 public:
-	std::vector<Point2D> goalPositions; // posiciones de los nidos
 
 	PlayState(SDLApplication* sdl, std::string file);
 	~PlayState();
 
 	// para la messagebox de pausestate
 	void reset();
+
+	// para poder leer pero no modificar.
+	const std::vector<Point2D>& getGoalPositions() const { return _goalPositions; }
 
 	Collision checkCollision(const SDL_FRect& rect);
 

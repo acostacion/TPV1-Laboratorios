@@ -2,6 +2,8 @@
 
 void Label::render() const
 {// conversion a float rect...
-	SDL_FRect renderRect = { (float)_position.x, (float)_position.y, (float)_texture->getFrameWidth(), (float)_texture->getFrameHeight() };
+	float x = _position.getX();
+	float y = _position.getY();
+	SDL_FRect renderRect = { x, y, (float)_texture->getFrameWidth(), (float)_texture->getFrameHeight() };
 	_texture->render(renderRect);
 }

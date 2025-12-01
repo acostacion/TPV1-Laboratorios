@@ -1,47 +1,35 @@
 #pragma once
-#include <SDL3/SDL.h>
-#include <SDL3_image/SDL_image.h>
-#include <array>
 #include <string>
-#include <istream>
-#include <fstream>
-#include <list>
-#include <sstream>
 #include <vector>
-#include "GameObject.h"
-#include "SceneObject.h"
-#include "Vector2D.h"
 #include "texture.h"
-#include "FileFormatError.h"
-#include "FileNotFoundError.h"
-#include "SDLError.h"
-#include "GameError.h"
 #include "GameState.h"
-#include "PlayState.h"
 #include "Button.h"
+#include "GameObject.h"
 #include <filesystem>
-#include <random>
 
+class PlayState;
 class SDLApplication;
+
 class MainMenuState : public GameState {
 public:
 	MainMenuState(SDLApplication* sdl);
-	~MainMenuState();
+	~MainMenuState() override = default;
 
 	void render() const override;
 	void update() override;
 	void handleEvent(const SDL_Event& event) override;
 
 private:
-	Texture* _backgroundTexture;
-	Label* _chooseMap;
-	Button* _levelSelector;
+	Texture* _bgTexture;
+	Label* _chooseMapLabel;
 	Button* _leftArrow;
 	Button* _rightArrow;
 	Button* _exitButton;
 
+	// botones que seleccionan los niveles.
 	std::vector<Button*> _buttons;
-	int _actualButton;
+	int _actualButton; // indice del actual
+
 	void left();
 	void right();
 
